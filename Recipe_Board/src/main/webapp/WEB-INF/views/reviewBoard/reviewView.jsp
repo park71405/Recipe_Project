@@ -1,30 +1,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />	
+    
 	<title>뭐 먹지</title>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../../resources/css/styles.css" rel="stylesheet" />
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-	
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
 </head>
 <body>
 
 	
 	
-	<header class="container blog-header py-3 bg-light">
-		<%@ include file="../include/header.jsp" %>
-	</header>
-
-	<nav class="container navbar navbar-expand-lg navbar-light bg-light">
-		<%@ include file="../include/nav.jsp" %>
-	</nav>
+	<%@ include file="../include/header.jsp" %>
+	
+	<%@ include file="../include/nav.jsp" %>
+	
 
 	<div class="container">
 
@@ -36,40 +37,55 @@
 	
 		<label>내용</label>
 		${reviewView.rv_content}<br />
-
-		<div>
-			<a href="/reviewBoard/reviewModify?rv_no=${reviewView.rv_no}">수정</a>, <a href="/reviewBoard/reviewDelete?rv_no=${reviewView.rv_no}">삭제</a>
-		</div>
+		
+		<c:if test="${member.user_name eq reviewView.user_name}">
+			<div>
+				<br />
+				<a href="/reviewBoard/reviewModify?rv_no=${reviewView.rv_no}">수정</a>, 
+				<a href="/reviewBoard/reviewDelete?rv_no=${reviewView.rv_no}">삭제</a>
+			</div>
+		</c:if>
 		
 		<!-- 댓글 -->
 		<hr />
 		<ul>
-			<li>1번 댓글 작성자</li>
-			<li>1번 댓글</li>
-			<li>2번 댓글 작성자</li>
-			<li>2번 댓글</li>
-			<li>3번 댓글 작성자</li>
-			<li>3번 댓글</li>
+			<c:forEach items="${rvReply}" var="rvReply">
+				<li>
+					<div>
+						<p>${rvReply.user_name} / <fmt:formatDate value="${rvReply.rva_date}" pattern="yyyy-MM-dd" /></p>
+						<p>${rvReply.rva_content}</p>
+						
+						<c:if test="${member.user_name eq rvReply.user_name}">
+							<p>
+								<a href="/rvReply/rvReplyModify?rva_no=${rvReply.rva_no}">수정</a>, 
+								<a href="/rvReply/rvReplyDelete?rva_no=${rvReply.rva_no}&rv_no=${rvReply.rv_no}">삭제</a>
+							</p>
+						</c:if>
+					</div>
+				</li>
+			</c:forEach>
 		</ul>
 		
+		<c:if test="${member != null}">
 		<div>
-			<p>
-				<label>작성자</label>
-				<input type="text">
-			</p>
-			<p>
-				<textarea rows="5" cols="50"></textarea>
-			</p>
-			<p>
-				<button type="button">댓글 작성</button>
-			</p>
+			<form method="post" action="/rvReply/rvReplyWrite">
+				<p>
+					<textarea name="rva_content" rows="5" cols="50"></textarea>
+				</p>
+				<p>
+					<input type="hidden" name="rv_no" value="${reviewView.rv_no}"> 
+					<input type="hidden" name="user_name" value="${member.user_name}">
+					<button type="submit">댓글 작성</button>
+				</p>
+		
+			</form>
 		</div>
-	
+		
+		</c:if>
 	</div>
 
-	<footer class="bg-light text-center text-lg-start">
-		<%@ include file="../include/footer.jsp" %>
-	</footer>
+	<%@ include file="../include/footer.jsp" %>
+	
 
 </body>
 </html>

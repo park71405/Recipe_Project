@@ -78,7 +78,7 @@ public class Page {
 		 displayPost = (num - 1) * postNum;
 	}
 	
-	//검색 타입 검색어
+	//요리 후기검색 타입 검색어
 	public String getRvSearchTypeKeyword() {
 		if(searchType.equals("") || keyword.equals("")) {
 			return "";
@@ -101,5 +101,23 @@ public class Page {
 	}
 	public String getKeyword() {
 		return keyword;
+	}
+	
+	//QA 후기검색 타입 검색어
+	public String getQaSearchTypeKeyword() {
+		if(searchType.equals("") || keyword.equals("")) {
+			return "";
+		}else {
+			return "&qa_searchType=" + searchType + "&qa_keyword=" + keyword;
+		}
+	}
+	
+	//레시피 타입 검색어
+	public String getRcpSearchTypeKeyword() {
+		if(searchType.equals("") || keyword.equals("")) {
+			return "";
+		}else {
+			return "&rcpSearchType=" + searchType + "&rcpKeyword=" + keyword;
+		}
 	}
 }

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.recipe.domain.Page;
 import com.recipe.domain.ReviewBoardVO;
+import com.recipe.domain.RvReplyVO;
 import com.recipe.service.ReviewBoardService;
+import com.recipe.service.RvReplyService;
 
 @Controller
 @RequestMapping("/reviewBoard/*")
@@ -20,6 +22,9 @@ public class ReviewBoardController {
 	
 	@Inject
 	ReviewBoardService service;
+	
+	@Inject
+	private RvReplyService replyService;
 
 	//리뷰 목록
 	@RequestMapping(value="/reviewList", method = RequestMethod.GET)
@@ -68,7 +73,7 @@ public class ReviewBoardController {
 		
 	  service.reviewWrite(vo);
 	  
-	  return "redirect:/reviewBoard/reviewList";
+	  return "redirect:/reviewBoard/reviewList?num=1";
 	}
 	
 	//리뷰 조회
@@ -78,6 +83,11 @@ public class ReviewBoardController {
 		ReviewBoardVO vo = service.reviewView(rv_no);
 		
 		model.addAttribute("reviewView", vo);
+		
+		//요리후기 댓글 조회
+		List<RvReplyVO> reply = null;
+		reply = replyService.rvReplyList(rv_no);
+		model.addAttribute("rvReply", reply);
 	}
 	
 	//리뷰 수정
@@ -101,7 +111,7 @@ public class ReviewBoardController {
 	public String getReviewDelete(@RequestParam("rv_no") int rv_no) throws Exception{
 		service.reviewDelete(rv_no);
 		
-		return "redirect:/reviewBoard/reviewList";
+		return "redirect:/reviewBoard/reviewList?num=1";
 	}
 
 }

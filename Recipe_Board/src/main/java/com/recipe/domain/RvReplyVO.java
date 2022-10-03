@@ -10,7 +10,7 @@ public class RvReplyVO {
     	RVA_CONTENT TEXT,
     	RVA_DATE timestamp not null default now(),
     	RV_NO INT,
-    	USER_NAME VARCHAR(45) unique not null,
+    	USER_NAME VARCHAR(45) not null,
     	PRIMARY KEY(RVA_NO),
     	foreign key(RV_NO) REFERENCES REVIEW (RV_NO),
     	FOREIGN KEY(USER_NAME) references USER (USER_NAME)

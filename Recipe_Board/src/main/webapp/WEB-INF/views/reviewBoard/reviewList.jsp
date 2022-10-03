@@ -6,27 +6,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />	
+    
 	<title>뭐 먹지</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-	
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../../resources/css/styles.css" rel="stylesheet" />
+
 </head>
 <body>
 
 	
 	
-	<header class="container blog-header py-3 bg-light">
-		<%@ include file="../include/header.jsp" %>
-	</header>
+	<%@ include file="../include/header.jsp" %>
+	
 
-	<nav class="container navbar navbar-expand-lg navbar-light bg-light">
-		<%@ include file="../include/nav.jsp" %>
-	</nav>
+	<%@ include file="../include/nav.jsp" %>
+	
 
 	<div class="container">
 	
@@ -102,9 +104,7 @@
 	
 	</div>
 
-	<footer class="bg-light text-center text-lg-start">
-		<%@ include file="../include/footer.jsp" %>
-	</footer>
+	<%@ include file="../include/footer.jsp" %>
 
 </body>
 </html>

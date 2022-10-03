@@ -2,8 +2,11 @@ package com.recipe.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.recipe.domain.ReviewBoardVO;
 
+@Service
 public interface ReviewBoardService {
 
 	//리뷰 총 개수

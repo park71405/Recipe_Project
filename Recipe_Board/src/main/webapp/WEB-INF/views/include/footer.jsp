@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    2020 PARK :
-    <a class="text-dark" href="https://mdbootstrap.com/">
-    	park71403@gmail.com
-    </a>
-  </div>
+<!-- Footer-->
+<footer class="py-4 bg-dark">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+	</div>
+</footer>

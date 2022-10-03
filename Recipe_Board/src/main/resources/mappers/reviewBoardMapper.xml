@@ -60,7 +60,7 @@
 				rv_title = #{rv_title},
         		rv_content = #{rv_content},
         		user_name = #{user_name}
-			where rv_no = #{rv_no};
+			where rv_no = #{rv_no} 
 	</update>
 	
 	<!-- 리뷰 삭제 -->

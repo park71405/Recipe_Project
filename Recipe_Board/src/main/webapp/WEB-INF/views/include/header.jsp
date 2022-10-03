@@ -1,17 +1,28 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
-
-	<div class="row flex-nowrap justify-content-between align-items-center">
-		<div class="col-4 pt-1">
-			<p class="h3 ">뭐 먹지</h>
-		</div>
-		<div class="col-4 d-flex justify-content-end align-items-center">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand">
+            	<img alt="Brand" src="../../../resources/img/logo_t.png" class="img-responsive" style="height: 150px; width: auto;">
+			</a>
 			
-		<div class="btn-group" role="group" aria-label="Basic outlined example">
-  			<button type="button" class="btn btn-outline-primary">회원가입</button>
-  			<button type="button" class="btn btn-outline-primary">로그인</button>
-  			<button type="button" class="btn btn-outline-primary">로그아웃</button>
+			<form class="d-flex">
+				<div>
+        			<c:if test="${member == null}">
+  						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signup'">회원가입</button>
+  						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signin'">로그인</button>
+  					</c:if>
+  					<c:if test="${member != null}">
+  						<li>${member.user_name}님</li>
+  						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signout'">로그아웃</button>
+  					</c:if>
+  				</div>
+        	</form>
+			
 		</div>
-	</div>
+        
+	</nav>
