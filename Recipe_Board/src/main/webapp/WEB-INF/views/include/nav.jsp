@@ -11,7 +11,7 @@
     			</button>
     			
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 h5">
                         <li class="nav-item">
                         	<a class="nav-link active" aria-current="page" href="#">
                         		바로조리가능
@@ -33,7 +33,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">요리 종류</a></li>
                                 <li><a class="dropdown-item" href="#">조리 방법</a></li>
-                                <li><a class="dropdown-item" href="#">메뉴 검색</a></li>
+                                <li><a class="dropdown-item" href="../rcpBoard/rcpList?num=1">전체 보기</a></li>
                             </ul>
                         </li>
                         

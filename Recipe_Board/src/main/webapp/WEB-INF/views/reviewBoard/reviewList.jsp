@@ -32,7 +32,7 @@
 
 	<div class="container">
 	
-		<table>
+		<table class="table table-borderless table-hover justify-content-center">
 			<thead>
   				<tr>
    					<th>번호</th>
@@ -47,7 +47,7 @@
  					<tr>
   						<td>${reviewList.rv_no}</td>
   						<td>
-  							<a href="/reviewBoard/reviewView?rv_no=${reviewList.rv_no}">${reviewList.rv_title}</a>	
+  							<a href="/reviewBoard/reviewView?rv_no=${reviewList.rv_no}" style="text-decoration:none; color: #476268;">${reviewList.rv_title}</a>	
   						</td>
   						<td><fmt:formatDate value="${reviewList.rv_date}" pattern="yyyy-MM-dd" /></td>
   						<td>${reviewList.user_name}</td>
@@ -56,41 +56,54 @@
  			</tbody>
 		</table>
 		
-		<div>
-			<c:if test="${prev}">
-				<span>[ <a href="/reviewBoard/reviewList?num=${reviewStartPageNum - 1}${rv_searchTypeKeyword}">이전</a> ] </span>
-			</c:if>
-			
- 			<c:forEach begin="${reviewStartPageNum}" end="${reviewEndPageNum}" var="num" >
-    			<span>
-     				
-     				<c:if test="${reviewSelect != num}">
-     					<a href="/reviewBoard/reviewList?num=${num}${rv_searchTypeKeyword}">${num}</a>
-     				</c:if>
-     				
-     				<c:if test="${reviewSelect == num}">
-     					<b>${num}</b>
-     				</c:if>
-     				
-  				</span>
- 			</c:forEach>
- 			
- 			<c:if test="${next}">
-				<span>[ <a href="/reviewBoard/reviewList?num=${reviewEndPageNum + 1}${rv_searchTypeKeyword}">다음</a> ] </span>
-			</c:if>
-		</div>
+		<nav aria-label="Page navigation example">
+			<ul class="pagination  justify-content-center">
+				<li class="page-item">
+					<c:if test="${prev}">
+						<a class="page-link"
+							href="/reviewBoard/reviewList?num=${reviewStartPageNum - 1}${rv_searchTypeKeyword}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a>
+					</c:if>
+				</li>
+
+				<c:forEach begin="${reviewStartPageNum}" end="${reviewEndPageNum}" var="num">
+					<span> 
+						<c:if test="${reviewSelect != num}">
+							<li class="page-item">
+								<a class="page-link" href="/reviewBoard/reviewList?num=${num}${rv_searchTypeKeyword}">${num}</a>
+							</li>
+						</c:if> 
+						<c:if test="${reviewSelect == num}">
+							<li class="page-item active" aria-current="page">
+								<a class="page-link" href="#">${num}</a>
+							</li>
+						</c:if>
+					</span>
+				</c:forEach>
+
+				<li class="page-item"><c:if test="${next}">
+						<a class="page-link" href="/reviewBoard/reviewList?num=${reviewEndPageNum + 1}${rv_searchTypeKeyword}" aria-label="Next"> 
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</c:if>
+				</li>
+
+			</ul>
+		</nav>
 		
-		<div>
+		<div class="container-fluid d-flex w-50 h-50 p-3">
 			<select name="reviewSearchType">
 				<option value="rv_title" <c:if test="${reviewSearchType eq 'rv_title'}"> selected </c:if>>제목</option>
 				<option value="rv_content" <c:if test="${reviewSearchType eq 'rv_content'}"> selected </c:if>>내용</option>
 				<option value="rv_title_content" <c:if test="${reviewSearchType eq 'rv_title_content'}"> selected </c:if>>제목+내용</option>
 				<option value="user_name" <c:if test="${reviewSearchType eq 'user_name'}"> selected </c:if>>작성자</option>
-			</select>
+			</select> 
 			
-			<input type="text" name="rv_keyword" value="${rv_keyword}" />
+			<input class="form-control me-2" type="text" name="rv_keyword" value="${rv_keyword}" placeholder="검색" aria-label="Search">
 			
-			<button type="button" id="reviewSearchBtn">검색</button>
+			<button class="btn btn-outline-success" type="submit"
+				id="reviewSearchBtn">검색</button>
 		</div>
 		
 		<script>

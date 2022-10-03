@@ -27,7 +27,7 @@
 	<%@ include file="../include/nav.jsp" %>
 	
 
-	<div class="container">
+	<div class="container justify-content-center">
 
 		<label>제목</label>
 		${reviewView.rv_title}<br />

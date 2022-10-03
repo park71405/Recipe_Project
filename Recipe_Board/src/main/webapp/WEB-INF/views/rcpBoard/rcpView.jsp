@@ -29,26 +29,31 @@
 
 	<div class="container">
 	
-		<label>레시피 번호</label>
-		${rcpView.rcp_seq}<br />
-		
-		<label>레시피 이름</label>
-		${rcpView.rcp_nm}<br />
-		
-		<label>조리방법</label>
-		${rcpView.rcp_way2}<br />
-	
-		<label>요리종류</label>
-		${rcpView.rcp_pat2}<br />
-		
-		<label>열량</label>
-		${rcpView.info_eng}<br />
-		
-		<label>재료 정보</label>
-		<br />
-	
-		<img src="${rcpView.att_file_no_mk}" />
-		<br />
+		<!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${rcpView.att_file_no_main}" alt="..." /></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder" >${rcpView.rcp_nm}</h1>
+                        <dl class="row">
+                        	<dt class="col-sm-3">조리방법</dt>
+  							<dd class="col-sm-9">${rcpView.rcp_way2}</dd>
+  								
+  							<dt class="col-sm-3">요리종류</dt>
+  							<dd class="col-sm-9">${rcpView.rcp_pat2}</dd>
+  								
+  							<dt class="col-sm-3">열량</dt>
+  							<dd class="col-sm-9">${rcpView.info_eng}</dd>
+  								
+  							<dt class="col-sm-3">재료</dt>
+  							<dd class="col-sm-9"></dd>
+                        		
+                       	</dl>
+                    </div>
+                </div>
+            </div>
+        </section>
 	
 	</div>
 

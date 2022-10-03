@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 
 <!-- Footer-->
-<footer class="py-4 bg-dark">
+<footer class="py-4 bg-light">
 	<div class="container">
-		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+		<p class="m-0 text-center text-black">park71403@gmail.com Park 2022</p>
 	</div>
 </footer>

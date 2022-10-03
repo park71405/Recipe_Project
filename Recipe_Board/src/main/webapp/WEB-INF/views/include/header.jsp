@@ -7,7 +7,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container px-4 px-lg-5">
 			<a class="navbar-brand">
-            	<img alt="Brand" src="../../../resources/img/logo_t.png" class="img-responsive" style="height: 150px; width: auto;">
+            	<img alt="Brand" src="../../../resources/img/logo.png" class="img-responsive" style="height: 70px; width: auto;">
 			</a>
 			
 			<form class="d-flex">

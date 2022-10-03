@@ -21,7 +21,7 @@
 	<!-- 레시피 조회 -->
 	<select id="rcpView" parameterType="int" resultType="com.recipe.domain.RcpBoardVO">
 		select 
-			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, info_eng, att_file_no_mk
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, info_eng, att_file_no_main
 		from
 			recipe
 		where
