@@ -17,7 +17,7 @@
   						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signin'">로그인</button>
   					</c:if>
   					<c:if test="${member != null}">
-  						<li>${member.user_name}님</li>
+  						<button type="button" class="btn btn-outline-success">${member.user_name}님</button>
   						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signout'">로그아웃</button>
   					</c:if>
   				</div>

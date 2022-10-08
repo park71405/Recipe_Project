@@ -23,6 +23,9 @@ public class QaVO {
 	private Date qa_date;
 	private boolean qa_warning;
 	private String user_name;
+	private String qaImg;
+	
+	private String qaThumbImg;
 	
 	public int getQa_no() {
 		return qa_no;
@@ -60,7 +63,17 @@ public class QaVO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	
-	
+	public String getQaImg() {
+		return qaImg;
+	}
+	public void setQaImg(String qaImg) {
+		this.qaImg = qaImg;
+	}
+	public String getQaThumbImg() {
+		return qaThumbImg;
+	}
+	public void setQaThumbImg(String qaThumbImg) {
+		this.qaThumbImg = qaThumbImg;
+	}
 	
 }

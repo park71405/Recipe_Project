@@ -29,26 +29,49 @@
 	
 
 	<div class="container">
-		
-		<label>제목</label>
-		${qaView.qa_title}<br />
-			
-		<label>작성자</label>
-		${member.user_name}<br />
-			
-		<label>내용</label>
-		${qaView.qa_content}<br />
-	
-		<c:if test="${member.user_name eq qaView.user_name}">
-			<div>
-				<a href="/qaBoard/qaModify?qa_no=${qaView.qa_no}">QA 수정</a>,
-				<a href="/qaBoard/qaDelete?qa_no=${qaView.qa_no}">QA 삭제</a>
+		<div class="row">
+			<div class="col-md-10" style="float: none; margin:0 auto;">
+				<table class="table table-condensed center">
+					<thead>
+						<tr align="center">
+							<th width="10%">제목</th>
+							<th width="60%">${qaView.qa_title}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>작성일</td>
+							<td><fmt:formatDate value="${qaView.qa_date}" pattern="yyyy-MM-dd" /></td>
+						</tr>
+						<tr>
+							<td>글쓴이</td>
+							<td>${qaView.user_name}</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<p>${qaView.qa_content}</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<c:if test="${member.user_name eq qaView.user_name}">
+					<table class="table table-condensed">
+						<thead>
+							<tr><td><span style="float:right">
+										<button type="button" class="btn btn-outline-success" onclick="location.href='/qaBoard/qaModify?qa_no=${qaView.qa_no}'">수정</button>
+  										<button type="button" class="btn btn-outline-success" onclick="location.href='/qaBoard/qaDelete?qa_no=${qaView.qa_no}'">삭제</button>
+							</span></td></tr>
+						</thead>
+					</table>
+				</c:if>
 			</div>
-		</c:if>
+		</div>
+
 	
 		<!-- 댓글 시작 -->
 		
 		<hr />
+		
 		<ul>
 			<c:forEach items="${qaReply}" var="qaReply">
 				<li>
@@ -58,8 +81,8 @@
 						
 						<c:if test="${member.user_name eq qaReply.user_name}">
 							<p>
-								<a href="/qaReply/qaReplyModify?qaa_no=${qaReply.qaa_no}">수정</a>, 
-								<a href="/qaReply/qaReplyDelete?qaa_no=${qaReply.qaa_no}&qa_no=${qaReply.qa_no}">삭제</a>
+								<button type="button" class="btn btn-outline-success" onclick="location.href='/qaReply/qaReplyModify?qaa_no=${qaReply.qaa_no}'">수정</button>
+  								<button type="button" class="btn btn-outline-success" onclick="location.href='/qaReply/qaReplyDelete?qaa_no=${qaReply.qaa_no}&qa_no=${qaReply.qa_no}'">삭제</button>
 							</p>
 						</c:if>
 					</div>

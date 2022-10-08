@@ -36,8 +36,8 @@
 	<!-- QA 작성 -->
 	<insert id="qaWrite" parameterType="com.recipe.domain.QaVO">
 		insert into
-			qa(qa_title, qa_content, user_name)
-				values(#{qa_title}, #{qa_content}, #{user_name})
+			qa(qa_title, qa_content, user_name, qaImg, qaThumbImg)
+				values(#{qa_title}, #{qa_content}, #{user_name}, #{qaImg}, #{qaThumbImg})
 	</insert>
 	
 	<!-- QA 조회 -->

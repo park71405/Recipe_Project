@@ -1,7 +1,9 @@
 package com.recipe.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -9,13 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.recipe.domain.Page;
 import com.recipe.domain.QaReplyVO;
 import com.recipe.domain.QaVO;
-import com.recipe.domain.RvReplyVO;
 import com.recipe.service.QaBoardService;
 import com.recipe.service.QaReplyService;
+import com.recipe.utils.UploadFileUtils;
 
 @Controller
 @RequestMapping("/qaBoard/*")
@@ -26,6 +29,9 @@ public class qaBoardController {
 	
 	@Inject
 	private QaReplyService replyService;
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	//QA 목록
 	@RequestMapping(value="/qaList", method=RequestMethod.GET)
@@ -71,10 +77,24 @@ public class qaBoardController {
 	
 	//QA 작성
 	@RequestMapping(value="/qaWrite", method=RequestMethod.POST)
-	public String getQaWrite(QaVO vo) throws Exception{
+	public String getQaWrite(QaVO vo, MultipartFile file) throws Exception{
+
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null) {
+		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		vo.setQaImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		vo.setQaThumbImg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
 		service.qaWrite(vo);
 		
-		return "redirect:/qaBoard/qaList";
+		return "redirect:/qaBoard/qaList?num=1";
 	}
 	
 	//QA 조회
@@ -112,7 +132,7 @@ public class qaBoardController {
 	public String getDelete(@RequestParam("qa_no") int qa_no) throws Exception {
 		service.qaDelete(qa_no);
 		
-		return "redirect:/qaBoard/qaList";
+		return "redirect:/qaBoard/qaList?num=1";
 	}
 	
 }

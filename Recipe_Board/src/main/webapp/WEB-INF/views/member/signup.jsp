@@ -45,12 +45,12 @@
   
   				<div class="input_area">
    					<label for="user_phone">연락처</label>
-   					<input type="text" id="user_phone" name="user_phone" placeholder="연락처를 입력해주세요" required="required" />      
+   					<input type="tel" id="user_phone" name="user_phone" placeholder="연락처를 입력해주세요" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required="required" />      
   				</div>
   				
   				<div class="input_area">
    					<label for="user_email">이메일</label>
-   					<input type="text" id="user_email" name="user_email" placeholder="이메일 입력해주세요" required="required" />      
+   					<input type="email" id="user_email" name="user_email" placeholder="이메일 입력해주세요" required="required" />      
   				</div>
   
   				<button type="submit" id="signup_btn" name="signup_btn">회원가입</button>

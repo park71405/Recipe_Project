@@ -2,6 +2,8 @@ package com.recipe.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.recipe.domain.QaVO;
 
 public interface QaBoardService {
