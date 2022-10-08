@@ -50,6 +50,7 @@
 						<tr>
 							<td colspan="2">
 								<p>${qaView.qa_content}</p>
+								<img class="img-fluid" src="../../../resources/imgUpload/qa/${qaView.qaImg}" alt="잘못된 형식"/>
 							</td>
 						</tr>
 					</tbody>

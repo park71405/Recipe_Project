@@ -67,9 +67,9 @@
 					</div>
 
 					<div class="input-group mb-3 row">
-						<label for="qaImg" class="col-sm-2 col-form-label">이미지</label>
+						<label class="col-sm-2 col-form-label">이미지</label>
 						<div class="col-sm-10">
-							<input type="file" class="form-control" id="qaImg" onchange="readURL(this)" aria-label="Upload" />
+							<input type="file" class="form-control" name="files" onchange="readURL(this)" aria-label="Upload" multiple="multiple"/>
 						</div>
 						<img class="embed-responsive-item" id="preview" />
 

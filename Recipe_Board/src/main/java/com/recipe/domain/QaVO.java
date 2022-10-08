@@ -25,8 +25,6 @@ public class QaVO {
 	private String user_name;
 	private String qaImg;
 	
-	private String qaThumbImg;
-	
 	public int getQa_no() {
 		return qa_no;
 	}
@@ -68,12 +66,6 @@ public class QaVO {
 	}
 	public void setQaImg(String qaImg) {
 		this.qaImg = qaImg;
-	}
-	public String getQaThumbImg() {
-		return qaThumbImg;
-	}
-	public void setQaThumbImg(String qaThumbImg) {
-		this.qaThumbImg = qaThumbImg;
 	}
 	
 }

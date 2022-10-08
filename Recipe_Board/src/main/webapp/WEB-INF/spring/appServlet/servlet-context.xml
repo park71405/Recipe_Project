@@ -23,16 +23,14 @@
 	
 	<context:component-scan base-package="com.recipe.controller" />
 	
-	<!-- 업로드 패스 설정 --> 
-	<beans:bean class="java.lang.String" id="uploadPath">
- 		<beans:constructor-arg value="C:\cbnu2022\220707spring_study\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Recipe_Board\resources" />
-	</beans:bean>
-
-	<!-- 일반 파일 업로드 경로 -->
-	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
-
-	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
- 		<beans:property name="maxUploadSize" value="10485760"/>
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+		<!-- 1024 * 1024 * 10 bytes 10MB -->
+		<beans:property name="maxUploadSize" value="104857560"></beans:property>
+		<!--  1024 * 1024 * 2bytes  2MB -->
+		<beans:property name="maxUploadSizePerFile" value ="2097152"></beans:property>
+		<beans:property name="uploadTempDir" value="file:/C:/cbnu2022/220707spring_study/Recipe_Board/temp"></beans:property>
+		<beans:property name="maxInMemorySize" value="10485756"></beans:property>
 	</beans:bean>
 	
 </beans:beans>
