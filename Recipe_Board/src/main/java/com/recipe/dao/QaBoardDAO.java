@@ -1,7 +1,6 @@
 package com.recipe.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import com.recipe.domain.QaVO;
 

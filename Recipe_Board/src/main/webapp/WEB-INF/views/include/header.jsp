@@ -4,25 +4,27 @@
 
 <!DOCTYPE html>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand">
-            	<img alt="Brand" src="../../../resources/img/logo.png" class="img-responsive" style="height: 70px; width: auto;">
-			</a>
-			
-			<form class="d-flex">
+	<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+		<div class="container text-light">
+			<div class="w-100 d-flex justify-content-between">
 				<div>
-        			<c:if test="${member == null}">
-  						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signup'">회원가입</button>
-  						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signin'">로그인</button>
-  					</c:if>
-  					<c:if test="${member != null}">
-  						<button type="button" class="btn btn-outline-success">${member.user_name}님</button>
-  						<button type="button" class="btn btn-outline-success" onclick="location.href='../member/signout'">로그아웃</button>
-  					</c:if>
-  				</div>
-        	</form>
+				
+				</div>
+				<div>
+					<form>
+						<div>
+        					<c:if test="${member == null}">
+        						<button type="button" class="navbar-sm-brand btn btn-dark text-light text-decoration-none" onclick="location.href='../member/signup'">회원가입</button>
+        						<button type="button" class="navbar-sm-brand btn btn-dark text-light text-decoration-none" onclick="location.href='../member/signin'">로그인</button>
+  							</c:if>
+  							<c:if test="${member != null}">
+  								<button type="button" class="navbar-sm-brand btn btn-dark text-light text-decoration-none" onclick="#'">${member.user_name}님</button>
+        						<button type="button" class="navbar-sm-brand btn btn-dark text-light text-decoration-none" onclick="location.href='../member/signout'">로그아웃</button>
+  							</c:if>
+  						</div>
+        			</form>
+				</div>
 			
+			</div>
 		</div>
-        
 	</nav>

@@ -4,24 +4,36 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+	<title>모먹지</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.ico">
+
+    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resources/css/templatemo.css">
+    <link rel="stylesheet" href="../../resources/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../../resources/css/fontawesome.min.css">
     
-	<title>Home</title>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	
-	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../../resources/css/styles.css" rel="stylesheet" />
+   	<script src="../../resources/js/jquery-1.11.0.min.js"></script>
+    <script src="../../resources/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <script src="../../resources/js/templatemo.js"></script>
+    <script src="../../resources/js/custom.js"></script>
+
 </head>
 <body>
 	<%@ include file="include/header.jsp" %>
 	
 	<%@ include file="include/nav.jsp" %>
+	
+	
+	
+	
 
 <h1>
 	Hello world!  
@@ -33,6 +45,8 @@
 <p><a href="/member/signin">로그인</a>
 
 <p><a href="/rcpBoard/rcpList?num=1">레시피 목록</a>
+<p><a href="/rcpBoard/rcpAllList?num=1">레시피 목록 전체 보기</a>
+<p><a href="/rcpBoard/rcpKindList?num=1">레시피 요리 종류 보기</a>
 
 <p><a href="/reviewBoard/reviewList?num=1">요리후기 목록</a>
 <p><a href="/reviewBoard/reviewWrite">요리후기 게시물 작성</a>

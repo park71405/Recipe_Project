@@ -38,14 +38,18 @@ public class RcpBoardController {
 		List<RcpBoardVO> list = null;
 		list = service.rcpList(page.getDisplayPost(), page.getPostNum(), rcpSearchType, rcpKeyword);
 		
+		model.addAttribute("rcpImg1", list.get((int)(Math.random() * 10)));
+		model.addAttribute("rcpImg2", list.get((int)(Math.random() * 10)));
+		model.addAttribute("rcpImg3", list.get((int)(Math.random() * 10)));
+		
 		model.addAttribute("rcpList", list);
 		model.addAttribute("pageNum", page.getPageNum());
 		
 		model.addAttribute("rcpStartPageNum", page.getStartPageNum());
 		model.addAttribute("rcpEndPageNum", page.getEndPageNum());
 		
-		model.addAttribute("prev", page.getPrev());
-		model.addAttribute("next", page.getNext());
+		model.addAttribute("prev_m", page.getPrev());
+		model.addAttribute("next_m", page.getNext());
 		
 		model.addAttribute("rcpSelect", num);
 		
@@ -54,6 +58,74 @@ public class RcpBoardController {
 		
 		model.addAttribute("rcpSearchTypeKeyword", page.getRcpSearchTypeKeyword());
 	}
+	
+	//레시피 전체 조회 목록
+	@RequestMapping(value="/rcpAllList", method = RequestMethod.GET)
+	public void getRcpAllListPage(Model model, @RequestParam("num") int num,
+			@RequestParam(value="rcpSearchType", required = false, defaultValue="rcpTitle") String rcpSearchType, 
+			@RequestParam(value="rcpKeyword", required = false, defaultValue="") String rcpKeyword) throws Exception{
+		
+		Page page = new Page();
+		
+		page.setNum(num);
+		page.setCount(service.rcpCount());
+		
+		page.setSearchType(rcpSearchType);
+		page.setKeyword(rcpKeyword);
+		
+		List<RcpBoardVO> list = null;
+		list = service.rcpList(page.getDisplayPost(), page.getPostNum(), rcpSearchType, rcpKeyword);
+		
+		model.addAttribute("rcpList", list);
+		model.addAttribute("pageNum", page.getPageNum());
+		
+		model.addAttribute("rcpStartPageNum", page.getStartPageNum());
+		model.addAttribute("rcpEndPageNum", page.getEndPageNum());
+		
+		model.addAttribute("prev_m", page.getPrev());
+		model.addAttribute("next_m", page.getNext());
+		
+		model.addAttribute("rcpSelect", num);
+		
+		model.addAttribute("rcpSearchType", page.getSearchType());
+		model.addAttribute("rcpKeyword", page.getKeyword());
+		
+		model.addAttribute("rcpSearchTypeKeyword", page.getRcpSearchTypeKeyword());
+	}	
+	
+	//레시피 요리 조회 목록
+	@RequestMapping(value="/rcpKindList", method = RequestMethod.GET)
+	public void getRcpKindListPage(Model model, @RequestParam("num") int num,
+			@RequestParam(value="rcpSearchType", required = false, defaultValue="rcpTitle") String rcpSearchType, 
+			@RequestParam(value="rcpKeyword", required = false, defaultValue="") String rcpKeyword) throws Exception{
+		
+		Page page = new Page();
+		
+		page.setNum(num);
+		page.setCount(service.rcpCount());
+		
+		page.setSearchType(rcpSearchType);
+		page.setKeyword(rcpKeyword);
+		
+		List<RcpBoardVO> list = null;
+		list = service.rcpList(page.getDisplayPost(), page.getPostNum(), rcpSearchType, rcpKeyword);
+		
+		model.addAttribute("rcpList", list);
+		model.addAttribute("pageNum", page.getPageNum());
+		
+		model.addAttribute("rcpStartPageNum", page.getStartPageNum());
+		model.addAttribute("rcpEndPageNum", page.getEndPageNum());
+		
+		model.addAttribute("prev_m", page.getPrev());
+		model.addAttribute("next_m", page.getNext());
+		
+		model.addAttribute("rcpSelect", num);
+		
+		model.addAttribute("rcpSearchType", page.getSearchType());
+		model.addAttribute("rcpKeyword", page.getKeyword());
+		
+		model.addAttribute("rcpSearchTypeKeyword", page.getRcpSearchTypeKeyword());
+	}	
 	
 	//레시피 조회
 	@RequestMapping(value="/rcpView", method=RequestMethod.GET)
