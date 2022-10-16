@@ -21,6 +21,90 @@ public class RcpBoardServiceImpl implements RcpBoardService {
 		
 		return dao.rcpList(displayPost, postNum, rcpSearchType, rcpKeyword);
 	}
+	
+	//레시피 요리 종류 밥 조회
+	@Override
+	public List<RcpBoardVO> rcpKindType1List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+		
+		return dao.rcpKindType1List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+	
+	//레시피 요리 종류 후식 조회
+	@Override
+	public List<RcpBoardVO> rcpKindType2List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+		
+		return dao.rcpKindType2List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+	
+	//레시피 요리 종류 반찬 조회
+	@Override
+	public List<RcpBoardVO> rcpKindType3List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+		
+		return dao.rcpKindType3List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+	
+	//레시피 요리 종류 국&찌개 조회
+	@Override
+	public List<RcpBoardVO> rcpKindType4List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+		
+		return dao.rcpKindType4List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+	
+	//레시피 요리 종류 일품 조회
+	@Override
+	public List<RcpBoardVO> rcpKindType5List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+		
+		return dao.rcpKindType5List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+	
+	//레시피 요리 종류 기타 조회
+	@Override
+	public List<RcpBoardVO> rcpKindType6List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+		
+		return dao.rcpKindType6List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+	
+	//레시피 요리 종류 볶기 조회
+	@Override
+	public List<RcpBoardVO> rcpKindCookM1List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+			
+		return dao.rcpKindCookM1List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+		
+	//레시피 요리 종류 굽기 조회
+	@Override
+	public List<RcpBoardVO> rcpKindCookM2List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+			
+		return dao.rcpKindCookM2List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+		
+	//레시피 요리 종류 끓이기 조회
+	@Override
+	public List<RcpBoardVO> rcpKindCookM3List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+			
+		return dao.rcpKindCookM3List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+		
+	//레시피 요리 종류 찌기 조회
+	@Override
+	public List<RcpBoardVO> rcpKindCookM4List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+			
+		return dao.rcpKindCookM4List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+		
+	//레시피 요리 종류 튀기기 조회
+	@Override
+	public List<RcpBoardVO> rcpKindCookM5List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+			
+		return dao.rcpKindCookM5List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
+		
+	//레시피 요리 종류 기타 조회
+	@Override
+	public List<RcpBoardVO> rcpKindCookM6List(int displayPost, int postNum, String rcpSearchType, String rcpKeyword) throws Exception {
+			
+		return dao.rcpKindCookM6List(displayPost, postNum, rcpSearchType, rcpKeyword);
+	}
 
 	//레시피 조회
 	@Override

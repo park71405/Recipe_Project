@@ -111,7 +111,7 @@
     	</div>
     	<div class="row">
     		<div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="${rcpImg2.att_file_no_main}" class="img-thumbnail img-fluid border"></a>
+                <a href="#"><img src="${rcpImg1.att_file_no_main}" class="img-thumbnail img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">요리 종류</h2>
                 <p class="text-center"><a class="btn btn-success">Go!</a></p>
             </div>

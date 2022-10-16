@@ -25,7 +25,7 @@
     <script src="../../resources/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../../resources/js/templatemo.js"></script>
-    <script src="../../resources/js/custom.js"></script>css">      
+    <script src="../../resources/js/custom.js"></script>    
 </head>
 <body>
 

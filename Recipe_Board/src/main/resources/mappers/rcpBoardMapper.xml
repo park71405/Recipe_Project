@@ -18,6 +18,174 @@
 			limit #{displayPost}, #{postNum}
 	</select>
 	
+	<!-- 레시피 요리 종류 밥 조회 -->
+	<select id="rcpKindType1List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_pat2 = '밥'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 요리 종류 후식 조회 -->
+	<select id="rcpKindType2List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_pat2 = '후식'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 요리 종류 반찬 조회 -->
+	<select id="rcpKindType3List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_pat2 = '반찬'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 요리 종류 국+찌개 조회 -->
+	<select id="rcpKindType4List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_pat2 like concat('%', '국', '%')
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 요리 종류 일품 조회 -->
+	<select id="rcpKindType5List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_pat2 = '일품'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 요리 종류 기타 조회 -->
+	<select id="rcpKindType6List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_pat2 = '기타'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 조리방법 볶기 조회 -->
+	<select id="rcpKindCookM1List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_way2 = '볶기'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 조리방법 굽기 조회 -->
+	<select id="rcpKindCookM2List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_way2 = '굽기'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 조리방법 끓이기 조회 -->
+	<select id="rcpKindCookM3List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_way2 = '끓이기'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 조리방법 찌기 조회 -->
+	<select id="rcpKindCookM4List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_way2 = '찌기'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 조리방법 튀기기 조회 -->
+	<select id="rcpKindCookM5List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_way2 = '튀기기'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 레시피 조리방법 기타 조회 -->
+	<select id="rcpKindCookM6List" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp_seq, rcp_nm, rcp_way2, rcp_pat2, att_file_no_main
+		from recipe
+		where rcp_way2 = '기타'
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			 and rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+		
+		order by rcp_seq desc
+			limit #{displayPost}, #{postNum}
+	</select>	
+	
 	<!-- 레시피 조회 -->
 	<select id="rcpView" parameterType="int" resultType="com.recipe.domain.RcpBoardVO">
 		select 

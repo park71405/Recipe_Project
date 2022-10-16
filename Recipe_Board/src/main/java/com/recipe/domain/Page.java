@@ -7,13 +7,13 @@ public class Page {
 	//게시물 총 개수
 	private int count;
 	//한 페이지에 출력할 게시물 개수
-	private int postNum = 10;
+	private int postNum = 9;
 	//하단 페이징 번호
 	private int pageNum;
 	//출력할 게시물
 	private int displayPost;
 	//한번에 표시할 페이징 번호 개수
-	private int pageNumCnt = 10;
+	private int pageNumCnt = 5;
 	//표시되는 페이지 번호 중 마지막 번호
 	private int endPageNum;
 	//표시되는 페이지 번호 중 첫 번호
@@ -112,7 +112,7 @@ public class Page {
 		}
 	}
 	
-	//레시피 타입 검색어
+	//레시피검색 타입 검색어
 	public String getRcpSearchTypeKeyword() {
 		if(searchType.equals("") || keyword.equals("")) {
 			return "";

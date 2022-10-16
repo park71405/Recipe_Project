@@ -36,37 +36,35 @@
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 class="h2 pb-4">요리 종류</h1>
+				<h1 class="h2 pb-4">레시피 조회</h1>
 				<ul class="list-unstyled templatemo-accordion">
 					<li class="pb-3">
 						<a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-							밥
+							요리 종류
+							<i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
 						</a>
+						<ul class="collapse show list-unstyled pl-3">
+							<li><a id ="type1" type="button" class="text-decoration-none" >밥</a></li>
+                            <li><a id ="type2" type="button" class="text-decoration-none">후식</a></li>
+                            <li><a id ="type3" type="button" class="text-decoration-none">반찬</a></li>
+                            <li><a id ="type4" type="button" class="text-decoration-none">국</a></li>
+                            <li><a id ="type5" type="button" class="text-decoration-none">일품</a></li>
+                            <li><a id ="type6" type="button" class="text-decoration-none">기타</a></li>
+						</ul>
 					</li>
 					<li class="pb-3">
 						<a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-							후식
+							조리 방법
+							<i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
 						</a>
-					</li>
-					<li class="pb-3">
-						<a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-							반찬
-						</a>
-					</li>
-					<li class="pb-3">
-						<a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-							국+찌개
-						</a>
-					</li>
-					<li class="pb-3">
-						<a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-							일품
-						</a>
-					</li>
-					<li class="pb-3">
-						<a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-							기타
-						</a>
+						<ul id="collapseTwo" class="collapse list-unstyled pl-3">
+							<li><a id ="cookM1" type="button" class="text-decoration-none">볶기</a></li>
+                            <li><a id ="cookM2" type="button" class="text-decoration-none">굽기</a></li>
+                            <li><a id ="cookM3" type="button" class="text-decoration-none">끓이기</a></li>
+                            <li><a id ="cookM4" type="button" class="text-decoration-none">찌기</a></li>
+                            <li><a id ="cookM5" type="button" class="text-decoration-none">튀기기</a></li>
+                            <li><a id ="cookM6" type="button" class="text-decoration-none">기타</a></li>
+						</ul>
 					</li>
 				</ul>
 			</div>
@@ -86,7 +84,7 @@
 									</div>
 								</div>
 								<div class="card-body">
-									<a href="shop-single.html" class="h3 text-decoration-none">${rcpList.rcp_nm}</a>
+									<a href="/rcpBoard/rcpView?rcp_seq=${rcpList.rcp_seq}" class="h3 text-decoration-none">${rcpList.rcp_nm}</a>
 								</div>
 							</div>
 						</div>
@@ -97,7 +95,7 @@
                     <ul class="pagination pagination-lg justify-content-end">
                     	<li class="page-item"><c:if test="${prev_m}">
                     		<a class="page-link"
-								href="/rcpBoard/rcpKindList?num=${rcpStartPageNum - 1}${rcpSearchTypeKeyword}"
+								href="/rcpBoard/rcpKindTypeList?num=${rcpStartPageNum - 1}${rcpSearchTypeKeyword}${rcpTypeKeyword}${rcprcpCookMKeyword}"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							</a>
                     	</c:if></li>
@@ -106,7 +104,7 @@
                     			<c:if test="${rcpSelect != num}">
                         			<li class="page-item">
                             			<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" 
-                            				href="/rcpBoard/rcpKindList?num=${num}${rcpSearchTypeKeyword}">${num}</a>
+                            				href="/rcpBoard/rcpKindTypeList?num=${num}${rcpSearchTypeKeyword}${rcpTypeKeyword}${rcprcpCookMKeyword}">${num}</a>
                         			</li>
                         		</c:if>
                         		<c:if test="${rcpSelect == num}">
@@ -119,7 +117,7 @@
                         </c:forEach>
                         <li class="page-item">
                         	<c:if test="${next_m}">
-								<a class="page-link" href="/rcpBoard/rcpKindList?num=${rcpEndPageNum + 1}${rcpSearchTypeKeyword}"
+								<a class="page-link" href="/rcpBoard/rcpKindTypeList?num=${rcpEndPageNum + 1}${rcpSearchTypeKeyword}${rcpTypeKeyword}${rcprcpCookMKeyword}"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a>
 							</c:if>
@@ -142,8 +140,58 @@
 					let rcpSearchType = document.getElementsByName("rcpSearchType")[0].value;
 					let rcpKeyword = document.getElementsByName("rcpKeyword")[0].value;
 
-					location.href = "/rcpBoard/rcpKindList?num=1&rcpSearchType=" + rcpSearchType + "&rcpKeyword=" + rcpKeyword;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpSearchType=" + rcpSearchType + "&rcpKeyword=" + rcpKeyword;
 				};
+				
+				document.getElementById("type1").onclick = function() {
+					let rcpType = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpType=" + rcpType;
+				}
+				document.getElementById("type2").onclick = function() {
+					let rcpType = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpType=" + rcpType;
+				}
+				document.getElementById("type3").onclick = function() {
+					let rcpType = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpType=" + rcpType;
+				}
+				document.getElementById("type4").onclick = function() {
+					let rcpType = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpType=" + rcpType;
+				}
+				document.getElementById("type5").onclick = function() {
+					let rcpType = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpType=" + rcpType;
+				}
+				document.getElementById("type6").onclick = function() {
+					let rcpType = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpType=" + rcpType;
+				}
+				
+				document.getElementById("cookM1").onclick = function() {
+					let cookMethod = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpCookM=" + cookMethod;
+				}
+				document.getElementById("cookM2").onclick = function() {
+					let cookMethod = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpCookM=" + cookMethod;
+				}
+				document.getElementById("cookM3").onclick = function() {
+					let cookMethod = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpCookM=" + cookMethod;
+				}
+				document.getElementById("cookM4").onclick = function() {
+					let cookMethod = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpCookM=" + cookMethod;
+				}
+				document.getElementById("cookM5").onclick = function() {
+					let cookMethod = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpCookM=" + cookMethod;
+				}
+				document.getElementById("cookM6").onclick = function() {
+					let cookMethod = this.innerHTML;
+					location.href = "/rcpBoard/rcpKindTypeList?num=1&rcpCookM=" + cookMethod;
+				}
 			</script>
 			
 		</div>

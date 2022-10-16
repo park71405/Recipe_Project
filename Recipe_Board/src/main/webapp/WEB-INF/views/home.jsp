@@ -46,7 +46,7 @@
 
 <p><a href="/rcpBoard/rcpList?num=1">레시피 목록</a>
 <p><a href="/rcpBoard/rcpAllList?num=1">레시피 목록 전체 보기</a>
-<p><a href="/rcpBoard/rcpKindList?num=1">레시피 요리 종류 보기</a>
+<p><a href="/rcpBoard/rcpKindTypeList?num=1">레시피 요리 종류별 보기</a>
 
 <p><a href="/reviewBoard/reviewList?num=1">요리후기 목록</a>
 <p><a href="/reviewBoard/reviewWrite">요리후기 게시물 작성</a>

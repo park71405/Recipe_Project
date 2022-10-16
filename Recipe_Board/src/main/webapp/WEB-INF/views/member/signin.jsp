@@ -36,26 +36,55 @@
 	<%@ include file="../include/nav.jsp" %>
 
 	<div class="container">
-		
-		<form role="form" method="post" autocomplete="off">
-  			<div class="input_area">
-   				<label for="user_id">아이디</label>
-   				<input type="text" id="user_id" name="user_id" required="required" />      
-  			</div>
-  
-  			<div class="input_area">
-   				<label for="user_pw">패스워드</label>
-   				<input type="password" id="user_pw" name="user_pw" required="required" />  
 	
-			</div>
-	 
-	 		<button type="submit" id="signin_btn" name="signin_btn">로그인</button>
+		<section class="">
+  			<div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    			<div class="container">
+      				<div class="row gx-lg-5 align-items-center">
+        				<div class="col-lg-6 mb-5 mb-lg-0">
+          					<h1 class="my-5 display-3 fw-bold ls-tight">
+            					오늘은 모먹지?
+          					</h1>
+          					<p style="color: hsl(217, 10%, 50.8%)">
+            					오늘도 무엇을 먹어야하지는 모르겠는 자취생을 위한<br />
+            					맨날 똑같은 메뉴만 만들기 싫은 주부들을 위한<br />
+            					<strong>혁신적인 레시피 사이트</strong> 
+            					
+          					</p>
+        				</div>
 
-  			<c:if test="${msg == false}">
-   				<p style="color:#f00;">로그인에 실패했습니다.</p>
-  			</c:if>
-  
- 		</form>   
+	        			<div class="col-lg-6 mb-5 mb-lg-0">
+          					<div class="card">
+            					<div class="card-body py-5 px-md-5">
+              						<form role="form" method="post" autocomplete="off">
+										<!-- 아이디 입력 -->
+                						<div class="form-outline mb-4">
+                  							<input type="text" id="user_id" name="user_id" required="required" class="form-control" />
+                  							<label class="form-label" for="user_id">ID</label>
+                						</div>
+
+                						<!-- 비번 입력 -->
+                						<div class="form-outline mb-4">
+                  							<input type="password" id="user_pw" naem="user_pw" required="required" class="form-control" />
+                  							<label class="form-label" for="user_pw">Password</label>
+                						</div>
+	
+	                				<button type="submit" id="signin_btn" name="signin_btn" class="btn btn-primary btn-block mb-4">
+    	              					로그인
+    	            				</button>
+    	            				
+    	            				<c:if test="${msg == false}">
+   										<p style="color:#f00;">로그인에 실패했습니다.</p>
+  									</c:if>
+        		      			</form>
+            				</div>
+          				</div>
+        			</div>
+      				</div>
+    			</div>
+    		</div>
+		</section>
+		  
  		
  	</div>
 
