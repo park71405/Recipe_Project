@@ -65,21 +65,21 @@
 
                 						<!-- 비번 입력 -->
                 						<div class="form-outline mb-4">
-                  							<input type="password" id="user_pw" naem="user_pw" required="required" class="form-control" />
+                  							<input type="password" id="user_pw" name="user_pw" required="required" class="form-control" />
                   							<label class="form-label" for="user_pw">Password</label>
                 						</div>
 	
-	                				<button type="submit" id="signin_btn" name="signin_btn" class="btn btn-primary btn-block mb-4">
-    	              					로그인
-    	            				</button>
+	                					<button type="submit" id="signin_btn" name="signin_btn" class="btn btn-primary btn-block mb-4">
+    	              						로그인
+    	            					</button>
     	            				
-    	            				<c:if test="${msg == false}">
-   										<p style="color:#f00;">로그인에 실패했습니다.</p>
-  									</c:if>
-        		      			</form>
-            				</div>
-          				</div>
-        			</div>
+    	            					<c:if test="${msg == false}">
+   											<p style="color:#f00;">로그인에 실패했습니다.</p>
+  										</c:if>
+        		      				</form>
+            					</div>
+          					</div>
+        				</div>
       				</div>
     			</div>
     		</div>

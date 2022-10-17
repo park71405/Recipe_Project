@@ -36,35 +36,67 @@
 	<div class="container">
 	
 		<section id="content">
- 			<form role="form" method="post" autocomplete="off">
-  				<div class="input_area">
-   					<label for="user_id">아이디</label>
-   					<input type="text" id="user_id" name="user_id" required="required" />      
-  				</div>
-  
-  				<div class="input_area">
-   					<label for="user_pw">패스워드</label>
-   					<input type="password" id="user_pw" name="user_pw" required="required" />      
-  				</div>
-  
-  				<div class="input_area">
-   					<label for="user_name">닉네임</label>
-   					<input type="text" id="user_name" name="user_name" placeholder="닉네임을 입력해주세요" required="required" />      
-  				</div>
-  
-  				<div class="input_area">
-   					<label for="user_phone">연락처</label>
-   					<input type="tel" id="user_phone" name="user_phone" placeholder="연락처를 입력해주세요" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required="required" />      
-  				</div>
+  			<div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    			<div class="container">
+      				<div class="row gx-lg-5 align-items-center">
+        				<div class="col-lg-6 mb-5 mb-lg-0">
+          					<h1 class="my-5 display-3 fw-bold ls-tight">
+            					오늘은 모먹지?
+          					</h1>
+          					<p style="color: hsl(217, 10%, 50.8%)">
+            					오늘도 무엇을 먹어야하지는 모르겠는 자취생을 위한!<br />
+            					맨날 똑같은 메뉴만 만들기 싫은 주부들을 위한!<br />
+            					<strong>혁신적인 레시피 사이트</strong> 
+            					
+          					</p>
+        				</div>
+
+	        			<div class="col-lg-6 mb-5 mb-lg-0">
+          					<div class="card">
+            					<div class="card-body py-5 px-md-5">
+              						<form role="form" method="post" autocomplete="off">
+              							
+										<!-- 아이디 입력 -->
+                						<div class="form-outline mb-4 input_area">
+                  							<input type="text" id="user_id" name="user_id" required="required" class="form-control" />
+                  							<label class="form-label" for="user_id">ID</label>
+                						</div>
+                						     
+                						<!-- 비번 입력 -->
+                						<div class="form-outline mb-4">
+                  							<input type="password" id="user_pw" name="user_pw" required="required" class="form-control" />
+                  							<label class="form-label" for="user_pw">Password</label>
+                						</div>     
   				
-  				<div class="input_area">
-   					<label for="user_email">이메일</label>
-   					<input type="email" id="user_email" name="user_email" placeholder="이메일 입력해주세요" required="required" />      
-  				</div>
-  
-  				<button type="submit" id="signup_btn" name="signup_btn">회원가입</button>
-  
- 			</form>   
+  										<!-- 닉네임 입력 -->
+                						<div class="form-outline mb-4">
+                  							<input type="text" id="user_name" name="user_name" placeholder="닉네임을 입력해주세요" required="required" class="form-control" />
+                  							<label class="form-label" for="user_name">닉네임</label>
+                						</div>
+                						
+                						<!-- 연락처 입력 -->
+                						<div class="form-outline mb-4">
+                  							<input type="tel" id="user_phone" name="user_phone" placeholder="연락처를 입력해주세요" required="required" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" class="form-control" />
+                  							<label class="form-label" for="user_phone">전화번호</label>
+                						</div>
+                									
+                						<!-- 이메일 입력 -->
+                						<div class="form-outline mb-4">
+                  							<input type="email" id="user_email" name="user_email" placeholder="이메일을 입력해주세요" required="required" class="form-control" />
+                  							<label class="form-label" for="user_email">이메일</label>
+                						</div>
+                						
+	                					<button type="submit" id="signup_btn" name="signup_btn" class="btn btn-primary btn-block mb-4">
+    	              						회원가입
+    	            					</button>
+    	            				
+        		      				</form>
+            					</div>
+          					</div>
+        				</div>
+      				</div>
+    			</div>
+    		</div>
 		</section>
 	
 	</div>
