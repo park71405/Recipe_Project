@@ -11,6 +11,7 @@ public class ReviewBoardVO {
     	RV_CONTENT TEXT,
     	RV_DATE DATE,
     	RV_WARNING boolean,
+    	rv_img VARCHAR(100),
     	USER_NO INT,
     	primary key (RV_NO),
     	foreign key(USER_NO) REFERENCES USER (USER_NO)
@@ -22,6 +23,7 @@ public class ReviewBoardVO {
 	private Date rv_date;
 	private boolean rv_warning;
 	private String user_name;
+	private String rv_img;
 	
 	public int getRv_no() {
 		return rv_no;
@@ -58,6 +60,13 @@ public class ReviewBoardVO {
 	}
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
+	}
+	
+	public String getRv_img() {
+		return rv_img;
+	}
+	public void setRv_img(String rv_img) {
+		this.rv_img = rv_img;
 	}
 	
 	

@@ -22,8 +22,6 @@
    	<script src="../../resources/js/jquery-1.11.0.min.js"></script>
     <script src="../../resources/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
-    <script src="../../resources/js/templatemo.js"></script>
-    <script src="../../resources/js/custom.js"></script>
 
 </head>
 <body>
@@ -44,6 +42,9 @@
 <p><a href="/member/signup">회원가입</a>
 <p><a href="/member/signin">로그인</a>
 
+<p><a href="/refri/refriList?num=1">냉장고 목록</a>
+<p><a href="/refri/refriTypeList">냉장고 타입별 목록</a>
+
 <p><a href="/rcpBoard/rcpList?num=1">레시피 목록</a>
 <p><a href="/rcpBoard/rcpAllList?num=1">레시피 목록 전체 보기</a>
 <p><a href="/rcpBoard/rcpKindTypeList?num=1">레시피 요리 종류별 보기</a>
@@ -52,7 +53,12 @@
 <p><a href="/reviewBoard/reviewWrite">요리후기 게시물 작성</a>
 <p><a href="/qaBoard/qaList?num=1">QA 목록</a>
 <p><a href="/qaBoard/qaWrite">QA 작성</a>
+<p><a href="/noBoard/noList?num=1">공지사항 목록</a>
+<p><a href="/noBoard/noWrite">공지사항 작성</a>
 
+<c:if test="${member} != null">	
+	<p><a href="/myPage/userInfo?user_no=${member.user_no}">회원정보</a></p>
+</c:if>
 
 <%@ include file="include/footer.jsp" %>
 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.recipe.dao.RcpBoardDAO;
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpPartsVO;
+import com.recipe.domain.RcpProcessVO;
 
 @Service
 public class RcpBoardServiceImpl implements RcpBoardService {
@@ -112,7 +114,22 @@ public class RcpBoardServiceImpl implements RcpBoardService {
 		
 		return dao.rcpView(rcp_seq);
 	}
-
+	
+	//레시피 과정 조회
+	@Override
+	public RcpProcessVO rcpProcessView(int rcp_seq) throws Exception {
+		
+		return dao.rcpProcessView(rcp_seq);
+	}
+	
+	//레시피 재료 조회
+	@Override
+	public List<RcpPartsVO> rcpPartsView(int rcp_seq) throws Exception {
+		
+		return dao.rcpPartsView(rcp_seq);
+	}
+	
+	
 	//레시피 총 개수
 	@Override
 	public int rcpCount() throws Exception {

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.recipe.domain.Page;
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpPartsVO;
+import com.recipe.domain.RcpProcessVO;
 import com.recipe.service.RcpBoardService;
 
 @Controller
@@ -25,7 +27,8 @@ public class RcpBoardController {
 	@RequestMapping(value="/rcpList", method = RequestMethod.GET)
 	public void getRcpListPage(Model model, @RequestParam("num") int num,
 			@RequestParam(value="rcpSearchType", required = false, defaultValue="rcpTitle") String rcpSearchType, 
-			@RequestParam(value="rcpKeyword", required = false, defaultValue="") String rcpKeyword) throws Exception{
+			@RequestParam(value="rcpKeyword", required = false, defaultValue="") String rcpKeyword,
+			@RequestParam(value="result", required = false, defaultValue="") String result) throws Exception{
 		
 		Page page = new Page();
 		
@@ -37,6 +40,8 @@ public class RcpBoardController {
 		
 		List<RcpBoardVO> list = null;
 		list = service.rcpList(page.getDisplayPost(), page.getPostNum(), rcpSearchType, rcpKeyword);
+		
+		model.addAttribute("result", result);
 		
 		model.addAttribute("rcpImg1", list.get((int)(Math.random() * 10)));
 		model.addAttribute("rcpImg2", list.get((int)(Math.random() * 10)));
@@ -172,7 +177,11 @@ public class RcpBoardController {
 	public void getRcpView(@RequestParam("rcp_seq") int rcp_seq, Model model) throws Exception{
 		
 		RcpBoardVO vo = service.rcpView(rcp_seq);
+		RcpProcessVO proVo = service.rcpProcessView(rcp_seq);
+		List<RcpPartsVO> partsVo = service.rcpPartsView(rcp_seq);
 	
+		model.addAttribute("partsView", partsVo);
+		model.addAttribute("proView", proVo);
 		model.addAttribute("rcpView", vo);
 	}
 	

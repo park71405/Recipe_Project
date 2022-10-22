@@ -1,5 +1,7 @@
 package com.recipe.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.recipe.domain.Page;
 import com.recipe.domain.ReviewBoardVO;
@@ -69,11 +72,27 @@ public class ReviewBoardController {
 	
 	//리뷰 작성
 	@RequestMapping(value = "/reviewWrite", method = RequestMethod.POST)
-	public String postReviewWrite(ReviewBoardVO vo) throws Exception {
+	public String postReviewWrite(ReviewBoardVO vo, MultipartFile[] files) throws Exception {
 		
-	  service.reviewWrite(vo);
+		String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main\\webapp\\resources\\imgUpload\\rv";
+		
+		for(MultipartFile file : files) {
+			
+			File saveFile = new File(uploadFolder, file.getOriginalFilename());
+			
+			try {
+				file.transferTo(saveFile);
+				vo.setRv_img(file.getOriginalFilename());
+			}catch(IllegalStateException e) {
+				e.getMessage();
+			}catch(IOException e) {
+				e.getMessage();
+			}
+		}
+		
+		service.reviewWrite(vo);
 	  
-	  return "redirect:/reviewBoard/reviewList?num=1";
+		return "redirect:/reviewBoard/reviewList?num=1";
 	}
 	
 	//리뷰 조회

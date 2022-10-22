@@ -11,6 +11,7 @@ public class QaVO {
     	QA_CONTENT TEXT,
     	QA_DATA timestamp not null default now(),
     	QA_WARNING boolean default 0,
+    	qaimg VARCHAR(100),
     	USER_NAME VARCHAR(45) not null,
     	PRIMARY KEY(QA_NO),
     	FOREIGN KEY(USER_NAME) references USER (USER_NAME)

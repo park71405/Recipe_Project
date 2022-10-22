@@ -39,14 +39,14 @@
 	<!-- 리뷰 작성 -->
 	<insert id="reviewWrite" parameterType="com.recipe.domain.ReviewBoardVO">
  		insert into
-  			review (rv_title, rv_content, user_name)
-   				values(#{rv_title}, #{rv_content}, #{user_name})
+  			review (rv_title, rv_content, user_name, rv_img)
+   				values(#{rv_title}, #{rv_content}, #{user_name}, #{rv_img})
 	</insert>
 
 	<!-- 리뷰 조회 -->
 	<select id="reviewView" parameterType="int" resultType="com.recipe.domain.ReviewBoardVO">
 		select
-			rv_no, rv_title, rv_content, user_name, rv_date
+			rv_no, rv_title, rv_content, user_name, rv_date, rv_img
 		from
 			review
 		where 

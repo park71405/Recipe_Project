@@ -26,6 +26,10 @@
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../../resources/js/templatemo.js"></script>
     <script src="../../resources/js/custom.js"></script>
+    
+    <!-- 경고창 이쁜거 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 <body>
 
@@ -69,7 +73,7 @@
                   							<label class="form-label" for="user_pw">Password</label>
                 						</div>
 	
-	                					<button type="submit" id="signin_btn" name="signin_btn" class="btn btn-primary btn-block mb-4">
+	                					<button type="submit" id="signin_btn" name="signin_btn" class="btn btn-outline-success btn-block mb-4">
     	              						로그인
     	            					</button>
     	            				

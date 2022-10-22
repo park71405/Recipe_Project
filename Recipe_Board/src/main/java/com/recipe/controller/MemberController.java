@@ -41,7 +41,7 @@ public class MemberController {
 		
 		service.signup(vo);
 		
-		return "redirect:/";
+		return "redirect:/rcpBoard/rcpList?num=1&result=first";
 	}
 	
 	// 로그인  get
@@ -68,7 +68,7 @@ public class MemberController {
 			return "redirect:/member/signin";
 		}  
 	 
-		return "redirect:/";
+		return "redirect:/rcpBoard/rcpList?num=1";
 	}
 	  
 	// 로그아웃
@@ -77,6 +77,6 @@ public class MemberController {
 	 
 		service.signout(session);
 	   
-		return "redirect:/";
+		return "redirect:/rcpBoard/rcpList?num=1";
 	}
 }

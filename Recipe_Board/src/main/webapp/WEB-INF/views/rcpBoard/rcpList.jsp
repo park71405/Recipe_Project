@@ -6,130 +6,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>모먹지</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모먹지</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.ico">
+<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
+<link rel="shortcut icon" type="image/x-icon"
+	href="../../resources/img/favicon.ico">
 
-    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../resources/css/templatemo.css">
-    <link rel="stylesheet" href="../../resources/css/custom.css">
+<link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../resources/css/templatemo.css">
+<link rel="stylesheet" href="../../resources/css/custom.css">
 
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../../resources/css/fontawesome.min.css">
-    
-   	<script src="../../resources/js/jquery-1.11.0.min.js"></script>
-    <script src="../../resources/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../../resources/js/bootstrap.bundle.min.js"></script>
-    <script src="../../resources/js/templatemo.js"></script>
-    <script src="../../resources/js/custom.js"></script>
+<!-- Load fonts style after rendering the layout styles -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../../resources/css/fontawesome.min.css">
+
+<script src="../../resources/js/jquery-1.11.0.min.js"></script>
+<script src="../../resources/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../../resources/js/bootstrap.bundle.min.js"></script>
+<script src="../../resources/js/templatemo.js"></script>
+<script src="../../resources/js/custom.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+		window.onload = function(){
+			if(${result == 'first'}){
+				swal({
+					title: '냉장고로 이동',
+					text: '냉장고에 식재료를 입력하지 않으면, 일부 기능이 제한될 수 있습니다. 이동하시겠습니까?',
+					icon : 'info',
+					closeOnClickOutside: false,
+					buttons : {
+						cancle : {
+							text : '네',
+							value : false
+						},
+						confirm : {
+							text : '아니오',
+							value : true
+						}
+					}
+				}).then((result) => {
+					if(result){
+						location.href='/rcpBoard/rcpList?num=1';
+					}else {
+						location.href='/refri/refriTypeList';
+					}
+				});	
+			}
+		};
+</script>
+
 </head>
 <body>
-
+	
 	<%@ include file="../include/header.jsp"%>
 
 	<%@ include file="../include/nav.jsp"%>
-	
-	    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="${rcpImg1.att_file_no_main}" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success">${rcpImg1.rcp_nm}</h1>
-                                <p>
-                                	뭔가 적을 부분
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="${rcpImg2.att_file_no_main}" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">${rcpImg2.rcp_nm}</h1>
-                                <p>
-                                	뭔가 적을 부분
-                               	</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="${rcpImg3.att_file_no_main}" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">${rcpImg3.rcp_nm}</h1>
-                                <p>
-                                	뭔가 적을 부분
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-            <i class="fas fa-chevron-left"></i>
-        </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </a>
-    </div>
-    
-    <section class="container py-5">
-    	<div class="row text-center pt-3">
-    		<div class="col-lg-6 m-auto">
-    			<h1 class="h1">Categories</h1>
-    			<p>
-                    뭔가 멘트 적을 거얌
-                </p>
-    		</div>
-    	</div>
-    	<div class="row">
-    		<div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="${rcpImg1.att_file_no_main}" class="img-thumbnail img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">요리 종류</h2>
-                <p class="text-center"><a class="btn btn-success">Go!</a></p>
-            </div>
-    		
-    		<div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="${rcpImg2.att_file_no_main}" class="img-thumbnail img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">조리 방법</h2>
-                <p class="text-center"><a class="btn btn-success">Go!</a></p>
-            </div>
-            
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="${rcpImg3.att_file_no_main}" class="img-thumbnail img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">전체 보기</h2>
-                <p class="text-center"><a class="btn btn-success">Go!</a></p>
-            </div>
-    	</div>
-    </section>
-    
+
+	<div id="template-mo-zay-hero-carousel" class="carousel slide"
+		data-bs-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-bs-target="#template-mo-zay-hero-carousel"
+				data-bs-slide-to="0" class="active"></li>
+			<li data-bs-target="#template-mo-zay-hero-carousel"
+				data-bs-slide-to="1"></li>
+			<li data-bs-target="#template-mo-zay-hero-carousel"
+				data-bs-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<div class="container">
+					<div class="row p-5">
+						<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+							<div class="col-8 align-items-center">
+								<img class="img-fluid img-thumbnail" src="${rcpImg1.att_file_no_main}" alt="">
+							</div>
+						</div>
+						<div class="col-md-4 col-lg-6 mb-0 d-flex align-items-center">
+							<div class="text-align-left align-self-center">
+								<h1 class="h1 text-success"><strong>${rcpImg1.rcp_nm}</strong></h1>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div class="container">
+					<div class="row p-5">
+						<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+							<div class="col-8 align-items-center">
+								<img class="img-fluid img-thumbnail" src="${rcpImg2.att_file_no_main}" alt="">
+							</div>
+						</div>
+						<div class="col-lg-6 mb-0 d-flex align-items-center">
+							<div class="text-align-left">
+								<h1 class="h1 text-success"><strong>${rcpImg2.rcp_nm}</strong></h1>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<div class="container">
+					<div class="row p-5">
+						<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+							<div class="col-8 align-items-center">
+								<img class="img-fluid img-thumbnail " src="${rcpImg3.att_file_no_main}" alt="">
+							</div>
+						</div>
+						<div class="col-lg-6 mb-0 d-flex align-items-center">
+							<div class="text-align-left">
+								<h1 class="h1 text-success"><strong>${rcpImg3.rcp_nm}</strong></h1>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="carousel-control-prev text-decoration-none w-auto ps-3"
+			href="#template-mo-zay-hero-carousel" role="button"
+			data-bs-slide="prev"> <i class="fas fa-chevron-left"></i>
+		</a> <a class="carousel-control-next text-decoration-none w-auto pe-3"
+			href="#template-mo-zay-hero-carousel" role="button"
+			data-bs-slide="next"> <i class="fas fa-chevron-right"></i>
+		</a>
+	</div>
+
+	<section class="container py-5">
+		<div class="row text-center pt-3">
+			<div class="col-lg-6 m-auto">
+				<h1 class="h1">Categories</h1>
+				<p>뭔가 멘트 적을 거얌</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-4 p-5 mt-3">
+				<a href="#"><img src="${rcpImg1.att_file_no_main}"
+					class="img-thumbnail img-fluid border"></a>
+				<h2 class="h5 text-center mt-3 mb-3">요리 종류</h2>
+				<p class="text-center">
+					<a class="btn btn-success"
+						href="/rcpBoard/rcpKindTypeList?num=1&rcpType=밥">Go!</a>
+				</p>
+			</div>
+
+			<div class="col-12 col-md-4 p-5 mt-3">
+				<a href="#"><img src="${rcpImg2.att_file_no_main}"
+					class="img-thumbnail img-fluid border"></a>
+				<h2 class="h5 text-center mt-3 mb-3">조리 방법</h2>
+				<p class="text-center">
+					<a class="btn btn-success"
+						href="/rcpBoard/rcpKindTypeList?num=1&rcpCookM=볶기">Go!</a>
+				</p>
+			</div>
+
+			<div class="col-12 col-md-4 p-5 mt-3">
+				<a href="#"><img src="${rcpImg3.att_file_no_main}"
+					class="img-thumbnail img-fluid border"></a>
+				<h2 class="h5 text-center mt-3 mb-3">전체 보기</h2>
+				<p class="text-center">
+					<a class="btn btn-success" href="/rcpBoard/rcpAllList?num=1">Go!</a>
+				</p>
+			</div>
+		</div>
+	</section>
+
 	<div class="container">
 		<!-- Section-->
 		<section class="py-5">
@@ -223,8 +271,8 @@
 			};
 		</script>
 	</div>
-	
+
 	<%@ include file="../include/footer.jsp"%>
-	
+
 </body>
 </html>

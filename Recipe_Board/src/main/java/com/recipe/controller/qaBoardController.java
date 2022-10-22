@@ -78,8 +78,6 @@ public class qaBoardController {
 		String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main\\webapp\\resources\\imgUpload\\qa";
 		
 		for(MultipartFile file : files) {
-			System.out.println("name : " + file.getOriginalFilename());
-			System.out.println("size : " + file.getSize());
 			
 			File saveFile = new File(uploadFolder, file.getOriginalFilename());
 			

@@ -25,7 +25,10 @@
     <script src="../../resources/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../../resources/js/templatemo.js"></script>
-    <script src="../../resources/js/custom.js"></script>    
+    <script src="../../resources/js/custom.js"></script>   
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     
 </head>
 <body>
 
@@ -77,16 +80,16 @@
                 						<!-- 연락처 입력 -->
                 						<div class="form-outline mb-4">
                   							<input type="tel" id="user_phone" name="user_phone" placeholder="연락처를 입력해주세요" required="required" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" class="form-control" />
-                  							<label class="form-label" for="user_phone">전화번호</label>
+                  							<label class="form-label" for="user_phone">연락처</label>
                 						</div>
                 									
                 						<!-- 이메일 입력 -->
                 						<div class="form-outline mb-4">
                   							<input type="email" id="user_email" name="user_email" placeholder="이메일을 입력해주세요" required="required" class="form-control" />
-                  							<label class="form-label" for="user_email">이메일</label>
+                  							<label class="form-label" for="user_email">E-Mail</label>
                 						</div>
                 						
-	                					<button type="submit" id="signup_btn" name="signup_btn" class="btn btn-primary btn-block mb-4">
+	                					<button type="submit" id="signup_btn" name="signup_btn" class="btn btn-outline-success btn-block mb-4">
     	              						회원가입
     	            					</button>
     	            				

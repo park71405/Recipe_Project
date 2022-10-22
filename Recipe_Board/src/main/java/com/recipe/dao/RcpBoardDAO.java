@@ -3,6 +3,8 @@ package com.recipe.dao;
 import java.util.List;
 
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpPartsVO;
+import com.recipe.domain.RcpProcessVO;
 
 public interface RcpBoardDAO {
 
@@ -48,6 +50,13 @@ public interface RcpBoardDAO {
 		
 	//레시피 조회
 	public RcpBoardVO rcpView(int rcp_seq) throws Exception;
+	
+	//레시피 과정 조회
+	public RcpProcessVO rcpProcessView(int rcp_seq) throws Exception;
+	
+	//레시피 재료 조회
+	public List<RcpPartsVO> rcpPartsView(int rcp_seq) throws Exception;
+	
 	
 	//레시피 총 개수
 	public int rcpCount() throws Exception;

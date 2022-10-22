@@ -7,7 +7,7 @@ public class Page {
 	//게시물 총 개수
 	private int count;
 	//한 페이지에 출력할 게시물 개수
-	private int postNum = 9;
+	private int postNum = 10;
 	//하단 페이징 번호
 	private int pageNum;
 	//출력할 게시물
@@ -118,6 +118,24 @@ public class Page {
 			return "";
 		}else {
 			return "&rcpSearchType=" + searchType + "&rcpKeyword=" + keyword;
+		}
+	}
+	
+	//Notice 검색 타입 검색어
+	public String getNoticeSearchTypeKeyword() {
+		if(searchType.equals("") || keyword.equals("")) {
+			return "";
+		}else {
+			return "&noSearchType=" + searchType + "&no_keyword=" + keyword;
+		}
+	}
+	
+	//냉장고 검색 타입 검색어
+	public String getRefriSearchTypeKeyword() {
+		if(searchType.equals("") || keyword.equals("")) {
+			return "";
+		}else {
+			return "&refriSearchType=" + searchType + "&refri_keyword=" + keyword;
 		}
 	}
 }

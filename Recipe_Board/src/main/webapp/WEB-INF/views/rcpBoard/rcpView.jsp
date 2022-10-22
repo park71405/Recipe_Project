@@ -44,25 +44,254 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${rcpView.att_file_no_main}" alt="..." /></div>
+                    <div class="col-md-6">
+                    	<img class="card-img-top mb-5 mb-md-0" src="${rcpView.att_file_no_main}" alt="..." />
+                    </div>
                     <div class="col-md-6">
                         <h1 class="display-5 fw-bolder" >${rcpView.rcp_nm}</h1>
-                        <dl class="row">
-                        	<dt class="col-sm-3">조리방법</dt>
-  							<dd class="col-sm-9">${rcpView.rcp_way2}</dd>
+                        <div class="row">
+                        	<p class="col-sm-3"><strong>조리방법</strong></p>
+  							<p class="col-sm-9">${rcpView.rcp_way2}</p>
   								
-  							<dt class="col-sm-3">요리종류</dt>
-  							<dd class="col-sm-9">${rcpView.rcp_pat2}</dd>
+  							<p class="col-sm-3">요리종류</p>
+  							<p class="col-sm-9">${rcpView.rcp_pat2}</p>
   								
-  							<dt class="col-sm-3">열량</dt>
-  							<dd class="col-sm-9">${rcpView.info_eng}</dd>
-  								
-  							<dt class="col-sm-3">재료</dt>
-  							<dd class="col-sm-9"></dd>
+  							<p class="col-sm-3">열량</p>
+  							<p class="col-sm-9">${rcpView.info_eng}</p>
                         		
-                       	</dl>
+                        	<p class="col-sm-3">조리방법</p>
+  							<p class="col-sm-9">${proView.manual01}</p>
+  							
+  							<p class="col-sm-3">조리방법</p>
+  							<p class="col-sm-9"></p>
+                       	</div>
                     </div>
                 </div>
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                	<div class="col-3">
+                		<p class=""><hr>재료</p>
+                	</div>
+                	<div class="col-9"></div>
+                </div>
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                	<c:forEach items="${partsView}" var="partsView">
+  						<div class="col-6">
+                			<p class="col-sm-9">${partsView.rcp_pat_nm} : ${partsView.rcp_pat_vl}</p>
+                		</div>
+  					</c:forEach>
+                </div>
+                
+                <!-- 조리순서 시작 -->
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                	<div class="col-3">
+                		<p class=""><hr>조리순서</p>
+                	</div>
+                	<div class="col-9"></div>
+                </div>
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                	<div class="col-7">
+                		<p>${proView.manual01}</p>
+                	</div>
+                	<div class="col-5">
+                		<img src="${proView.manual_img01}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                	</div>
+                </div>
+                
+                <c:if test="${proView.manual02 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual02}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img02}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				
+  				<c:if test="${proView.manual03 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual03}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img03}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				
+  				<c:if test="${proView.manual04 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual04}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img04}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				
+  				<c:if test="${proView.manual05 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual05}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img05}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				
+  				<c:if test="${proView.manual06 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual06}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img06}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual07 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual07}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img07}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual08 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual08}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img08}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual09 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual09}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img09}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual10 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual10}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img10}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual11 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual11}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img11}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual12 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual12}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img12}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual13 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual13}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img13}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual14 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual14}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img14}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual15 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual15}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img15}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual16 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual16}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img16}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual17 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual17}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img17}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual18 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual18}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img18}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual19 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual19}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img19}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+  				<c:if test="${proView.manual20 != ''}">
+   					<div class="row gx-4 gx-lg-5 align-items-center">
+                		<div class="col-7">
+                			<p>${proView.manual20}</p>
+                		</div>
+                		<div class="col-5">
+                			<img src="${proView.manual_img20}" class="img-fluid" alt="이미지를 로딩할 수 없습니다." />
+                		</div>
+                	</div>						
+  				</c:if>
+                
             </div>
         </section>
 	

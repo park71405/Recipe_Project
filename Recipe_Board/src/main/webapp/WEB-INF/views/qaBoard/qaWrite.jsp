@@ -26,6 +26,10 @@
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../../resources/js/templatemo.js"></script>
     <script src="../../resources/js/custom.js"></script>
+    
+    <!-- 경고창 이쁜거 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 <body>
 
@@ -36,12 +40,13 @@
 	<%@ include file="../include/nav.jsp"%>
 
 
-	<div class="container">
-
+	<div class="container my-5">
+		
 		<c:if test="${member == null}">
 			<script>
-				alert("로그인을 하셔야 QA를 작성하실 수 있습니다.");
-				location.href = "../member/signin";
+				swal('로그인 필요!', '로그인이 필요한 기능입니다. 로그인해주세요.', 'warning').then(function(){
+					location.href = "../member/signin";
+				});
 			</script>
 		</c:if>
 

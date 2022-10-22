@@ -1,5 +1,6 @@
 package com.recipe.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpPartsVO;
+import com.recipe.domain.RcpProcessVO;
 
 @Repository
 public class RcpBoardDAOImpl implements RcpBoardDAO {
@@ -233,6 +236,31 @@ public class RcpBoardDAOImpl implements RcpBoardDAO {
 		return sql.selectOne(namespace + ".rcpView", rcp_seq);
 	}
 
+	//레시피 과정 조회
+	@Override
+	public RcpProcessVO rcpProcessView(int rcp_seq) throws Exception {
+		
+		return sql.selectOne(namespace + ".rcpProcessView", rcp_seq);
+	}
+	
+	//레시피 재료 조회
+	@Override
+	public List<RcpPartsVO> rcpPartsView(int rcp_seq) throws Exception {
+		
+		List<RcpPartsVO> vo = new ArrayList<RcpPartsVO>();
+		String[] str = {".rcpPartsView", ".rcpPartsView2", ".rcpPartsView3", ".rcpPartsView4", ".rcpPartsView5", ".rcpPartsView6", ".rcpPartsView7", ".rcpPartsView8"};
+		
+		
+		for(int i=0; i<str.length; i++) {
+			vo = sql.selectList(namespace + str[i], rcp_seq);
+			if(vo.size() > 0) {
+				break;
+			}
+		}
+		
+		return vo;
+	}
+	
 	// 레시피 총 개수
 	@Override
 	public int rcpCount() throws Exception {

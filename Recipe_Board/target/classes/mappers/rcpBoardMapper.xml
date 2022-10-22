@@ -196,6 +196,76 @@
 			rcp_seq = #{rcp_seq}
 	</select>
 	
+	<!-- 레시피 과정 조회 -->
+	<select id="rcpProcessView" parameterType="int" resultType="com.recipe.domain.RcpProcessVO">
+		select 
+			pro_no, rcp_seq, manual01, manual02, manual03, manual04, manual05, manual06, manual07, manual08, manual09, manual10,
+			manual11, manual12, manual13, manual14, manual15, manual16, manual17, manual18, manual19, manual20, 
+			manual_img01, manual_img02, manual_img03, manual_img04, manual_img05, manual_img06, manual_img07, manual_img08, manual_img09, manual_img10,
+			manual_img11, manual_img12, manual_img13, manual_img14, manual_img15, manual_img16, manual_img17, manual_img18, manual_img19, manual_img20
+		from recipe_process
+		where 
+			rcp_seq = #{rcp_seq}
+	</select>
+	
+	<!-- 레시피 재료 조회 -->
+	<select id="rcpPartsView" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts1
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	<select id="rcpPartsView2" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts2
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	<select id="rcpPartsView3" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts3
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	<select id="rcpPartsView4" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts4
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	<select id="rcpPartsView5" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts5
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	<select id="rcpPartsView6" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts6
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	<select id="rcpPartsView7" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts7
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	<select id="rcpPartsView8" parameterType="hashMap" resultType="com.recipe.domain.RcpPartsVO">
+		select 
+			parts_no, rcp_seq, rcp_pat_nm, rcp_pat_vl, rcp_pat_type
+		from recipe_parts8
+		where
+			rcp_seq = #{rcp_seq}
+	</select>
+	
 	<!-- 레시피 총 개수 -->
 	<select id="rcpCount" parameterType="hashMap" resultType="int">
 		select count(rcp_seq) from recipe
