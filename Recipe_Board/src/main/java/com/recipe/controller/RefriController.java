@@ -11,11 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.recipe.domain.MemberVO;
 import com.recipe.domain.Page;
 import com.recipe.domain.RefriVO;
 import com.recipe.service.RefriService;
+
 
 @Controller
 @RequestMapping("/refri/*")
@@ -93,6 +93,10 @@ public class RefriController {
 		}
 		
 		model.addAttribute("refriList", refriList);
+		model.addAttribute("refriPageNum", page.getPageNum());
+
+		model.addAttribute("refriStartPageNum", page.getStartPageNum());
+		model.addAttribute("refriEndPageNum", page.getEndPageNum());
 		
 		model.addAttribute("prev", page.getPrev());
 		model.addAttribute("next", page.getNext());
@@ -121,23 +125,37 @@ public class RefriController {
 		return "redirect:/refri/refriList?num=1";
 	}
 	
+	//재료 수정
+	@RequestMapping(value="/refriModify", method = RequestMethod.GET)
+	public void getRefriModify(@RequestParam("ingre_no") int ingre_no, Model model) throws Exception{
+		
+		RefriVO vo = service.refriView(ingre_no);
+		
+		model.addAttribute("refri", vo);
+	}
+	
+	//재료 수정
+	@RequestMapping(value="/refriModify", method = RequestMethod.POST)
+	public String postRefriModify(RefriVO vo) throws Exception{
+		
+		service.refriModify(vo);
+		
+		return "redirect:/refri/refriList?num=1";
+	}
+	
+	//재료 삭제
+	@RequestMapping(value="/refriDelete", method=RequestMethod.GET)
+	public String getRefriDelete(@RequestParam("ingre_no") int ingre_no) throws Exception{
+		service.refriDelete(ingre_no);
+		
+		return "redirect:/refri/refriList?num=1";
+	}
+	
 	//재료 사진으로 추가
 	@RequestMapping(value="/refriCameAdd", method = RequestMethod.GET)
 	public void getRefriCameAdd(Model model) throws Exception{
 			
 	}
 	
-	//재료 추가
-	@RequestMapping(value = "/refriCameAdd", method = RequestMethod.POST)
-	public String postRefriCameAdd(RefriVO vo, HttpServletRequest request) throws Exception{
-		
-		HttpSession session = request.getSession();
-		MemberVO user = (MemberVO) session.getAttribute("member");
-		
-		vo.setUser_name(user.getUser_name());
-		
-		service.ingreAdd(vo);
-		
-		return "redirect:/refri/refriList?num=1";
-	}
+	
 }

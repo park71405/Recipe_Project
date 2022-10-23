@@ -104,3 +104,7 @@ from recipe rcp join (select rcp_p.rcp_seq, count(rcp_p.rcp_seq) as 'ingre_count
 	having count(rcp_p.rcp_seq) >= 2) parts
 where rcp.rcp_seq = parts.rcp_seq
 order by parts.ingre_count desc;
+
+####################################
+
+select * from refri;

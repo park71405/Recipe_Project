@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.recipe.dao.RcpBoardDAO;
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpHeartVO;
 import com.recipe.domain.RcpPartsVO;
 import com.recipe.domain.RcpProcessVO;
 
@@ -135,6 +136,26 @@ public class RcpBoardServiceImpl implements RcpBoardService {
 	public int rcpCount() throws Exception {
 		
 		return dao.rcpCount();
+	}
+
+	//레시피 찜하기
+	@Override
+	public void rcpHeart(RcpHeartVO vo) throws Exception {
+		
+		dao.rcpHeart(vo);
+	}
+
+	//레시피 찜 확인
+	@Override
+	public int isRcpHeart(RcpHeartVO vo) throws Exception {
+		
+		return dao.isRcpHeart(vo);
+	}
+
+	//레시피 찜 해제
+	@Override
+	public void rcpHeartDelete(RcpHeartVO vo) throws Exception {
+		dao.rcpHeartDelete(vo);
 	}
 
 }

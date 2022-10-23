@@ -63,14 +63,14 @@
 						<div class="mb-3 row">
 							<label class="col-sm-5 col-form-label">재료 이름</label>
 							<div class="col-sm-7">
-								<input type="text" name="ingre_name" class="form-control-plaintext" placeholder="재료명" required>
+								<input type="text" name="ingre_name" class="form-control-plaintext" value="${refri.ingre_name}" placeholder="재료명" required>
 							</div>
 						</div>
 
 						<div class="mb-3 row">
 							<label class="col-sm-5 col-form-label">재료 수량</label>
 							<div class="col-sm-7">
-								<input type="text" name="ingre_capacity" class="form-control-plaintext" placeholder="수량" required>
+								<input type="text" name="ingre_capacity" class="form-control-plaintext" value="${refri.ingre_capacity}"  placeholder="수량" required>
 							</div>
 						</div>
 
@@ -89,7 +89,7 @@
 						</div>
 						
 						<button type="submit"
-								class="btn btn-outline-success btn-block mb-4">추가</button>
+								class="btn btn-outline-success btn-block mb-4">수정</button>
 					
 					</div>
 				</div>

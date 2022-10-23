@@ -37,7 +37,7 @@
 <%@ include file="../include/header.jsp"%>
 <%@ include file="../include/nav2.jsp"%>
 
-<div class="container my-5">
+<div class="container my-5 min-vh-30">
 
 	<c:if test="${member == null}">
 		<script>
@@ -48,7 +48,7 @@
 		</script>
 	</c:if>
 	
-	<div class="row ">
+	<div class="row">
 		<div class="col-1"></div>
 
 		<div class="col-10">
@@ -56,10 +56,10 @@
 				class="table table-hover justify-content-center">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>재료명</th>
-						<th>수량</th>
-						<th>종류</th>
+						<th class="text-center">재료명</th>
+						<th class="text-center">수량</th>
+						<th class="text-center">종류</th>
+						<th></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -67,11 +67,15 @@
 				<tbody>
 					<c:forEach items="${refriList}" var="refriList">
 						<tr>
-							<td>${refriList.ingre_no}</td>
-							<td>${refriList.ingre_name}</td>
-							<td>${refriList.ingre_capacity}</td>
-							<td>${refriList.ingre_type}</td>
-							<td>${refriList.user_name}</td>
+							<td class="text-center">${refriList.ingre_name}</td>
+							<td class="text-center">${refriList.ingre_capacity}</td>
+							<td class="text-center">${refriList.ingre_type}</td>
+							<td class="text-center">
+								<button type="button" class="btn btn-outline-success"
+											onclick="location.href='/refri/refriModify?ingre_no=${refriList.ingre_no}'">수정</button>
+								<button type="button" class="btn btn-outline-success"
+											onclick="location.href='/refri/refriDelete?ingre_no=${refriList.ingre_no}'">삭제</button>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -84,10 +88,10 @@
 					<button type="button" id="ingreReciAdd" class="btn btn-outline-success">영수증으로 추가</button>
 				</div>
 				<div class="col-6">
-				<ul class="pagination pagination-lg justify-content-end">
+				<ul class="pagination justify-content-end">
 					<li class="page-item">
 						<c:if test="${prev}">
-							<a class="page-link"
+							<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
 								href="/refri/refriList?num=${refriStartPageNum - 1}${refri_searchTypeKeyword}"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							</a>
@@ -113,7 +117,7 @@
 					
 					<li class="page-item">
 						<c:if test="${next}">
-							<a class="page-link" 
+							<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" 
 								href="/refri/refriList?num=${refriEndPageNum + 1}${refri_searchTypeKeyword}"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a>
@@ -153,7 +157,7 @@
 		
 		//영수증으로 추가 버튼 누를 경우
 		document.getElementById("ingreReciAdd").onclick = function(){
-			location.href = "/refri/refriAdd";
+			location.href = "/refri/refriCameAdd";
 		};
 	
 		//검색

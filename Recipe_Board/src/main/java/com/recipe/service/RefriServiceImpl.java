@@ -85,4 +85,23 @@ public class RefriServiceImpl implements RefriService {
 		dao.ingreAdd(vo);
 	}
 
+	//재료 삭제
+	@Override
+	public void refriDelete(int ingre_no) throws Exception {
+		dao.refriDelete(ingre_no);
+	}
+
+	//재료 수정
+	@Override
+	public void refriModify(RefriVO vo) throws Exception {
+		dao.refriModify(vo);
+	}
+
+	//재료 조회
+	@Override
+	public RefriVO refriView(int ingre_no) throws Exception {
+		
+		return dao.refriView(ingre_no);
+	}
+
 }

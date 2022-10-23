@@ -36,4 +36,13 @@ public interface RefriDAO {
 	//재료 추가
 	public void ingreAdd(RefriVO vo) throws Exception;
 	
+	//재료 조회
+	public RefriVO refriView(int ingre_no) throws Exception;
+	
+	//재료 수정
+	public void refriModify(RefriVO vo) throws Exception;
+	
+	//재료 삭제
+	public void refriDelete(int ingre_no) throws Exception;
+	
 }

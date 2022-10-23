@@ -32,6 +32,63 @@
 <!-- 경고창 이쁜거 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- tesseract.js CDN -->
+<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.1.5/tesseract.min.js"
+	integrity="sha512-QMGuBW4cKAKmxjxukfPlQqFL8Tc2yYWTBhg9o8fKx06BGZrNXMmafjtnmXthGasytcaIILHRrg5N5Hw0yOuSjw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+
+	let txt;
+	let $translatorArea = ${"#translatroArea"};
+	
+	const recognize = async ({ target: {files} }) => {
+		//추춯할 언어 선택
+		let $langsel = $("#langsel").val();
+		
+		await $("#extractOn").hide();
+		await $("#Loading").show();
+
+		const {
+			data: {text}
+		} = await Tesseract.recognize(
+			files[0],
+			$langsel,
+			{
+				corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
+			}
+		);
+		
+		// 텍스트 추출이 끝나면 로딩 이미지 감추기
+        $("#Loading").hide();
+		
+     	// 텍스트 추출이 끝나면 텍스트 영역 보이도록 만들기
+        $("#extractOn").show();
+     	
+        // 추출된 내용을 extractTxt 에 넣어둠
+        $("#extractTxt").val(text);
+        txt = text;
+        
+     	// 페이지 로딩 시 실행
+        $(function (){
+        	// 처음에는 텍스트 창 안보이게 && 로딩창도 안보이게
+            $("#extractOn").hide();
+            $("#Loading").hide();
+            
+            const $img = $("#upload")
+            
+         	// 이미지가 바뀔 때마다 recognize 함수가 실행됨 -> 사진에서 텍스트 가져오기
+            $img.on("change", recognize);
+        })
+	}
+
+</script>
+
 </head>
 
 <%@ include file="../include/header.jsp"%>
@@ -52,48 +109,8 @@
 		<div class="col-1"></div>
 
 		<div class="col-10">
-			<form method="post" id="ingre">
-
-				<div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
-					<div class="card-header">
-						<h3 class="text-center font-weight-light my-4">재료 추가</h3>
-					</div>
-					<div class="card-body">
-
-						<div class="mb-3 row">
-							<label class="col-sm-5 col-form-label">재료 이름</label>
-							<div class="col-sm-7">
-								<input type="text" name="ingre_name" class="form-control-plaintext" placeholder="재료명">
-							</div>
-						</div>
-
-						<div class="mb-3 row">
-							<label class="col-sm-5 col-form-label">재료 수량</label>
-							<div class="col-sm-7">
-								<input type="text" name="ingre_capacity" class="form-control-plaintext" placeholder="수량">
-							</div>
-						</div>
-
-						<div class="mb-3 row">
-							<label class="col-sm-5 col-form-label">종류</label>
-							<div class="col-sm-7">
-								<select id="ingre_type" name="ingre_type" form="ingre" class="form-select">
-									<option value="meat">육류</option>
-									<option value="vege">채소</option>
-									<option value="can">가공식품</option>
-									<option value="fish">어류</option>
-									<option value="fruits">과일</option>
-									<option value="dairy">유제품</option>
-								</select>
-							</div>
-						</div>
-						
-						<button type="submit"
-								class="btn btn-outline-success btn-block mb-4">추가</button>
-					
-					</div>
-				</div>
-			</form>
+		
+				
 		</div>
 
 		<div class="col-1"></div>

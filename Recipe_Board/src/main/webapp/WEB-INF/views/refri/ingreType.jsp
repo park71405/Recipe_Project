@@ -42,7 +42,7 @@
 <%@ include file="../include/nav.jsp"%>
 
 
-<div class="container my-5">
+<div class="container my-5 min-vh-30">
 
 	<c:if test="${member == null}">
 		<script>
@@ -53,7 +53,7 @@
 		</script>
 	</c:if>
 
-	<div class="row ">
+	<div class="row">
 		<div class="col-1"></div>
 
 		<div class="col-10">
@@ -61,54 +61,78 @@
 				class="table table-borderless table-hover justify-content-center">
 				<thead>
 					<tr>
-						<th>재료명</th>
-						<th>수량</th>
-						<th>종류</th>
+						<th class="text-center">재료명</th>
+						<th class="text-center">수량</th>
+						<th class="text-center">종류</th>
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<c:forEach items="${refriList}" var="refriList">
 						<tr>
-							<td>${refriList.ingre_name}</td>
-							<td>${refriList.ingre_capacity}</td>
-							<td>${refriList.ingre_type}</td>
+							<td class="text-center">${refriList.ingre_name}</td>
+							<td class="text-center">${refriList.ingre_capacity}</td>
+							<td class="text-center">${refriList.ingre_type}</td>
+							<td class="text-center">
+								<button type="button" class="btn btn-outline-success"
+											onclick="location.href='/refri/refriModify?ingre_no=${refriList.ingre_no}'">수정</button>
+								<button type="button" class="btn btn-outline-success"
+											onclick="location.href='/refri/refriDelete?ingre_no=${refriList.ingre_no}'">삭제</button>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 
-			<nav aria-label="Page navigation example">
-				<ul class="pagination  justify-content-center">
-					<li class="page-item"><c:if test="${prev}">
-							<a class="page-link"
-								href="/refri/refriList?num=${refriStartPageNum - 1}${refri_searchTypeKeyword}"
+			<!-- 페이지 넘김 -->
+			<div class="row">
+				<div class="col-6">
+					<button type="button" id="ingreAdd" class="btn btn-outline-success">추가</button>
+					<button type="button" id="ingreReciAdd" class="btn btn-outline-success">영수증으로 추가</button>
+				</div>
+				<div class="col-6">
+				<ul class="pagination justify-content-end">
+					<li class="page-item">
+						<c:if test="${prev}">
+							<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+								href="/refri/ingreType?num=${refriStartPageNum - 1}"
 								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							</a>
-						</c:if></li>
-
-					<c:forEach begin="${refriStartPageNum}" end="${refriEndPageNum}"
-						var="num">
-						<span> <c:if test="${refriSelect != num}">
-								<li class="page-item"><a class="page-link"
-									href="/refri/refriList?num=${num}${refri_searchTypeKeyword}">${num}</a>
+						</c:if>
+					</li>
+					
+					<c:forEach begin="${refriStartPageNum}" end="${refriEndPageNum}" var="num">
+						<span> 
+							<c:if test="${refriSelect != num}">
+								<li class="page-item">
+									<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" 
+										href="/refri/ingreType?num=${num}">${num}</a>
 								</li>
-							</c:if> <c:if test="${refriSelect == num}">
-								<li class="page-item active" aria-current="page"><a
-									class="page-link" href="#">${num}</a></li>
+							</c:if> 
+							<c:if test="${refriSelect == num}">
+								<li class="page-item disabled">
+									<a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" 
+										href="#" tabindex="-1">${num}</a>
+								</li>
 							</c:if>
 						</span>
 					</c:forEach>
-
-					<li class="page-item"><c:if test="${next}">
-							<a class="page-link"
-								href="/refri/refriList?num=${refriEndPageNum + 1}${refri_searchTypeKeyword}"
+					
+					<li class="page-item">
+						<c:if test="${next}">
+							<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"  
+								href="/refri/ingreType?num=${refriEndPageNum + 1}"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a>
-						</c:if></li>
-
+						</c:if>
+					</li>
+					
 				</ul>
-			</nav>
+				</div>
+				
+			</div>
 
 		</div>
 

@@ -27,6 +27,24 @@
     <script src="../../resources/js/templatemo.js"></script>
     <script src="../../resources/js/custom.js"></script>
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    
+    <script>
+    	function listView(rcp_seq) {
+        	let f = document.createElement('form';)
+        	let obj;
+        	obj = document.createElement('input');
+        	obj.setAttribute('type', 'hidden');
+        	obj.setAttribute('name', 'rcp_seq');
+        	obj.setAttribute('value', rcp_seq);
+        	
+        	f.appendChile(obj);
+        	f.setAttribute('method', 'post');
+        	document.body.appendChild(f);
+        	f.submit();
+    	}
+    </script>
+    
 </head>
 <body>
 	
@@ -58,12 +76,24 @@
   								
   							<p class="col-sm-3">열량</p>
   							<p class="col-sm-9">${rcpView.info_eng}</p>
-                        		
-                        	<p class="col-sm-3">조리방법</p>
-  							<p class="col-sm-9">${proView.manual01}</p>
-  							
-  							<p class="col-sm-3">조리방법</p>
-  							<p class="col-sm-9"></p>
+                        	<c:if test="${member != null}">
+                        		<c:if test="${count != 0}"> 
+                        			<p class="col-sm-3">
+                        				<form method="post">
+                        					<input type="text" name="rcp_seq" value="rcp_seq" hidden>
+                        					<button type="submit" class="btn btn-outline-secondary"><i class="bi bi-heart-fill"></i></button>
+                        				</form>
+                        			</p>
+                        		</c:if>
+                        		<c:if test="${count == 0}"> 
+                        			<p class="col-sm-3">
+                        				<form method="post">
+                        					<input type="text" name="rcp_seq" value="rcp_seq" hidden>
+                        					<button type="submit" class="btn btn-outline-secondary"><i class="bi bi-heart"></i></button>
+                        				</form>
+                        			</p>
+                        		</c:if>
+                        	</c:if>	
                        	</div>
                     </div>
                 </div>
@@ -88,7 +118,7 @@
                 	</div>
                 	<div class="col-9"></div>
                 </div>
-                <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 	<div class="col-7">
                 		<p>${proView.manual01}</p>
                 	</div>
@@ -98,7 +128,7 @@
                 </div>
                 
                 <c:if test="${proView.manual02 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual02}</p>
                 		</div>
@@ -109,7 +139,7 @@
   				</c:if>
   				
   				<c:if test="${proView.manual03 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual03}</p>
                 		</div>
@@ -120,7 +150,7 @@
   				</c:if>
   				
   				<c:if test="${proView.manual04 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual04}</p>
                 		</div>
@@ -131,7 +161,7 @@
   				</c:if>
   				
   				<c:if test="${proView.manual05 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual05}</p>
                 		</div>
@@ -142,7 +172,7 @@
   				</c:if>
   				
   				<c:if test="${proView.manual06 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual06}</p>
                 		</div>
@@ -152,7 +182,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual07 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual07}</p>
                 		</div>
@@ -162,7 +192,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual08 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual08}</p>
                 		</div>
@@ -172,7 +202,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual09 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual09}</p>
                 		</div>
@@ -182,7 +212,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual10 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual10}</p>
                 		</div>
@@ -192,7 +222,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual11 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual11}</p>
                 		</div>
@@ -202,7 +232,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual12 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual12}</p>
                 		</div>
@@ -212,7 +242,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual13 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual13}</p>
                 		</div>
@@ -222,7 +252,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual14 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual14}</p>
                 		</div>
@@ -232,7 +262,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual15 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual15}</p>
                 		</div>
@@ -242,7 +272,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual16 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual16}</p>
                 		</div>
@@ -252,7 +282,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual17 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual17}</p>
                 		</div>
@@ -262,7 +292,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual18 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual18}</p>
                 		</div>
@@ -272,7 +302,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual19 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual19}</p>
                 		</div>
@@ -282,7 +312,7 @@
                 	</div>						
   				</c:if>
   				<c:if test="${proView.manual20 != ''}">
-   					<div class="row gx-4 gx-lg-5 align-items-center">
+   					<div class="row gx-4 gx-lg-5 align-items-center mb-1">
                 		<div class="col-7">
                 			<p>${proView.manual20}</p>
                 		</div>

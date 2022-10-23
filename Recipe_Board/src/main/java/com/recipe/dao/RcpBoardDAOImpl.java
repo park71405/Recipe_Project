@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpHeartVO;
 import com.recipe.domain.RcpPartsVO;
 import com.recipe.domain.RcpProcessVO;
 
@@ -266,6 +267,27 @@ public class RcpBoardDAOImpl implements RcpBoardDAO {
 	public int rcpCount() throws Exception {
 
 		return sql.selectOne(namespace + ".rcpCount");
+	}
+
+	//레시피 찜하기
+	@Override
+	public void rcpHeart(RcpHeartVO vo) throws Exception {
+		
+		sql.insert(namespace + ".rcpHeart", vo);
+	}
+
+	//레시피 찜 여부 확인
+	@Override
+	public int isRcpHeart(RcpHeartVO vo) throws Exception {
+		
+		return sql.selectOne(namespace + ".isRcpHeart", vo);
+	}
+
+	//레시피 찜 해제
+	@Override
+	public void rcpHeartDelete(RcpHeartVO vo) throws Exception {
+		
+		sql.delete(namespace + ".rcpHeartDelete", vo);
 	}
 
 }

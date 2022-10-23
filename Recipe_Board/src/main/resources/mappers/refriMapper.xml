@@ -104,5 +104,32 @@
 			refri (ingre_name, ingre_type, ingre_capacity, user_name)
 		values (#{ingre_name}, #{ingre_type}, #{ingre_capacity}, #{user_name})
 	</select>
+	
+	<!-- 재료 조회 -->
+	<select id="refriView" parameterType="int" resultType="com.recipe.domain.RefriVO">
+		select
+			ingre_name, ingre_type, ingre_capacity
+		from
+			refri
+		where 
+			ingre_no = #{ingre_no}
+	</select>
+	
+	
+	<!-- 재료 수정 -->
+	<update id="refriModify" parameterType="com.recipe.domain.RefriVO">
+		update refri 
+			set
+				ingre_name = #{ingre_name},
+        		ingre_type = #{ingre_type},
+        		ingre_capacity = #{ingre_capacity}
+			where ingre_no = #{ingre_no} 
+	</update>
+	
+	<!-- 재료 삭제 -->
+	<select id="refriDelete" parameterType="int">
+		delete from refri
+		where ingre_no = #{ingre_no}
+	</select>
 
 </mapper>

@@ -128,4 +128,22 @@ public class RefriDAOImpl implements RefriDAO {
 		sql.insert(namespace + ".ingreAdd", vo);
 	}
 
+	//재료 삭제
+	@Override
+	public void refriDelete(int ingre_no) throws Exception {
+		sql.delete(namespace + ".refriDelete", ingre_no);
+	}
+
+	//재료 수정
+	@Override
+	public void refriModify(RefriVO vo) throws Exception {
+		sql.update(namespace + ".refriModify", vo);
+	}
+
+	//재료 조회
+	@Override
+	public RefriVO refriView(int ingre_no) throws Exception {
+		return sql.selectOne(namespace + ".refriView", ingre_no);
+	}
+
 }

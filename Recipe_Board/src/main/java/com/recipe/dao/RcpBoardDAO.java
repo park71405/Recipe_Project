@@ -3,6 +3,7 @@ package com.recipe.dao;
 import java.util.List;
 
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpHeartVO;
 import com.recipe.domain.RcpPartsVO;
 import com.recipe.domain.RcpProcessVO;
 
@@ -60,5 +61,14 @@ public interface RcpBoardDAO {
 	
 	//레시피 총 개수
 	public int rcpCount() throws Exception;
+	
+	//레시피 찜하기
+	public void rcpHeart(RcpHeartVO vo) throws Exception;
+	
+	//레시피 찜여부 확인
+	public int isRcpHeart(RcpHeartVO vo) throws Exception;
+	
+	//레시피 찜 해제
+	public void rcpHeartDelete(RcpHeartVO vo) throws Exception;
 	
 }

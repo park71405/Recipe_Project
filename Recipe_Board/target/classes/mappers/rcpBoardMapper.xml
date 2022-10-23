@@ -271,5 +271,24 @@
 		select count(rcp_seq) from recipe
 	</select>
 	
+	<!-- 레시피 찜 하기 -->
+	<insert id="rcpHeart" parameterType="com.recipe.domain.RcpHeartVO">
+		insert into
+			rcp_heart (rcp_seq, user_name)
+				values(#{rcp_seq}, #{user_name})
+	</insert>
+	
+	<!-- 레시피 찜 여부 확인 -->
+	<select id="isRcpHeart" parameterType="com.recipe.domain.RcpHeartVO" resultType="int">
+		select count(rcp_h_no) 
+		from rcp_heart 
+		where rcp_seq = #{rcp_seq} and user_name = #{user_name}
+	</select>
+
+	<!-- 레시피 찜 해제 -->
+	<select id="rcpHeartDelete" parameterType="com.recipe.domain.RcpHeartVO">
+		delete from rcp_heart
+		where rcp_seq = #{rcp_seq} and user_name = #{user_name}
+	</select>
 
 </mapper>

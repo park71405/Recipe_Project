@@ -3,6 +3,8 @@ package com.recipe.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.recipe.domain.MemberVO;
 import com.recipe.domain.Page;
 import com.recipe.domain.RcpBoardVO;
+import com.recipe.domain.RcpHeartVO;
 import com.recipe.domain.RcpPartsVO;
 import com.recipe.domain.RcpProcessVO;
 import com.recipe.service.RcpBoardService;
@@ -115,6 +119,7 @@ public class RcpBoardController {
 		page.setKeyword(rcpKeyword);
 			
 		List<RcpBoardVO> list = null;
+		
 		if(rcpType.equals("밥")) {
 			list = service.rcpKindType1List(page.getDisplayPost(), page.getPostNum(), rcpSearchType, rcpKeyword);
 		} else if(rcpType.equals("후식")) {
@@ -174,8 +179,25 @@ public class RcpBoardController {
 	
 	//레시피 조회
 	@RequestMapping(value="/rcpView", method=RequestMethod.GET)
-	public void getRcpView(@RequestParam("rcp_seq") int rcp_seq, Model model) throws Exception{
+	public void getRcpView(@RequestParam("rcp_seq") int rcp_seq, Model model,
+			HttpServletRequest request) throws Exception{
 		
+		//로그인된 유저 정보 가져오기
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO) session.getAttribute("member");
+		
+		int count = 0;
+		
+		if(user != null) {
+			RcpHeartVO voh = new RcpHeartVO();
+			voh.setRcp_seq(rcp_seq);
+			voh.setUser_name(user.getUser_name());
+		
+			//레시피 찜 여부 확인
+			count = service.isRcpHeart(voh);
+		}
+		
+		//레시피 조회
 		RcpBoardVO vo = service.rcpView(rcp_seq);
 		RcpProcessVO proVo = service.rcpProcessView(rcp_seq);
 		List<RcpPartsVO> partsVo = service.rcpPartsView(rcp_seq);
@@ -183,6 +205,30 @@ public class RcpBoardController {
 		model.addAttribute("partsView", partsVo);
 		model.addAttribute("proView", proVo);
 		model.addAttribute("rcpView", vo);
+		
+		model.addAttribute("count", count);
+	}
+	
+	//레시피 찜 하기
+	@RequestMapping(value="/rcpView", method=RequestMethod.POST)
+	public String postRcpHeart(@RequestParam("rcp_seq") int rcp_seq, HttpServletRequest request) throws Exception{
+		
+		//로그인된 유저 정보 가져오기
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO) session.getAttribute("member");
+		
+		//레시피 찜 테이블 생성
+		RcpHeartVO vo = new RcpHeartVO();
+		vo.setRcp_seq(rcp_seq);
+		vo.setUser_name(user.getUser_name());
+		
+		if(service.isRcpHeart(vo) > 0) {
+			service.rcpHeartDelete(vo);
+		}else {
+			service.rcpHeart(vo);
+		}
+		
+		return "redirect:/rcpBoard/rcpView?rcp_seq=" + rcp_seq;
 	}
 	
 }
