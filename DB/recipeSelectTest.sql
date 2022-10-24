@@ -108,3 +108,47 @@ order by parts.ingre_count desc;
 ####################################
 
 select * from refri;
+
+select * from rcp_heart;
+
+select count(rcp_h_no) 
+		from rcp_heart 
+		where rcp_seq = 3297 and user_name = 'hahaha';
+
+delete from rcp_heart where rcp_h_no = 5;
+
+select *
+from review;
+
+
+select * 
+from rcp_heart h join recipe r
+where h.RCP_SEQ = r.RCP_SEQ and h.USER_NAME = 'hahaha' and r.RCP_NM like '%해산물%';
+
+#유저가 찜한 레시피의 재료
+select *
+from rcp_heart h join recipe_parts p
+where h.rcp_seq = 3297 and p.rcp_seq = 3297 AND h.USER_NAME = 'hahaha';
+
+select * 
+from refri;
+
+select *
+from recipe_parts p join refri r
+where r.user_name = 'hahaha' and p.rcp_seq = 3297 
+	and p.rcp_pat_nm like '%%';
+    
+##recipe_parts에서 rcp_seq 가 #{rcp_seq}인 거 찾은거에서 rcp_pat_nm이 refri의 ingre_name과 같은 것 찾기
+
+select *
+from recipe_parts
+where rcp_seq = 3297;
+
+## 해당 레시피 재료 중 가지고 있는 재료의 이름과 개수
+select r.ingre_name, r.ingre_capacity
+from refri r join (select rcp_pat_nm
+	from recipe_parts
+	where rcp_seq = 3297) p
+where p.rcp_pat_nm like concat('%', r.ingre_name, '%') and r.user_name = 'hahaha';
+
+#######################################
