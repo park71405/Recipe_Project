@@ -6,6 +6,8 @@ import com.recipe.domain.RcpBoardVO;
 import com.recipe.domain.RcpHeartVO;
 import com.recipe.domain.RcpPartsVO;
 import com.recipe.domain.RcpProcessVO;
+import com.recipe.domain.RefriVO;
+import com.recipe.domain.nowRcpVO;
 
 public interface RcpBoardService {
 	
@@ -70,5 +72,14 @@ public interface RcpBoardService {
 	
 	//레시피 찜 해제
 	public void rcpHeartDelete(RcpHeartVO vo) throws Exception;
+	
+	//바로 만들수 있는 레시피 목록
+	public List<nowRcpVO> nowRcpList(int displayPost, int postNum, String rcpSerchType, String rcpKeyword, int count, String user_name) throws Exception; 
+		
+	//바로 만들 수 있는 레시피 총 개수
+	public int nowRcpListCount(String rcpSerchType, String rcpKeyword, int count, String user_name) throws Exception;
+	
+	//냉장고 재료 줄이기
+	public List<RefriVO> ingreModify(String user_name, int rcp_seq) throws Exception;
 	
 }

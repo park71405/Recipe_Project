@@ -23,6 +23,10 @@
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../../resources/js/templatemo.js"></script>
     <script src="../../resources/js/custom.js"></script>
+    
+    <!-- 경고창 이쁜거 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 <body>
 
@@ -35,6 +39,16 @@
 	
 
 	<div class="container">
+	
+		<c:if test="${member == null}">
+			<script>
+				swal('로그인 필요!', '로그인이 필요한 기능입니다. 로그인해주세요.', 'warning').then(
+						function() {
+							location.href = "../member/signin";
+						});
+			</script>
+		</c:if>
+	
 	
 		<form method="post">
 

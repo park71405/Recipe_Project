@@ -51,7 +51,7 @@
 	<%@ include file="../include/header.jsp" %>
 	
 
-	<%@ include file="../include/nav.jsp" %>
+	<%@ include file="../include/nav2.jsp" %>
 	
 	
 	
@@ -59,7 +59,7 @@
 	<div class="container">
 	
 		<!-- Product section-->
-        <section class="py-5">
+        <section class="py-3">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6">
@@ -78,20 +78,26 @@
   							<p class="col-sm-9">${rcpView.info_eng}</p>
                         	<c:if test="${member != null}">
                         		<c:if test="${count != 0}"> 
-                        			<p class="col-sm-3">
-                        				<form method="post">
-                        					<input type="text" name="rcp_seq" value="rcp_seq" hidden>
+                        				<form method="post" class="col-sm-2">
+                        					<input type="text" name="rcp_seq" value="rcp_seq" class="visually-hidden">
                         					<button type="submit" class="btn btn-outline-secondary"><i class="bi bi-heart-fill"></i></button>
                         				</form>
-                        			</p>
+                        				<div class="col-sm-5">
+                        					<button type="button" class="btn btn-outline-secondary"
+                        						onclick="location.href='/rcpBoard/ingreModify?rcp_seq=${rcpView.rcp_seq}'">바로 조리</button>
+                        				</div>
+                        				<div class="col-sm-5"></div>
                         		</c:if>
                         		<c:if test="${count == 0}"> 
-                        			<p class="col-sm-3">
-                        				<form method="post">
-                        					<input type="text" name="rcp_seq" value="rcp_seq" hidden>
+                        				<form method="post" class="col-sm-2">
+                        					<input type="text" name="rcp_seq" value="rcp_seq" class="visually-hidden">
                         					<button type="submit" class="btn btn-outline-secondary"><i class="bi bi-heart"></i></button>
                         				</form>
-                        			</p>
+                        				<div class="col-sm-5">
+                        					<button type="button" class="btn btn-outline-secondary"
+                        						onclick="location.href='/rcpBoard/ingreModify?rcp_seq=${rcpView.rcp_seq}'">바로 조리</button>
+                        				</div>
+                        				<div class="col-sm-5"></div>
                         		</c:if>
                         	</c:if>	
                        	</div>

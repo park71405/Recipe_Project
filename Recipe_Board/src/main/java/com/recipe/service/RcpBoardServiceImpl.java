@@ -11,6 +11,8 @@ import com.recipe.domain.RcpBoardVO;
 import com.recipe.domain.RcpHeartVO;
 import com.recipe.domain.RcpPartsVO;
 import com.recipe.domain.RcpProcessVO;
+import com.recipe.domain.RefriVO;
+import com.recipe.domain.nowRcpVO;
 
 @Service
 public class RcpBoardServiceImpl implements RcpBoardService {
@@ -156,6 +158,28 @@ public class RcpBoardServiceImpl implements RcpBoardService {
 	@Override
 	public void rcpHeartDelete(RcpHeartVO vo) throws Exception {
 		dao.rcpHeartDelete(vo);
+	}
+
+	//바로 만들수 있는 레시피 목록
+	@Override
+	public List<nowRcpVO> nowRcpList(int displayPost, int postNum, String rcpSerchType, String rcpKeyword, int count,
+			String user_name) throws Exception {
+		
+		return dao.nowRcpList(displayPost, postNum, rcpSerchType, rcpKeyword, count, user_name);
+	}
+
+	//바로 만들 수 있는 레시피 총 개수
+	@Override
+	public int nowRcpListCount(String rcpSerchType, String rcpKeyword, int count, String user_name) throws Exception {
+		
+		return dao.nowRcpListCount(rcpSerchType, rcpKeyword, count, user_name);
+	}
+
+	//냉장고 재료 줄이기
+	@Override
+	public List<RefriVO> ingreModify(String user_name, int rcp_seq) throws Exception {
+		
+		return dao.ingreModify(user_name, rcp_seq);
 	}
 
 }

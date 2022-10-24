@@ -32,4 +32,10 @@ public class MemberServiceImpl implements MemberService {
 		session.invalidate();
 	}
 
+	//해당 아이디 있는지 존재 여부
+	@Override
+	public int isUser(String user_id) throws Exception {
+		return dao.isUser(user_id);
+	}
+
 }

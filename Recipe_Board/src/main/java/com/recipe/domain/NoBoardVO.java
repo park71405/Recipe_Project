@@ -11,6 +11,7 @@ public class NoBoardVO {
     	NO_CONTENT TEXT,
     	NO_DATE timestamp not null default now(),
     	MANA_NAME varchar(50),
+    	no_img varchar(100),
     	PRIMARY KEY(NO_NO),
     	foreign key (MANA_NAME) references MANAGER (MANA_NAME)	
 	); 
@@ -21,6 +22,7 @@ public class NoBoardVO {
 	private String no_content;
 	private Date no_date;
 	private String mana_name;
+	private String no_img;
 	
 	public int getNo_no() {
 		return no_no;
@@ -51,6 +53,12 @@ public class NoBoardVO {
 	}
 	public void setMana_name(String mana_name) {
 		this.mana_name = mana_name;
+	}
+	public String getNo_img() {
+		return no_img;
+	}
+	public void setNo_img(String no_img) {
+		this.no_img = no_img;
 	}
 	
 	

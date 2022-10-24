@@ -32,69 +32,71 @@
 <!-- 경고창 이쁜거 -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- tesseract.js CDN -->
-<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/2.1.5/tesseract.min.js"
-	integrity="sha512-QMGuBW4cKAKmxjxukfPlQqFL8Tc2yYWTBhg9o8fKx06BGZrNXMmafjtnmXthGasytcaIILHRrg5N5Hw0yOuSjw=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
 
 <script>
-
-	let txt;
-	let $translatorArea = ${"#translatroArea"};
-	
-	const recognize = async ({ target: {files} }) => {
-		//추춯할 언어 선택
-		let $langsel = $("#langsel").val();
-		
-		await $("#extractOn").hide();
-		await $("#Loading").show();
-
-		const {
-			data: {text}
-		} = await Tesseract.recognize(
-			files[0],
-			$langsel,
-			{
-				corePath: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js',
-			}
-		);
-		
-		// 텍스트 추출이 끝나면 로딩 이미지 감추기
-        $("#Loading").hide();
-		
-     	// 텍스트 추출이 끝나면 텍스트 영역 보이도록 만들기
-        $("#extractOn").show();
-     	
-        // 추출된 내용을 extractTxt 에 넣어둠
-        $("#extractTxt").val(text);
-        txt = text;
+        function progressUpdate(packet){
+            var log = document.getElementById('log');
         
-     	// 페이지 로딩 시 실행
-        $(function (){
-        	// 처음에는 텍스트 창 안보이게 && 로딩창도 안보이게
-            $("#extractOn").hide();
-            $("#Loading").hide();
-            
-            const $img = $("#upload")
-            
-         	// 이미지가 바뀔 때마다 recognize 함수가 실행됨 -> 사진에서 텍스트 가져오기
-            $img.on("change", recognize);
-        })
-	}
+            if(log.firstChild && log.firstChild.status === packet.status){
+                if('progress' in packet){
+                    var progress = log.firstChild.querySelector('progress')
+                    progress.value = packet.progress
+                }
+            }else{
+                var line = document.createElement('div');
+                line.status = packet.status;
+                var status = document.createElement('div')
+                status.className = 'status'
+                status.appendChild(document.createTextNode(packet.status))
+                line.appendChild(status)
+        
+                if('progress' in packet){
+                    var progress = document.createElement('progress')
+                    progress.value = packet.progress
+                    progress.max = 1
+                    line.appendChild(progress)
+                }
+        
+        
+                if(packet.status == 'done'){ //text 출력
+                    var pre = document.createElement('pre')
+                    pre.appendChild(document.createTextNode(packet.data.data.text))
+                    line.innerHTML = ''
+                    line.appendChild(pre)
+        
+                }
+        
+                log.insertBefore(line, log.firstChild)
+            }
+        }
+        
+        async function recognizeFile(file) {
+            document.querySelector("#log").innerHTML = ''
+          	const corePath = window.navigator.userAgent.indexOf("Edge") > -1
+            	? 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js'
+            		: 'https://unpkg.com/tesseract.js-core@v2.0.0/tesseract-core.wasm.js';
+        
+          	const lang = document.querySelector('#langsel').value
+          	const data = await Tesseract.recognize(file, lang, {corePath, logger: progressUpdate});
+          	progressUpdate({ status: 'done', data });
+        }
+        </script>
 
-</script>
 
 </head>
 
 <%@ include file="../include/header.jsp"%>
 <%@ include file="../include/nav2.jsp"%>
 
-<div class="container my-5">
+<div class="row text-center pt-3 mt-3">
+	<div class="col-lg-6 m-auto">
+		<h1 class="h2">사진으로 추가</h1>
+	</div>
+</div>
+
+
+<div class="container mt-3">
 
 	<c:if test="${member == null}">
 		<script>
@@ -109,8 +111,39 @@
 		<div class="col-1"></div>
 
 		<div class="col-10">
-		
+
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-3">
+					<select class="form-select" id="langsel"
+						onchange="window.lastFile && recognizeFile(window.lastFile)">
+						<option selected="selected" value="kor">Korean</option>
+						<option value="eng">English</option>
+					</select>
+				</div>
+				<div class="col-5">
+					<input class="form-control" type="file"
+						onchange="recognizeFile(window.lastFile=this.files[0])">
+
+				</div>
+				<div class="col-2"></div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-5">
+					<div id="log"></div>
+				</div>
+
+				<div class="col-7">
 				
+				</div>
+
+			</div>
+
+			<div id="log"></div>
+
+
 		</div>
 
 		<div class="col-1"></div>

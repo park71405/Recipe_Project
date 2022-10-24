@@ -90,7 +90,7 @@
 			<div class="row">
 				<div class="col-6">
 					<button type="button" id="ingreAdd" class="btn btn-outline-success">추가</button>
-					<button type="button" id="ingreReciAdd" class="btn btn-outline-success">영수증으로 추가</button>
+					<button type="button" id="ingreReciAdd" class="btn btn-outline-success visually-hidden">영수증으로 추가</button>
 				</div>
 				<div class="col-6">
 				<ul class="pagination justify-content-end">
@@ -138,6 +138,19 @@
 
 		<div class="col-1"></div>
 	</div>
+	
+	<script>
+		//추가 버튼 누를 경우
+		document.getElementById("ingreAdd").onclick = function() {
+
+			location.href = "/refri/refriAdd";
+		};
+		
+		//영수증으로 추가 버튼 누를 경우
+		document.getElementById("ingreReciAdd").onclick = function() {
+			location.href = "/refri/refriCameAdd";
+		};
+	</script>
 
 </div>
 

@@ -25,6 +25,12 @@
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../../resources/js/templatemo.js"></script>
     <script src="../../resources/js/custom.js"></script>
+    
+    
+<script src="https://kit.fontawesome.com/77451a1db8.js" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
 
@@ -35,26 +41,81 @@
 	<%@ include file="../include/nav.jsp" %>
 	
 
-	<div class="container justify-content-center">
-
-		<label>제목</label>
-		${noView.no_title}<br />
-
-		<label>작성자</label>
-		${noView.mana_name}<br />
-	
-		<label>내용</label>
-		${noView.no_content}<br />
-		
-		<!--  
-		<c:if test="${member.user_name eq reviewView.user_name}">
-			<div>
-				<br />
-				<a href="/reviewBoard/reviewModify?rv_no=${reviewView.rv_no}">수정</a>, 
-				<a href="/reviewBoard/reviewDelete?rv_no=${reviewView.rv_no}">삭제</a>
-			</div>
-		</c:if>
-		-->
+	<div class="container my-1 bg-light pb-5">
+		<div class="row">
+			<c:if test="${noView.no_img != null }">
+				<div class="col-lg-5 mt-5">
+					<div class="card mb-3 ratio ratio-1x1">
+							<img class="card-img img-fluid"
+								src="../../../resources/imgUpload/no/${noView.no_img}"
+								alt="이미지 로드 불가" id="product-detail">
+					</div>
+				</div>
+				<div class="col-lg-7 mt-5">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="h2">${noView.no_title}</h1>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>글쓴이</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong>${noView.mana_name}</strong>
+									</p>
+								</li>
+							</ul>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>작성일</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong> <fmt:formatDate value="${noView.no_date}"
+												pattern="yyyy-MM-dd" />
+										</strong>
+									</p>
+								</li>
+							</ul>
+							<p>${noView.no_content}</p>
+						</div>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${reviewView.rv_img == null }">
+				<div class="col-lg-12 mt-5">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="h2">${noView.no_title}</h1>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>글쓴이</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong>${noView.mana_name}</strong>
+									</p>
+								</li>
+							</ul>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>작성일</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong> <fmt:formatDate value="${noView.no_date}"
+												pattern="yyyy-MM-dd" />
+										</strong>
+									</p>
+								</li>
+							</ul>
+							<p>${noView.no_content}</p>
+						</div>
+					</div>
+				</div>
+			</c:if>
+		</div>
+			
 	</div>
 
 	<%@ include file="../include/footer.jsp" %>

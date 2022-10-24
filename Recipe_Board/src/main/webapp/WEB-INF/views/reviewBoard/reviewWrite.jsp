@@ -35,7 +35,7 @@
 	<%@ include file="../include/header.jsp" %>
 	
 
-	<%@ include file="../include/nav.jsp" %>
+	<%@ include file="../include/nav2.jsp" %>
 	
 
 	<div class="container my-5">
@@ -93,8 +93,8 @@
 					</div>
 
 				<div class="mb-3 col-auto" style="float: right">
-					<a href="reviewList?num=1" role="button" class="btn btn-secondary">취소</a>
-					<button type="submit" class="btn btn-primary" id="btn-save">등록</button>
+					<a href="reviewList?num=1" role="button" class="btn btn-outline-secondary">취소</a>
+					<button type="submit" class="btn btn-outline-success" id="btn-save">등록</button>
 				</div>
 			</form>
 		</div>

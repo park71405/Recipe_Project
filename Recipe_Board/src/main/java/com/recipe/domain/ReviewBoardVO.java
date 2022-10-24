@@ -21,7 +21,7 @@ public class ReviewBoardVO {
 	private String rv_title;
 	private String rv_content;
 	private Date rv_date;
-	private boolean rv_warning;
+	private int rv_warning;
 	private String user_name;
 	private String rv_img;
 	
@@ -49,10 +49,10 @@ public class ReviewBoardVO {
 	public void setRv_date(Date rv_date) {
 		this.rv_date = rv_date;
 	}
-	public boolean isRv_warning() {
+	public int getRv_warning() {
 		return rv_warning;
 	}
-	public void setRv_warning(boolean rv_warning) {
+	public void setRv_warning(int rv_warning) {
 		this.rv_warning = rv_warning;
 	}
 	public String getUser_name() {

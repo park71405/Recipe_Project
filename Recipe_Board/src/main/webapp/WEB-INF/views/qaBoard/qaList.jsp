@@ -35,17 +35,23 @@
 
 	<%@ include file="../include/header.jsp"%>
 
-	<%@ include file="../include/nav.jsp"%>
+	<%@ include file="../include/nav2.jsp"%>
+
+	<div class="row text-center pt-4 mt-3">
+		<div class="col-lg-6 m-auto">
+			<h1 class="h1">Q/A</h1>
+		</div>
+	</div>
 
 
-	<div class="container my-5">
+	<div class="container my-3">
 
 		<div class="row ">
 			<div class="col-1"></div>
 
 			<div class="col-10">
 				<table
-					class="table table-borderless table-hover justify-content-center">
+					class="table table-hover justify-content-center">
 					<thead>
 						<tr>
 							<th class="text-center">번호</th>
@@ -73,58 +79,79 @@
 
 				<!-- 페이지 넘김 처리 -->
 				<div class="row">
-					<ul class="pagination pagination-lg justify-content-end">
-						<li class="page-item rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"><c:if test="${prev}">
-								<a class="page-link"
-									href="/qaBoard/qaList?num=${qaStartPageNum - 1}${qa_searchTypeKeyword}"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								</a>
-							</c:if></li>
+					<div class="col-6 mx-4">
+						<button type="button" class="btn btn-outline-success"
+							onclick="location.href='/qaBoard/qaWrite'">글쓰기</button>
+					</div>
+					<div class="col-5">
+						<ul class="pagination justify-content-end">
+							<li
+								class="page-item rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"><c:if
+									test="${prev}">
+									<a class="page-link"
+										href="/qaBoard/qaList?num=${qaStartPageNum - 1}${qa_searchTypeKeyword}"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a>
+								</c:if></li>
 
-						<c:forEach begin="${qaStartPageNum}" end="${qaEndPageNum}"
-							var="num">
-							<span> <c:if test="${qaSelect != num}">
-									<li class="page-item"><a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-										href="/qaBoard/qaList?num=${num}${qa_searchTypeKeyword}">${num}</a>
-									</li>
-								</c:if> <c:if test="${qaSelect == num}">
-									<li class="page-item disabled" aria-current="page"><a
-										class="page-link page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#">${num}</a></li>
-								</c:if>
-							</span>
-						</c:forEach>
+							<c:forEach begin="${qaStartPageNum}" end="${qaEndPageNum}"
+								var="num">
+								<span> <c:if test="${qaSelect != num}">
+										<li class="page-item"><a
+											class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+											href="/qaBoard/qaList?num=${num}${qa_searchTypeKeyword}">${num}</a>
+										</li>
+									</c:if> <c:if test="${qaSelect == num}">
+										<li class="page-item disabled" aria-current="page"><a
+											class="page-link page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
+											href="#">${num}</a></li>
+									</c:if>
+								</span>
+							</c:forEach>
 
-						<li class="page-item"><c:if test="${next}">
-								<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-									href="/qaBoard/qaList?num=${qaEndPageNum + 1}${qa_searchTypeKeyword}"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-								</a>
-							</c:if></li>
+							<li class="page-item"><c:if test="${next}">
+									<a
+										class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+										href="/qaBoard/qaList?num=${qaEndPageNum + 1}${qa_searchTypeKeyword}"
+										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+									</a>
+								</c:if></li>
 
-					</ul>
+						</ul>
+					</div>
+
 				</div>
 
 			</div>
 
 			<div class="col-1"></div>
 
-		</div>
+			<div class="row align-items-center">
+				<div class="col-3"></div>
+				<div class="col-1">
+					<select class="form-select" name="qa_SearchType">
+						<option value="qa_title"
+							<c:if test="${qa_SearchType eq 'qa_title'}"> selected </c:if>>제목</option>
+						<option value="qa_content"
+							<c:if test="${qa_SearchType eq 'qa_content'}"> selected </c:if>>내용</option>
+						<option value="qa_title_content"
+							<c:if test="${qa_SearchType eq 'qa_title_content'}"> selected </c:if>>제목+내용</option>
+						<option value="user_name"
+							<c:if test="${qa_SearchType eq 'user_name'}"> selected </c:if>>작성자</option>
+					</select>
+				</div>
+				<div class="col-4">
+					<input class="form-control me-2" type="text" name="qa_keyword"
+						value="${qa_keyword}" placeholder="검색" aria-label="Search">
+				</div>
+				<div class="col-2">
+					<button class="btn btn-outline-success" type="submit"
+						id="qaSearchBtn">검색</button>
+				</div>
+				<div class="col-2"></div>
+			</div>
 
-		<div class="container-fluid d-flex w-50 h-50 p-3">
-			<select name="qa_SearchType">
-				<option value="qa_title"
-					<c:if test="${qa_SearchType eq 'qa_title'}"> selected </c:if>>제목</option>
-				<option value="qa_content"
-					<c:if test="${qa_SearchType eq 'qa_content'}"> selected </c:if>>내용</option>
-				<option value="qa_title_content"
-					<c:if test="${qa_SearchType eq 'qa_title_content'}"> selected </c:if>>제목+내용</option>
-				<option value="user_name"
-					<c:if test="${qa_SearchType eq 'user_name'}"> selected </c:if>>작성자</option>
-			</select> <input class="form-control me-2" type="text" name="qa_keyword"
-				value="${qa_keyword}" placeholder="검색" aria-label="Search">
 
-			<button class="btn btn-outline-success" type="submit"
-				id="qaSearchBtn">검색</button>
 		</div>
 
 		<script>

@@ -27,6 +27,22 @@
 <script src="../../resources/js/bootstrap.bundle.min.js"></script>
 <script src="../../resources/js/templatemo.js"></script>
 <script src="../../resources/js/custom.js"></script>
+
+<script src="https://kit.fontawesome.com/77451a1db8.js" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+
+	window.onload = function(){
+		document.getElementById("mybtn").onclick = message;
+	}
+	
+	function message(){
+		swal('로그인 필요', '댓글을 작성하시려면 로그인이 필요합니다.', 'warning');
+	}
+</script>
+
 </head>
 <body>
 
@@ -34,99 +50,165 @@
 
 	<%@ include file="../include/header.jsp"%>
 
-	<%@ include file="../include/nav.jsp"%>
+	<%@ include file="../include/nav2.jsp"%>
 
 
-	<div class="container my-5">
+	<div class="container my-1 bg-light pb-5">
 
 		<div class="row">
-			<div class="col-md-10" style="float: none; margin: 0 auto;">
-				<table class="table table-condensed center">
-					<thead>
-						<tr align="center">
-							<th width="10%">제목</th>
-							<th width="60%">${reviewView.rv_title}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>작성일</td>
-							<td><fmt:formatDate value="${reviewView.rv_date}"
-									pattern="yyyy-MM-dd" /></td>
-						</tr>
-						<tr>
-							<td>글쓴이</td>
-							<td>${reviewView.user_name}</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<p>${reviewView.rv_content}</p> 
-								<c:if test="${reviewView.rv_img != null }">
-									<img class="img-fluid"
-									src="../../../resources/imgUpload/rv/${reviewView.rv_img}"
-									alt="잘못된 형식" />
-								</c:if>
-								
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<c:if test="${member.user_name eq reviewView.user_name}">
-					<table class="table table-condensed">
-						<thead>
-							<tr>
-								<td><span style="float: right">
+			<c:if test="${reviewView.rv_img != null }">
+				<div class="col-lg-5 mt-5">
+					<div class="card mb-3 ratio ratio-1x1">
+							<img class="card-img img-fluid"
+								src="../../../resources/imgUpload/rv/${reviewView.rv_img}"
+								alt="이미지 로드 불가" id="product-detail">
+					</div>
+				</div>
+				<div class="col-lg-7 mt-5">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="h2">${reviewView.rv_title}</h1>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>글쓴이</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong>${reviewView.user_name}</strong>
+									</p>
+								</li>
+							</ul>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>작성일</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong> <fmt:formatDate value="${reviewView.rv_date}"
+												pattern="yyyy-MM-dd" />
+										</strong>
+									</p>
+								</li>
+							</ul>
+							<p>${reviewView.rv_content}</p>
+							<c:if test="${member.user_name eq reviewView.user_name}">
+								<div class="row pb-3">
+									<div class="col d-grid">
 										<button type="button" class="btn btn-outline-success"
 											onclick="location.href='/reviewBoard/reviewModify?rv_no=${reviewView.rv_no}'">수정</button>
+									</div>
+									<div class="col d-grid">
 										<button type="button" class="btn btn-outline-success"
 											onclick="location.href='/reviewBoard/reviewDelete?rv_no=${reviewView.rv_no}'">삭제</button>
-								</span></td>
-							</tr>
-						</thead>
-					</table>
-				</c:if>
-			</div>
+									</div>
+								</div>
+							</c:if>
+	
+						</div>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${reviewView.rv_img == null }">
+				<div class="col-lg-12 mt-5">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="h2">${reviewView.rv_title}</h1>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>글쓴이</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong>${reviewView.user_name}</strong>
+									</p>
+								</li>
+							</ul>
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<h6>작성일</h6>
+								</li>
+								<li class="list-inline-item">
+									<p class="text-muted">
+										<strong> <fmt:formatDate value="${reviewView.rv_date}"
+												pattern="yyyy-MM-dd" />
+										</strong>
+									</p>
+								</li>
+							</ul>
+							<p>${reviewView.rv_content}</p>
+							<c:if test="${member.user_name eq reviewView.user_name}">
+								<div class="row pb-3">
+									<div class="col d-grid">
+										<button type="button" class="btn btn-outline-success"
+											onclick="location.href='/reviewBoard/reviewModify?rv_no=${reviewView.rv_no}'">수정</button>
+									</div>
+									<div class="col d-grid">
+										<button type="button" class="btn btn-outline-success"
+											onclick="location.href='/reviewBoard/reviewDelete?rv_no=${reviewView.rv_no}'">삭제</button>
+									</div>
+								</div>
+							</c:if>
+	
+						</div>
+					</div>
+				</div>
+			</c:if>
+			
+		</div>
+
+		<div class="row">
+			<p class="mt-5 text-center"><strong>댓글</strong></p>
 		</div>
 
 		<!-- 댓글 -->
-		<ul>
-			<c:forEach items="${rvReply}" var="rvReply">
-				<li>
-					<div>
-						<p>${rvReply.user_name}
-							/
-							<fmt:formatDate value="${rvReply.rva_date}" pattern="yyyy-MM-dd" />
-						</p>
-						<p>${rvReply.rva_content}</p>
-
-						<c:if test="${member.user_name eq rvReply.user_name}">
-							<p>
-								<a href="/rvReply/rvReplyModify?rva_no=${rvReply.rva_no}">수정</a>,
-								<a
-									href="/rvReply/rvReplyDelete?rva_no=${rvReply.rva_no}&rv_no=${rvReply.rv_no}">삭제</a>
-							</p>
-						</c:if>
+		<div class="row">
+			<div class="col-lg-6 mt-3">
+				<div class="card min-vh-30">
+					<div class="row text-center">
+						<c:forEach items="${rvReply}" var="rvReply">
+							<div class="mb-2 p-4">
+								<p>
+									<i class="fa-solid fa-quote-left"></i>
+									${rvReply.rva_content}
+									<i class="fa-solid fa-quote-right"></i>
+								</p>
+								<h5>${rvReply.user_name}</h5>
+								<h6>
+									<fmt:formatDate value="${rvReply.rva_date}" pattern="yyyy-MM-dd" />
+								</h6>
+							</div>
+						</c:forEach>
 					</div>
-				</li>
-			</c:forEach>
-		</ul>
-
-		<c:if test="${member != null}">
-			<div>
-				<form method="post" action="/rvReply/rvReplyWrite">
-					<p>
-						<textarea name="rva_content" rows="5" cols="50"></textarea>
-					</p>
-					<p>
-						<input type="hidden" name="rv_no" value="${reviewView.rv_no}">
-						<input type="hidden" name="user_name" value="${member.user_name}">
-						<button type="submit">댓글 작성</button>
-					</p>
-
-				</form>
+				</div>
+			</div>
+			<div class="col-lg-6 mt-3">
+				<div class="card">
+							<div class="p-2">
+								<form method="post" action="/rvReply/rvReplyWrite">
+									<p>
+										<textarea class="form-control" name="rva_content" rows="4" cols="50"></textarea>
+									</p>
+									<p>
+										<input type="hidden" name="rv_no" value="${reviewView.rv_no}">
+										<input type="hidden" name="user_name"
+											value="${member.user_name}">
+										<c:if test="${member != null}">
+											<button class="btn btn-outline-success" type="submit">댓글 작성</button>
+										</c:if>
+										<c:if test="${member == null}">
+											<button class="btn btn-outline-success" type="button" id="mybtn">댓글작성</button>
+										</c:if>
+									</p>
+	
+								</form>
+							</div>
+				</div>
+					
 			</div>
 
-		</c:if>
+		</div>
+
+
 	</div>
 
 	<%@ include file="../include/footer.jsp"%>

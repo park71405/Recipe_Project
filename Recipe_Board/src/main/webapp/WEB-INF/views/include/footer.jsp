@@ -7,7 +7,7 @@
 		<div class="row">
 
 			<div class="col-md-3 pt-5">
-				<h2 class="h2 text-success border-bottom pb-3 border-light logo">모먹지</h2>
+				<h2 class="h2 text-success border-bottom pb-3 border-light logo">Just Eat!</h2>
 				<ul class="list-unstyled text-light footer-link-list">
 					<li><i class="fas fa-map-marker-alt fa-fw"></i>충북 충주시 충원대로 268</li>
 					<li><i class="fa fa-phone fa-fw"></i> <a
@@ -22,7 +22,7 @@
 			<div class="col-md-3 pt-5">
 				<h2 class="h2 text-light border-bottom pb-3 border-light">Recipe</h2>
 				<ul class="list-unstyled text-light footer-link-list">
-					<li><a class="text-decoration-none" href="#">바로 조리가능</a></li>
+					<li><a class="text-decoration-none" href="/rcpBoard/nowRcpList?num=1&count=2">바로 조리가능</a></li>
 					<li><a class="text-decoration-none" href="/rcpBoard/rcpKindTypeList?num=1&rcpType=밥">요리 종류</a></li>
 					<li><a class="text-decoration-none" href="/rcpBoard/rcpKindTypeList?num=1&rcpCookM=볶기">조리 방법</a></li>
 					<li><a class="text-decoration-none" href="/rcpBoard/rcpAllList?num=1">전체 보기</a></li>
@@ -43,8 +43,8 @@
 				<ul class="list-unstyled text-light footer-link-list">
 					<li><a class="text-decoration-none" href="/myPage/userInfo">회원 정보</a></li>
 					<li><a class="text-decoration-none" href="/refri/refriTypeList">냉장고</a></li>
-					<li><a class="text-decoration-none" href="#">찜 목록</a></li>
-					<li><a class="text-decoration-none" href="#">내 요리 후기</a></li>
+					<li><a class="text-decoration-none" href="/myPage/rcpHeartList?num=1">찜 목록</a></li>
+					<li><a class="text-decoration-none" href="/myPage/myReviewList?num=1">내 요리 후기</a></li>
 				</ul>
 			</div>
 

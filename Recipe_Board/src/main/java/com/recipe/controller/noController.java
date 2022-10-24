@@ -1,5 +1,7 @@
 package com.recipe.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.recipe.domain.NoBoardVO;
 import com.recipe.domain.Page;
@@ -64,8 +67,24 @@ public class noController {
 	
 	//notice 작성
 	@RequestMapping(value = "/noWrite", method = RequestMethod.POST)
-	public String postNoWrite(NoBoardVO vo) throws Exception {
+	public String postNoWrite(NoBoardVO vo, MultipartFile[] files) throws Exception {
 			
+		String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main\\webapp\\resources\\imgUpload\\rv";
+		
+		for(MultipartFile file : files) {
+			
+			File saveFile = new File(uploadFolder, file.getOriginalFilename());
+			
+			try {
+				file.transferTo(saveFile);
+				vo.setNo_img(file.getOriginalFilename());
+			}catch(IllegalStateException e) {
+				e.getMessage();
+			}catch(IOException e) {
+				e.getMessage();
+			}
+		}
+		
 	  service.noWrite(vo);
 		  
 	  return "redirect:/noBoard/noList?num=1";

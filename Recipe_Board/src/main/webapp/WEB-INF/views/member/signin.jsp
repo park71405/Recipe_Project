@@ -30,10 +30,16 @@
     <!-- 경고창 이쁜거 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
+    <script type="text/javascript">
+    window.onload = function(){
+    	if(${result == 'f'}){
+    		swal('로그인 실패!', "아이디와 비밀번호를 확인해 주세요", 'warning');
+    	}
+    }
+    </script>
+    
 </head>
 <body>
-
-	
 	
 	<%@ include file="../include/header.jsp" %>
 	

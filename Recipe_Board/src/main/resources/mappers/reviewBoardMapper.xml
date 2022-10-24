@@ -59,7 +59,8 @@
 			set
 				rv_title = #{rv_title},
         		rv_content = #{rv_content},
-        		user_name = #{user_name}
+        		user_name = #{user_name},
+        		rv_img = #{rv_img}
 			where rv_no = #{rv_no} 
 	</update>
 	

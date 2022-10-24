@@ -25,42 +25,12 @@
 
 </head>
 <body>
-	<%@ include file="include/header.jsp" %>
-	
-	<%@ include file="include/nav.jsp" %>
-	
-	
-	
-	
 
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-
-<p><a href="/member/signup">회원가입</a>
-<p><a href="/member/signin">로그인</a>
-
-<p><a href="/refri/refriList?num=1">냉장고 목록</a>
-<p><a href="/refri/refriTypeList">냉장고 타입별 목록</a>
-
-<p><a href="/rcpBoard/rcpList?num=1">레시피 목록</a>
-<p><a href="/rcpBoard/rcpAllList?num=1">레시피 목록 전체 보기</a>
-<p><a href="/rcpBoard/rcpKindTypeList?num=1">레시피 요리 종류별 보기</a>
-
-<p><a href="/reviewBoard/reviewList?num=1">요리후기 목록</a>
-<p><a href="/reviewBoard/reviewWrite">요리후기 게시물 작성</a>
-<p><a href="/qaBoard/qaList?num=1">QA 목록</a>
-<p><a href="/qaBoard/qaWrite">QA 작성</a>
-<p><a href="/noBoard/noList?num=1">공지사항 목록</a>
-<p><a href="/noBoard/noWrite">공지사항 작성</a>
-
-<c:if test="${member} != null">	
-	<p><a href="/myPage/userInfo?user_no=${member.user_no}">회원정보</a></p>
-</c:if>
-
-<%@ include file="include/footer.jsp" %>
+<script type="text/javascript">
+	window.onload = function(){
+		location.href = "/rcpBoard/rcpList?num=1";
+	}
+</script>
 
 </body>
 </html>

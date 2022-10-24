@@ -37,8 +37,7 @@
 <%@ include file="../include/header.jsp"%>
 <%@ include file="../include/nav2.jsp"%>
 
-
-<div class="container my-5">
+<div class="container my-5 min-vh-30">
 
 	<c:if test="${member == null}">
 		<script>
@@ -49,7 +48,7 @@
 		</script>
 	</c:if>
 
-	<div class="row text-center mb-5">
+	<div class="row text-center mb-2 mt-5">
 		<div class="col-lg-6 m-auto">
 			<h1 class="h1">INGREDIENT</h1>
 		</div>
@@ -59,48 +58,52 @@
 		<div class="col-1"></div>
 
 		<div class="col-10">
+			<table class="table table-hover justify-content-center">
+				<thead>
+					<tr>
+						<th class="text-center">재료명</th>
+						<th class="text-center">수량</th>
+						<th></th>
+					</tr>
+				</thead>
 
-			<div class="row">
-				<div class="col-md-4 my-3">
-					<a href="/refri/ingreType?type=meat&num=1"> <img
-						src="../../../resources/img/meat.png" alt=""
-						class="img-fluid img-thumbnail" />
-					</a>
-				</div>
-				<div class="col-md-4 my-3">
-					<a href="/refri/ingreType?type=vege&num=1"> <img
-						src="../../../resources/img/vegetable.png" alt=""
-						class="img-fluid img-thumbnail" />
-					</a>
-				</div>
-				<div class="col-md-4 my-3">
-					<a href="/refri/ingreType?type=can&num=1"> <img
-						src="../../../resources/img/canned-food.png" alt=""
-						class="img-fluid img-thumbnail" />
-					</a>
-				</div>
-				<div class="col-md-4 my-3">
-					<a href="/refri/ingreType?type=fish&num=1"> <img
-						src="../../../resources/img/fish.png" alt=""
-						class="img-fluid img-thumbnail" />
-					</a>
-				</div>
-				<div class="col-md-4 my-3">
-					<a href="/refri/ingreType?type=fruits&num=1"> <img
-						src="../../../resources/img/fruits.png" alt=""
-						class="img-fluid img-thumbnail" />
-					</a>
-				</div>
-				<div class="col-md-4 my-3">
-					<a href="/refri/ingreType?type=dairy&num=1"> <img
-						src="../../../resources/img/dairy-products.png" alt=""
-						class="img-fluid img-thumbnail" />
-					</a>
-				</div>
-			</div>
-
+				<tbody>
+					<c:forEach items="${ingreList}" var="ingreList">
+						<tr>
+							<td class="text-center">${ingreList.ingre_name}</td>
+							<td class="text-center">${ingreList.ingre_capacity}</td>
+							<td class="text-center">
+								<button type="button" class="btn btn-outline-success"
+									onclick="location.href='/refri/refriModify?ingre_no=${ingreList.ingre_no}'">수정</button>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 
+		<div class="col-1"></div>
+
+		<script>
+			//추가 버튼 누를 경우
+			document.getElementById("ingreAdd").onclick = function() {
+
+				location.href = "/refri/refriAdd";
+			};
+
+			//영수증으로 추가 버튼 누를 경우
+			document.getElementById("ingreReciAdd").onclick = function() {
+				location.href = "/refri/refriCameAdd";
+			};
+		</script>
+
+	</div>
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-9">
+				<button type="button" class="btn btn-outline-success"
+					onclick="location.href='/rcpBoard/rcpList?num=1'">Main으로 돌아가기</button>
+		</div>
 		<div class="col-1"></div>
 	</div>
 

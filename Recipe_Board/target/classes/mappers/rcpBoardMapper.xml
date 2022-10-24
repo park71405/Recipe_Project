@@ -290,5 +290,55 @@
 		delete from rcp_heart
 		where rcp_seq = #{rcp_seq} and user_name = #{user_name}
 	</select>
+	
+	<!-- 바로 조리 가능한 레시피 목록 -->
+	<select id="nowRcpList" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp.rcp_seq, rcp.rcp_nm, rcp.rcp_way2, rcp.rcp_pat2, rcp.info_eng, rcp.att_file_no_main, parts.ingre_count
+		from recipe rcp 
+			join (select rcp_p.rcp_seq, count(rcp_p.rcp_seq) as 'ingre_count'
+				from refri refri_ingre join recipe_parts rcp_p
+				where rcp_p.rcp_pat_nm like concat('%',refri_ingre.INGRE_NAME,'%')
+					and user_name = #{user_name}
+				group by rcp_p.rcp_seq 
+				having count(rcp_p.rcp_seq) >= #{count}) parts
+		where rcp.rcp_seq = parts.rcp_seq
+		
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			and rcp.rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+
+		order by parts.ingre_count desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 바로 만들 수 있는 레시피 총 개수 -->
+	<select id="nowRcpListCount" parameterType="hashMap" resultType="com.recipe.domain.RcpBoardVO">
+		select 
+			rcp.rcp_seq, rcp.rcp_nm, rcp.rcp_way2, rcp.rcp_pat2, rcp.info_eng, rcp.att_file_no_main, parts.ingre_count
+		from recipe rcp 
+			join (select rcp_p.rcp_seq, count(rcp_p.rcp_seq) as 'ingre_count'
+				from refri refri_ingre join recipe_parts rcp_p
+				where rcp_p.rcp_pat_nm like concat('%',refri_ingre.INGRE_NAME,'%')
+					and user_name = #{user_name}
+				group by rcp_p.rcp_seq 
+				having count(rcp_p.rcp_seq) >= #{count}) parts
+		where rcp.rcp_seq = parts.rcp_seq
+		
+		<if test='rcpSearchType.equals("rcpTitle")'>
+			and rcp.rcp_nm LIKE concat('%', #{rcpKeyword}, '%')
+		</if>
+
+		order by parts.ingre_count desc
+	</select>
+	
+	<!-- //냉장고 재료 줄이기 -->
+	<select id="ingreModify" parameterType="hashMap" resultType="com.recipe.domain.RefriVO">
+		select r.ingre_name, r.ingre_capacity, r.ingre_no
+		from refri r join (select rcp_pat_nm
+			from recipe_parts
+			where rcp_seq = #{rcp_seq}) p
+		where p.rcp_pat_nm like concat('%', r.ingre_name, '%') and r.user_name = #{user_name}
+	</select>
 
 </mapper>

@@ -13,6 +13,8 @@ import com.recipe.domain.RcpBoardVO;
 import com.recipe.domain.RcpHeartVO;
 import com.recipe.domain.RcpPartsVO;
 import com.recipe.domain.RcpProcessVO;
+import com.recipe.domain.RefriVO;
+import com.recipe.domain.nowRcpVO;
 
 @Repository
 public class RcpBoardDAOImpl implements RcpBoardDAO {
@@ -289,5 +291,55 @@ public class RcpBoardDAOImpl implements RcpBoardDAO {
 		
 		sql.delete(namespace + ".rcpHeartDelete", vo);
 	}
+
+	//바로 만들수 있는 레시피 목록
+	@Override
+	public List<nowRcpVO> nowRcpList(int displayPost, int postNum, String rcpSerchType, String rcpKeyword, int count,
+			String user_name) throws Exception {
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+
+		data.put("rcpSearchType", rcpSerchType);
+		data.put("rcpKeyword", rcpKeyword);
+		
+		data.put("count", count);
+		data.put("user_name", user_name);
+		
+		return sql.selectList(namespace + ".nowRcpList", data);
+	}
+
+	//바로 만들 수 있는 레시피 총 개수
+	@Override
+	public int nowRcpListCount(String rcpSerchType, String rcpKeyword, int count, String user_name) throws Exception {
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		
+		data.put("rcpSearchType", rcpSerchType);
+		data.put("rcpKeyword", rcpKeyword);
+		
+		data.put("count", count);
+		data.put("user_name", user_name);
+		
+		List<nowRcpVO> list = new ArrayList<nowRcpVO>();
+		list = sql.selectList(namespace + ".nowRcpListCount", data);
+		
+		return list.size();
+	}
+
+	//냉장고 재료 줄이기
+	@Override
+	public List<RefriVO> ingreModify(String user_name, int rcp_seq) throws Exception {
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		
+		data.put("user_name", user_name);
+		data.put("rcp_seq", rcp_seq);
+		
+		return sql.selectList(namespace + ".ingreModify", data);
+	}
+
 
 }

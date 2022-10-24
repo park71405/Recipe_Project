@@ -47,13 +47,18 @@
 					});
 		</script>
 	</c:if>
-	
+
+	<div class="row text-center mb-2 mt-5">
+		<div class="col-lg-6 m-auto">
+			<h1 class="h1">INGREDIENT</h1>
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="col-1"></div>
 
 		<div class="col-10">
-			<table
-				class="table table-hover justify-content-center">
+			<table class="table table-hover justify-content-center">
 				<thead>
 					<tr>
 						<th class="text-center">재료명</th>
@@ -72,9 +77,9 @@
 							<td class="text-center">${refriList.ingre_type}</td>
 							<td class="text-center">
 								<button type="button" class="btn btn-outline-success"
-											onclick="location.href='/refri/refriModify?ingre_no=${refriList.ingre_no}'">수정</button>
+									onclick="location.href='/refri/refriModify?ingre_no=${refriList.ingre_no}'">수정</button>
 								<button type="button" class="btn btn-outline-success"
-											onclick="location.href='/refri/refriDelete?ingre_no=${refriList.ingre_no}'">삭제</button>
+									onclick="location.href='/refri/refriDelete?ingre_no=${refriList.ingre_no}'">삭제</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -85,81 +90,86 @@
 			<div class="row">
 				<div class="col-6">
 					<button type="button" id="ingreAdd" class="btn btn-outline-success">추가</button>
-					<button type="button" id="ingreReciAdd" class="btn btn-outline-success">영수증으로 추가</button>
+					<button type="button" id="ingreReciAdd"
+						class="btn btn-outline-success visually-hidden">영수증으로 추가</button>
 				</div>
 				<div class="col-6">
-				<ul class="pagination justify-content-end">
-					<li class="page-item">
-						<c:if test="${prev}">
-							<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-								href="/refri/refriList?num=${refriStartPageNum - 1}${refri_searchTypeKeyword}"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a>
-						</c:if>
-					</li>
-					
-					<c:forEach begin="${refriStartPageNum}" end="${refriEndPageNum}" var="num">
-						<span> 
-							<c:if test="${refriSelect != num}">
-								<li class="page-item">
-									<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" 
+					<ul class="pagination justify-content-end">
+						<li class="page-item"><c:if test="${prev}">
+								<a
+									class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+									href="/refri/refriList?num=${refriStartPageNum - 1}${refri_searchTypeKeyword}"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a>
+							</c:if></li>
+
+						<c:forEach begin="${refriStartPageNum}" end="${refriEndPageNum}"
+							var="num">
+							<span> <c:if test="${refriSelect != num}">
+									<li class="page-item"><a
+										class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
 										href="/refri/refriList?num=${num}${refri_searchTypeKeyword}">${num}</a>
-								</li>
-							</c:if> 
-							<c:if test="${refriSelect == num}">
-								<li class="page-item disabled ">
-									<a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" 
-										href="#" tabindex="-1">${num}</a>
-								</li>
-							</c:if>
-						</span>
-					</c:forEach>
-					
-					<li class="page-item">
-						<c:if test="${next}">
-							<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" 
-								href="/refri/refriList?num=${refriEndPageNum + 1}${refri_searchTypeKeyword}"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-							</a>
-						</c:if>
-					</li>
-					
-				</ul>
+									</li>
+								</c:if> <c:if test="${refriSelect == num}">
+									<li class="page-item disabled "><a
+										class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0"
+										href="#" tabindex="-1">${num}</a></li>
+								</c:if>
+							</span>
+						</c:forEach>
+
+						<li class="page-item"><c:if test="${next}">
+								<a
+									class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+									href="/refri/refriList?num=${refriEndPageNum + 1}${refri_searchTypeKeyword}"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								</a>
+							</c:if></li>
+
+					</ul>
 				</div>
-				
+
 			</div>
 
 		</div>
 
 		<div class="col-1"></div>
-	</div>
 
-	<!-- 검색 -->
-	<div class="container-fluid d-flex w-50 h-30 p-2">
-		<select name="refriSearchType">
-			<option value="ingre_name"
-				<c:if test="${refriSearchType eq 'ingre_name'}"> selected </c:if>>재료명</option>
-			<option value="ingre_type"
-				<c:if test="${refriSearchType eq 'ingre_type'}"> selected </c:if>>재료
-				종류</option>
-		</select> <input class="form-control me-2" type="text" name="refri_keyword"
-			value="${refri_keyword}" placeholder="검색" aria-label="Search">
-
-		<button class="btn btn-outline-success" type="submit" id="refriSearchBtn">검색</button>
+		<div class="row align-items-center">
+			<div class="col-2"></div>
+			<div class="col-2">
+				<select class="form-select" name="refriSearchType">
+					<option value="ingre_name"
+						<c:if test="${refriSearchType eq 'ingre_name'}"> selected </c:if>>재료명</option>
+					<option value="ingre_type"
+						<c:if test="${refriSearchType eq 'ingre_type'}"> selected </c:if>>재료
+						종류</option>
+				</select>
+			</div>
+			<div class="col-4">
+				<input class="form-control me-2" type="text" name="refri_keyword"
+					value="${refri_keyword}" placeholder="검색" aria-label="Search">
+			</div>
+			<div class="col-2">
+				<button class="btn btn-outline-success" type="submit"
+					id="refriSearchBtn">검색</button>
+			</div>
+			<div class="col-2"></div>
+		</div>
 	</div>
 
 	<script>
 		//추가 버튼 누를 경우
-		document.getElementById("ingreAdd").onclick = function(){
-			
+		document.getElementById("ingreAdd").onclick = function() {
+
 			location.href = "/refri/refriAdd";
 		};
-		
+
 		//영수증으로 추가 버튼 누를 경우
-		document.getElementById("ingreReciAdd").onclick = function(){
+		document.getElementById("ingreReciAdd").onclick = function() {
 			location.href = "/refri/refriCameAdd";
 		};
-	
+
 		//검색
 		document.getElementById("refriSearchBtn").onclick = function() {
 			let refriSearchType = document.getElementsByName("refriSearchType")[0].value;
@@ -169,7 +179,7 @@
 					+ refriSearchType + "&refri_keyword=" + refri_keyword;
 		};
 	</script>
-	
+
 
 </div>
 

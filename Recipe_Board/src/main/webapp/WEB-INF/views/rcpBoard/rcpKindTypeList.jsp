@@ -34,12 +34,12 @@
 
 	<%@ include file="../include/header.jsp"%>
 
-	<%@ include file="../include/nav.jsp"%>
+	<%@ include file="../include/nav2.jsp"%>
 
 	<div class="container py-5">
 		<div class="row">
 			<div class="col-lg-3">
-				<h1 class="h2 pb-4">레시피 조회</h1>
+				<h1 class="h2 pb-4 mt-3">레시피 조회</h1>
 				<ul class="list-unstyled templatemo-accordion">
 					<li class="pb-3"><a
 						class="collapsed d-flex justify-content-between h3 text-decoration-none"
@@ -77,6 +77,12 @@
 			</div>
 
 			<div class="col-lg-9">
+				<div class="row text-center mb-5">
+					<div class="col-lg-6 m-auto">
+						<h1 class="h1">RECIPE</h1>
+					</div>
+				</div>
+				
 				<div class="row">
 					<c:forEach items="${rcpList}" var="rcpList">
 						<div class="col-md-4">
@@ -107,7 +113,8 @@
 				<div class="row">
 					<ul class="pagination pagination-lg justify-content-end">
 						<li class="page-item"><c:if test="${prev_m}">
-								<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+								<a
+									class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
 									href="/rcpBoard/rcpKindTypeList?num=${rcpStartPageNum - 1}${rcpSearchTypeKeyword}${rcpTypeKeyword}${rcprcpCookMKeyword}"
 									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								</a>
@@ -127,7 +134,8 @@
 							</span>
 						</c:forEach>
 						<li class="page-item"><c:if test="${next_m}">
-								<a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
+								<a
+									class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
 									href="/rcpBoard/rcpKindTypeList?num=${rcpEndPageNum + 1}${rcpSearchTypeKeyword}${rcpTypeKeyword}${rcprcpCookMKeyword}"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a>
@@ -135,16 +143,25 @@
 					</ul>
 				</div>
 
-			</div>
+				<div class="row align-items-center">
+					<div class="col-2"></div>
+					<div class="col-2">
+						<select class="form-select" name="rcpSearchType">
+							<option value="rcpTitle"
+								<c:if test="${rcpSearchType eq 'rcpTitle'}"> selected </c:if>>제목</option>
+						</select>
+					</div>
+					<div class="col-4">
+						<input class="form-control me-2" type="text" name="rcpKeyword"
+							value="${rcpKeyword}" placeholder="검색" aria-label="Search">
+					</div>
+					<div class="col-2">
+						<button class="btn btn-outline-success" type="submit"
+							id="rcpSearchBtn">검색</button>
+					</div>
+					<div class="col-2"></div>
+				</div>
 
-			<div class="container-fluid d-flex w-50 h-50 p-3">
-				<select name="rcpSearchType">
-					<option value="rcpTitle"
-						<c:if test="${rcpSearchType eq 'rcpTitle'}"> selected </c:if>>제목</option>
-				</select> <input class="form-control me-2" type="text" name="rcpKeyword"
-					value="${rcpKeyword}" placeholder="검색" aria-label="Search">
-				<button class="btn btn-outline-success" type="submit"
-					id="rcpSearchBtn">검색</button>
 			</div>
 
 			<script>

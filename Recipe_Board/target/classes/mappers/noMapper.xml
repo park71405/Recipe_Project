@@ -39,14 +39,14 @@
 	<!-- notice 작성 -->
 	<insert id="noWrite" parameterType="com.recipe.domain.NoBoardVO">
  		insert into
-  			notice (no_title, no_content, mana_name)
-   				values(#{no_title}, #{no_content}, #{mana_name})
+  			notice (no_title, no_content, mana_name, no_img)
+   				values(#{no_title}, #{no_content}, #{mana_name}, #{no_img})
 	</insert>
 	
 	<!-- notice 조회 -->
 	<select id="noView" parameterType="int" resultType="com.recipe.domain.NoBoardVO">
 		select
-			no_no, no_title, no_content, mana_name, no_date
+			no_no, no_title, no_content, mana_name, no_date, no_img
 		from
 			notice
 		where 

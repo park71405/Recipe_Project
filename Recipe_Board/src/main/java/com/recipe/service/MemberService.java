@@ -15,4 +15,7 @@ public interface MemberService {
 	//로그아웃
 	public void signout(HttpSession session) throws Exception;
 	
+	//해당 아이디 있는지 존재 여부
+	public int isUser(String user_id) throws Exception;
+	
 }

@@ -36,7 +36,7 @@
 <body>
 
 	<%@ include file="../include/header.jsp"%>
-	<%@ include file="../include/nav.jsp"%>
+	<%@ include file="../include/nav2.jsp"%>
 
 	<div class="container py-5">
 
@@ -58,8 +58,8 @@
 						</a>
 						<ul class="collapse show list-unstyled pl-3">
 							<li><a href="/myPage/userInfo" class="text-decoration-none">회원 정보</a></li>
-							<li><a href="#" class="text-decoration-none">찜 목록</a></li>
-							<li><a href="#" class="text-decoration-none">내 요리 후기</a></li>
+							<li><a href="/myPage/rcpHeartList?num=1" class="text-decoration-none">찜 목록</a></li>
+							<li><a href="/myPage/myReviewList?num=1" class="text-decoration-none">내 요리 후기</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -108,6 +108,10 @@
 						<button type="button" class="btn btn-outline-success btn-block mb-4"
 							 onclick="location.href='userInfoModify' ">
     	              		정보수정
+    	            	</button>
+    	            	<button type="button" class="btn btn-outline-success btn-block mb-4"
+							 onclick="location.href='userInfoDelete?user_id=${userInfo.user_id}' ">
+    	              		회원탈퇴
     	            	</button>
 
 					</div>

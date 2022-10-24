@@ -120,7 +120,24 @@ public class qaBoardController {
 	
 	//QA 수정
 	@RequestMapping(value="/qaModify", method=RequestMethod.POST)
-	public String postQaModify(QaVO vo) throws Exception{
+	public String postQaModify(QaVO vo, MultipartFile[] files) throws Exception{
+		
+String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main\\webapp\\resources\\imgUpload\\qa";
+		
+		for(MultipartFile file : files) {
+			
+			File saveFile = new File(uploadFolder, file.getOriginalFilename());
+			
+			try {
+				file.transferTo(saveFile);
+				vo.setQaImg(file.getOriginalFilename());
+			}catch(IllegalStateException e) {
+				e.getMessage();
+			}catch(IOException e) {
+				e.getMessage();
+			}
+		}
+		
 		service.qaModify(vo);
 		
 		return "redirect:/qaBoard/qaView?qa_no=" + vo.getQa_no();

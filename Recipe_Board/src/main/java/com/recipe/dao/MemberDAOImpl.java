@@ -26,4 +26,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO signin(MemberVO vo) throws Exception {
 		return sql.selectOne(namespace + ".signin", vo);
 	}
+
+	//해당 아이디 있는지 존재 여부
+	@Override
+	public int isUser(String user_id) throws Exception {
+		return sql.selectOne(namespace + ".isUser", user_id);
+	}
 }

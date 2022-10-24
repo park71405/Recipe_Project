@@ -56,7 +56,8 @@
 			set 
 				qa_title = #{qa_title},
 				qa_content = #{qa_content},
-				user_name = #{user_name}
+				user_name = #{user_name},
+				qaImg = #{qaImg}
 			where qa_no = #{qa_no}
 	</update>
 	

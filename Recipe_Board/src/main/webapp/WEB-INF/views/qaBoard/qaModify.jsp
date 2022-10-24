@@ -26,6 +26,10 @@
     <script src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script src="../../resources/js/templatemo.js"></script>
     <script src="../../resources/js/custom.js"></script>
+    
+     <!-- 경고창 이쁜거 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 <body>
 
@@ -34,17 +38,70 @@
 	<%@ include file="../include/header.jsp" %>
 	
 
-	<%@ include file="../include/nav.jsp" %>
+	<%@ include file="../include/nav2.jsp" %>
 	
 
-	<div class="container">
+	<div class="container  my-5">
 	
 		<c:if test="${member == null}">
 			<script>
-				alert("로그인을 하셔야 QA를 작성하실 수 있습니다.");
-				location.href = "../member/signin";
+				swal('로그인 필요!', '로그인이 필요한 기능입니다. 로그인해주세요.', 'warning').then(function(){
+					location.href = "../member/signin";
+				});
 			</script>
 		</c:if>
+		
+		<div class="row col-md-8" style="float: none; margin: 0 auto;">
+			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
+					<div class="mb-3 row">
+						<label class="col-sm-2 col-form-label">제목</label>
+						<div class="col-sm-10">
+							<input type="text" name="qa_title" value="${qaView.qa_title}" class="form-control">
+						</div>
+					</div>		
+					
+					<div class="mb-3 row">
+						<label class="col-sm-2 col-form-label">작성자</label>
+						<div class="col-sm-10">
+							<input type="text" name="user_name" value="${member.user_name}" readonly">
+						</div>
+					</div>		
+					
+					<div class="mb-3 form-floating">
+						<textarea name="qa_content" class="form-control h-25" rows="10" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
+							${qaView.qa_content}
+						</textarea>
+						<label for="floatingTextarea2">내용</label>
+					</div>
+					
+					<div class="input-group mb-3 row">
+						<label class="col-sm-2 col-form-label">이미지</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control" name="files" onchange="readURL(this)" aria-label="Upload" multiple="multiple"/>
+						</div>
+						<img class="embed-responsive-item" id="preview" />
+
+						<script>
+							function readURL(input) {
+							  	if (input.files && input.files[0]) {
+							    	var reader = new FileReader();
+							    	reader.onload = function(e) {
+							      		document.getElementById('preview').src = e.target.result;
+							    	};
+							    	reader.readAsDataURL(input.files[0]);
+							  	} else {
+							    	document.getElementById('preview').src = "";
+							  	}
+							}	
+						</script>
+					</div>
+					
+					<div class="mb-3 col-auto" style="float: right">
+						<a href="qaList?num=1" role="button" class="btn btn-outline-secondary">취소</a>
+						<button type="submit" class="btn btn-outline-success" id="btn-save">수정</button>
+					</div>
+			</form>
+		</div>
 	
 		<form method="post">
 		

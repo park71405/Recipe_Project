@@ -35,10 +35,10 @@
 	<%@ include file="../include/header.jsp" %>
 	
 
-	<%@ include file="../include/nav.jsp" %>
+	<%@ include file="../include/nav2.jsp" %>
 	
 
-	<div class="container">
+	<div class="container my-5">
 	
 		<c:if test="${member == null}">
 			<script>
