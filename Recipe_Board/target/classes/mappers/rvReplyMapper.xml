@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.recipe.mappers.rvReply">
+	
+	<!-- 댓글 조회 -->
+	<select id="rvReplyList" parameterType="int" resultType="com.recipe.domain.RvReplyVO">
+		select
+			rva_no, rva_content, rva_date, rv_no, user_name
+		from review_answer
+			where rv_no = #{rv_no}		
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="rvReplyWrite" parameterType="com.recipe.domain.RvReplyVO">
+		insert into review_answer(rva_content, rv_no, user_name)
+			value(#{rva_content}, #{rv_no}, #{user_name})
+	</insert>
+	
+	<!-- 댓글 1개 조회 -->
+	<select id="rvReplyView" parameterType="int" resultType="com.recipe.domain.RvReplyVO">
+		select
+			rva_content, rv_no, user_name
+		from review_answer
+		where rva_no = #{rva_no}
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="rvReplyModify" parameterType="com.recipe.domain.RvReplyVO">
+		update review_answer set
+			user_name = #{user_name},
+			rva_content = #{rva_content}
+		where rva_no = #{rva_no}	
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="rvReplyDelete" parameterType="com.recipe.domain.RvReplyVO">
+		delete from review_answer
+			where rva_no = #{rva_no}	
+	</delete>
+
+</mapper>
