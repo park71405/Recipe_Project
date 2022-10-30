@@ -55,6 +55,20 @@ public class NoBoardDAOImpl implements NoBoardDAO {
 		
 		return sql.selectOne(namespace + ".noView", no_no);
 	}
+
+	//notice delete 
+	@Override
+	public void noDelete(int no_no) throws Exception {
+		
+		sql.delete(namespace + ".noDelete", no_no);
+	}
+
+	//notice modify
+	@Override
+	public void noModify(NoBoardVO vo) throws Exception {
+		
+		sql.update(namespace + ".noModify", vo);
+	}
 	
 	
 

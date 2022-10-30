@@ -20,5 +20,11 @@ public interface NoBoardService {
 	
 	//notice 조회
 	public NoBoardVO noView(int no_no) throws Exception;
-		
+	
+	//notice 삭제
+	public void noDelete(int no_no) throws Exception;
+	
+	//notice 수정
+	public void noModify(NoBoardVO vo) throws Exception;
+			
 }

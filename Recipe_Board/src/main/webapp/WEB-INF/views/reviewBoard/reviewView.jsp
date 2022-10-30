@@ -8,10 +8,8 @@
 <title>모먹지</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -41,17 +39,21 @@
 	function message(){
 		swal('로그인 필요', '댓글을 작성하시려면 로그인이 필요합니다.', 'warning');
 	}
+	
 </script>
 
 </head>
 <body>
 
-
-
-	<%@ include file="../include/header.jsp"%>
-
-	<%@ include file="../include/nav2.jsp"%>
-
+	<c:if test="${manager == null}">
+		<%@ include file="../include/header.jsp" %>
+		<%@ include file="../include/nav2.jsp" %>
+	</c:if>
+	
+	<c:if test="${manager != null}">
+		<%@ include file="../include/header3.jsp" %>
+		<%@ include file="../include/nav3.jsp" %>
+	</c:if>
 
 	<div class="container my-1 bg-light pb-5">
 
@@ -67,14 +69,18 @@
 				<div class="col-lg-7 mt-5">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="h2">${reviewView.rv_title}</h1>
+							<div class="row">
+								<h1 class="h2 col-9"><c:out value="${reviewView.rv_title}"/></h1>
+								<button type="button" class="col-3 btn btn-outline-success" id="alert">신고</button>
+							</div>
+							
 							<ul class="list-inline">
 								<li class="list-inline-item">
 									<h6>글쓴이</h6>
 								</li>
 								<li class="list-inline-item">
 									<p class="text-muted">
-										<strong>${reviewView.user_name}</strong>
+										<strong><c:out value="${reviewView.user_name}"/></strong>
 									</p>
 								</li>
 							</ul>
@@ -112,14 +118,17 @@
 				<div class="col-lg-12 mt-5">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="h2">${reviewView.rv_title}</h1>
+							<div class="row">
+								<h1 class="h2 col-9"><c:out value="${reviewView.rv_title}"/></h1>
+								<button id="alert" type="button" class="col-3 btn btn-outline-success">신고</button>
+							</div>
 							<ul class="list-inline">
 								<li class="list-inline-item">
 									<h6>글쓴이</h6>
 								</li>
 								<li class="list-inline-item">
 									<p class="text-muted">
-										<strong>${reviewView.user_name}</strong>
+										<strong><c:out value="${reviewView.user_name}"/></strong>
 									</p>
 								</li>
 							</ul>
@@ -169,10 +178,10 @@
 							<div class="mb-2 p-4">
 								<p>
 									<i class="fa-solid fa-quote-left"></i>
-									${rvReply.rva_content}
+									<c:out value="${rvReply.rva_content}"/>
 									<i class="fa-solid fa-quote-right"></i>
 								</p>
-								<h5>${rvReply.user_name}</h5>
+								<h5><c:out value="${rvReply.user_name}"/></h5>
 								<h6>
 									<fmt:formatDate value="${rvReply.rva_date}" pattern="yyyy-MM-dd" />
 								</h6>
@@ -210,9 +219,27 @@
 
 
 	</div>
-
-	<%@ include file="../include/footer.jsp"%>
-
+	
+	<c:if test="${manager != null}">
+			<%@ include file="../include/footer3.jsp" %>
+	</c:if>
+	<c:if test="${manager == null}">
+			<%@ include file="../include/footer.jsp" %>
+	</c:if>
 
 </body>
+
+<script>
+document.getElementById("alert").onclick = function() {
+	
+	if(${member == null}){
+		swal('로그인 필요', '해당 글을 신고하시려면 로그인이 필요합니다.', 'warning');
+	}else{
+		location.href = "/reviewBoard/alert?rv_no=${reviewView.rv_no}&rv_warning=${reviewView.rv_warning}";
+	}
+
+};
+
+</script>
+
 </html>

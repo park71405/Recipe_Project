@@ -334,7 +334,7 @@
 	
 	<!-- //냉장고 재료 줄이기 -->
 	<select id="ingreModify" parameterType="hashMap" resultType="com.recipe.domain.RefriVO">
-		select r.ingre_name, r.ingre_capacity, r.ingre_no
+		select distinct r.ingre_name, r.ingre_capacity, r.ingre_no
 		from refri r join (select rcp_pat_nm
 			from recipe_parts
 			where rcp_seq = #{rcp_seq}) p

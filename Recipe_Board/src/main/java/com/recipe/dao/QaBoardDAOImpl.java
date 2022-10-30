@@ -64,4 +64,15 @@ public class QaBoardDAOImpl implements QaBoardDAO {
 		sql.delete(namespace + ".qaDelete", qa_no);
 	}
 
+	//QA 신고
+	@Override
+	public void alert(int qa_no, int qa_warning) throws Exception {
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		
+		data.put("qa_no", qa_no);
+		data.put("qa_warning", qa_warning+1);
+		
+		sql.update(namespace + ".alert", data);
+	}
+
 }

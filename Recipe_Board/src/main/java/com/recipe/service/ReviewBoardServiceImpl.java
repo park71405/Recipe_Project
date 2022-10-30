@@ -56,4 +56,10 @@ public class ReviewBoardServiceImpl implements ReviewBoardService {
 		
 	}
 
+	//리뷰 신고
+	@Override
+	public void alert(int rv_no, int rv_warning) throws Exception {
+		dao.alert(rv_no, rv_warning);
+	}
+
 }

@@ -24,4 +24,7 @@ public interface ReviewBoardDAO {
 	//리뷰 삭제
 	public void reviewDelete(int rv_no) throws Exception;
 	
+	//리뷰 신고
+	public void alert(int rv_no, int rv_warning) throws Exception;
+	
 }

@@ -24,4 +24,7 @@ public interface QaBoardDAO {
 	//QA 삭제
 	public void qaDelete(int qa_no) throws Exception;
 	
+	//QA 신고
+	public void alert(int qa_no, int qa_warning) throws Exception;
+	
 }

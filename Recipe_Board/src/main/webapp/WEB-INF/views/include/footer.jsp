@@ -7,7 +7,7 @@
 		<div class="row">
 
 			<div class="col-md-3 pt-5">
-				<h2 class="h2 text-success border-bottom pb-3 border-light logo">Just Eat!</h2>
+				<h2 class="h2 text-success border-bottom pb-3 border-light logo">CookCook</h2>
 				<ul class="list-unstyled text-light footer-link-list">
 					<li><i class="fas fa-map-marker-alt fa-fw"></i>충북 충주시 충원대로 268</li>
 					<li><i class="fa fa-phone fa-fw"></i> <a
@@ -56,7 +56,7 @@
 			<div class="row pt-2">
 				<div class="col-12">
 					<p class="text-left text-light">
-						2021 모먹지 Company
+						<a href="/manager/manalogin" style="text-decoration: none;">2021 모먹지 Company</a>
 					</p>
 				</div>
 			</div>

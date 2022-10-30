@@ -10,8 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.png">
 
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -63,7 +62,7 @@
 					<div class="mb-3 row">
 						<label class="col-sm-2 col-form-label">작성자</label>
 						<div class="col-sm-10">
-							<input type="text" name="user_name" value="${member.user_name}" readonly">
+							<input type="text" name="user_name" value="${member.user_name}" readonly>
 						</div>
 					</div>		
 					

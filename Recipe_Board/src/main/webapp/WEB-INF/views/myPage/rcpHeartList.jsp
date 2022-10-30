@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -71,7 +70,11 @@
 					</ul>
 				</div>
 
-				<div class="col-md-9">
+				<div class="col-md-9 text-center">
+					<div class="col-lg-6 m-auto">
+						<h1 class="h1">찜 목록</h1>
+					</div>
+
 					<div class="container px-4 px-lg-5 mt-5">
 						<div
 							class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -88,7 +91,8 @@
 												<!-- 레시피 name-->
 												<h5 class="fw-bolder">
 													<a href="/rcpBoard/rcpView?rcp_seq=${rcpList.rcp_seq}"
-														style="text-decoration: none; color: #476268;">${rcpList.rcp_nm}</a>
+														style="text-decoration: none; color: #476268;"><c:out
+															value="${rcpList.rcp_nm}"></c:out></a>
 												</h5>
 											</div>
 										</div>

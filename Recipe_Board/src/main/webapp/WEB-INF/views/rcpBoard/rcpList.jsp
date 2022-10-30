@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -100,7 +99,7 @@
 						<div class="col-md-4 col-lg-6 mb-0 d-flex align-items-center">
 							<div class="text-align-left align-self-center">
 								<h1 class="h1 text-success">
-									<strong>${rcpImg1.rcp_nm}</strong>
+									<strong><c:out value="${rcpImg1.rcp_nm}" /></strong>
 								</h1>
 
 							</div>
@@ -120,7 +119,7 @@
 						<div class="col-lg-6 mb-0 d-flex align-items-center">
 							<div class="text-align-left">
 								<h1 class="h1 text-success">
-									<strong>${rcpImg2.rcp_nm}</strong>
+									<strong><c:out value="${rcpImg2.rcp_nm}" /></strong>
 								</h1>
 
 							</div>
@@ -140,7 +139,7 @@
 						<div class="col-lg-6 mb-0 d-flex align-items-center">
 							<div class="text-align-left">
 								<h1 class="h1 text-success">
-									<strong>${rcpImg3.rcp_nm}</strong>
+									<strong><c:out value="${rcpImg3.rcp_nm}" /></strong>
 								</h1>
 
 							</div>
@@ -239,7 +238,7 @@
 										<!-- 레시피 name-->
 										<h5 class="fw-bolder">
 											<a href="/rcpBoard/rcpView?rcp_seq=${rcpList.rcp_seq}"
-												style="text-decoration: none; color: #476268;">${rcpList.rcp_nm}</a>
+												style="text-decoration: none; color: #476268;"><c:out value="${rcpList.rcp_nm}" /></a>
 										</h5>
 									</div>
 								</div>
@@ -293,7 +292,9 @@
 						</c:if></li>
 
 				</ul>
-			</div></div>
+			</div>
+		</section>		
+	</div>
 
 	<%@ include file="../include/footer.jsp"%>
 

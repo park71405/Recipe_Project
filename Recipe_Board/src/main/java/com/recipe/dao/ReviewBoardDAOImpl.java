@@ -65,4 +65,16 @@ public class ReviewBoardDAOImpl implements ReviewBoardDAO {
 		sql.delete(namespace + ".reviewDelete", rv_no);
 	}
 
+	//리뷰 신고
+	@Override
+	public void alert(int rv_no, int rv_warning) throws Exception {
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		
+		data.put("rv_no", rv_no);
+		data.put("rv_warning", rv_warning+1);
+		
+		sql.update(namespace + ".alert", data);
+	}
+
 }

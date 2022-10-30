@@ -52,4 +52,11 @@ public class QaBoardServiceImpl implements QaBoardService {
 		dao.qaDelete(qa_no);
 	}
 
+	//QA 신고
+	@Override
+	public void alert(int qa_no, int qa_warning) throws Exception {
+		
+		dao.alert(qa_no, qa_warning);
+	}
+
 }

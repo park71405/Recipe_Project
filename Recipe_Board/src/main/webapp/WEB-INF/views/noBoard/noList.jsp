@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -64,14 +63,14 @@
 				<tbody>
 					<c:forEach items="${noList}" var="noList">
 						<tr>
-							<td class="text-center">${noList.no_no}</td>
+							<td class="text-center"><c:out value="${noList.no_no}"></c:out></td>
 							<td class="text-center"><a
 								href="/noBoard/noView?no_no=${noList.no_no}"
-								style="text-decoration: none; color: #476268;">${noList.no_title}</a>
+								style="text-decoration: none; color: #476268;"><c:out value="${noList.no_title}" /></a>
 							</td>
 							<td class="text-center"><fmt:formatDate
 									value="${noList.no_date}" pattern="yyyy-MM-dd" /></td>
-							<td class="text-center">${noList.mana_name}</td>
+							<td class="text-center"><c:out value="${noList.mana_name}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -101,7 +100,7 @@
 								</div>
 								<div class="card-body">
 									<a href="/rcpBoard/rcpView?rcp_seq=${rcpList.rcp_seq}"
-										class="h3 text-decoration-none">${rcpList.rcp_nm}</a>
+										class="h3 text-decoration-none"><c:out value="${rcpList.rcp_nm}" /></a>
 								</div>
 							</div>
 						</div>

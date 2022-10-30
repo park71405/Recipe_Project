@@ -139,16 +139,17 @@ where r.user_name = 'hahaha' and p.rcp_seq = 3297
 	and p.rcp_pat_nm like '%%';
     
 ##recipe_parts에서 rcp_seq 가 #{rcp_seq}인 거 찾은거에서 rcp_pat_nm이 refri의 ingre_name과 같은 것 찾기
-
 select *
 from recipe_parts
 where rcp_seq = 3297;
 
 ## 해당 레시피 재료 중 가지고 있는 재료의 이름과 개수
-select r.ingre_name, r.ingre_capacity
+select distinct r.ingre_name, r.ingre_capacity
 from refri r join (select rcp_pat_nm
 	from recipe_parts
 	where rcp_seq = 3297) p
 where p.rcp_pat_nm like concat('%', r.ingre_name, '%') and r.user_name = 'hahaha';
 
 #######################################
+
+select qa_no, qa_title, qa_content, user_name, qa_date, qaImg, qa_warning from qa;

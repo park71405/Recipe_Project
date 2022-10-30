@@ -58,6 +58,7 @@ public class MemberController {
 
 		int count = service.isUser(vo.getUser_id());
 		if(count == 0) {
+			rttr.addFlashAttribute("msg", false);
 			return "redirect:/member/signin?result=f";
 		}
 		

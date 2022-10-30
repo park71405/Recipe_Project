@@ -9,8 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.png">
 
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -41,8 +40,8 @@
 			<c:forEach items="${qaReply}" var="qaReply">
 				<li>
 					<div>
-						<p>${qaReply.user_name} / <fmt:formatDate value="${qaReply.qaa_date}" pattern="yyyy-MM-dd" /></p>
-						<p>${qaReply.qaa_content}</p>
+						<p><c:out value="${qaReply.user_name}" /> / <fmt:formatDate value="${qaReply.qaa_date}" pattern="yyyy-MM-dd" /></p>
+						<p><c:out value="${qaReply.qaa_content}" /></p>
 						
 						<c:if test="${member.user_name eq qaReply.user_name}">
 							<p>

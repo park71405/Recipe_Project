@@ -7,8 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.png">
 
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -32,15 +31,15 @@
 
 	
 	
-	<%@ include file="../include/header.jsp" %>
+	<%@ include file="../include/header3.jsp" %>
 	
 
-	<%@ include file="../include/nav2.jsp" %>
+	<%@ include file="../include/nav3.jsp" %>
 	
 
 	<div class="container my-5">
 	
-		<c:if test="${member == null}">
+		<c:if test="${manager == null}">
 			<script>
 				swal('로그인 필요!', '로그인이 필요한 기능입니다. 로그인해주세요.', 'warning').then(function(){
 					location.href = "../member/signin";
@@ -48,24 +47,60 @@
 			</script>
 		</c:if>
 	
-		<form method="post">
+		<div class="row col-md-8" style="float: none; margin: 0 auto;">
+			<form role="form" method="post" autocomplete="off" enctype="multipart/form-data">
+				<div class="mb-3 row">
+					<label class="col-sm-2 col-form-label">제목</label>
+					<div class="col-sm-10">
+						<input type="text" name="no_title" class="form-control">
+					</div>
+				</div>
+				
+				<div class="mb-3 row">
+					<label class="col-sm-2 col-form-label">작성자</label>
+					<div class="col-sm-10">
+						<input type="text" name="mana_name" readonly class="form-control-plaintext" value="${manager.mana_name}">
+					</div>
+				</div>
+				
+				<div class="mb-3 form-floating">
+					<textarea name="no_content" class="form-control h-25" rows="10" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+					<label for="floatingTextarea2">내용</label>
+				</div>
+				
+				<div class="input-group mb-3 row">
+					<label class="col-sm-2 col-form-label">이미지</label>
+					<div class="col-sm-10">
+						<input type="file" class="form-control" name="files" onchange="readURL(this)" aria-label="Upload" multiple="multiple"/>
+					</div>
+					<img class="embed-responsive-item" id="preview" />
 
-			<label>제목</label>
-			<input type="text" name="no_title" /><br />
-
-			<label>작성자</label>
-			<input type="text" name="mana_name" value="관리자1" readonly /><br />
-	
-			<label>내용</label>
-			<textarea cols="50" rows="5" name="no_content"></textarea><br />
-
-			<button type="submit">작성</button>
-
-		</form>
+					<script>
+						function readURL(input) {
+						  	if (input.files && input.files[0]) {
+						    	var reader = new FileReader();
+						    	reader.onload = function(e) {
+						      		document.getElementById('preview').src = e.target.result;
+						    	};
+						    	reader.readAsDataURL(input.files[0]);
+						  	} else {
+						    	document.getElementById('preview').src = "";
+						  	}
+						}	
+					</script>
+				</div>
+				
+				<div class="mb-3 col-auto" style="float: right">
+					<a href="noList?num=1" role="button" class="btn btn-outline-secondary">취소</a>
+					<button type="submit" class="btn btn-outline-success" id="btn-save">등록</button>
+				</div>
+				
+			</form>
+		</div>	
 	
 	</div>
 
-	<%@ include file="../include/footer.jsp" %>
+	<%@ include file="../include/footer3.jsp" %>
 	
 
 </body>

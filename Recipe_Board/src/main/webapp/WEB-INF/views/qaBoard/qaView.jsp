@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -48,14 +47,18 @@
 </head>
 <body>
 
+	<c:if test="${manager == null}">
+		<%@ include file="../include/header.jsp" %>
+		<%@ include file="../include/nav2.jsp" %>
+	</c:if>
+	
+	<c:if test="${manager != null}">
+		<%@ include file="../include/header3.jsp" %>
+		<%@ include file="../include/nav3.jsp" %>
+	</c:if>
 
 
-	<%@ include file="../include/header.jsp"%>
-
-	<%@ include file="../include/nav.jsp"%>
-
-
-	<div class="container  my-1 bg-light pb-5">
+	<div class="container  my-3 bg-light pb-5 ">
 
 		<div class="row">
 			<c:if test="${reviewView.rv_img != null }">
@@ -69,14 +72,17 @@
 				<div class="col-lg-7 mt-5">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="h2">${qaView.qa_title}</h1>
+							<div class="row">
+								<h1 class="h2 col-9"><c:out value="${qaView.qa_title}"/></h1>
+								<button type="button" class="col-3 btn btn-outline-success" id="alert">신고</button>
+							</div>
 							<ul class="list-inline">
 								<li class="list-inline-item">
 									<h6>글쓴이</h6>
 								</li>
 								<li class="list-inline-item">
 									<p class="text-muted">
-										<strong>${qaView.user_name}</strong>
+										<strong><c:out value="${qaView.user_name}" /></strong>
 									</p>
 								</li>
 							</ul>
@@ -114,14 +120,17 @@
 				<div class="col-lg-12 mt-5">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="h2">${qaView.qa_title}</h1>
+							<div class="row">
+								<h1 class="h2 col-9"><c:out value="${qaView.qa_title}"/></h1>
+								<button type="button" class="col-3 btn btn-outline-success" id="alert">신고</button>
+							</div>
 							<ul class="list-inline">
 								<li class="list-inline-item">
 									<h6>글쓴이</h6>
 								</li>
 								<li class="list-inline-item">
 									<p class="text-muted">
-										<strong>${qaView.user_name}</strong>
+										<strong><c:out value="${qaView.user_name}" /></strong>
 									</p>
 								</li>
 							</ul>
@@ -215,7 +224,26 @@
 
 	</div>
 
-	<%@ include file="../include/footer.jsp"%>
+	<c:if test="${manager != null}">
+			<%@ include file="../include/footer3.jsp" %>
+	</c:if>
+	<c:if test="${manager == null}">
+			<%@ include file="../include/footer.jsp" %>
+	</c:if>
 
 </body>
+
+<script>
+document.getElementById("alert").onclick = function() {
+	
+	if(${member == null}){
+		swal('로그인 필요', '해당 글을 신고하시려면 로그인이 필요합니다.', 'warning');
+	}else{
+		location.href = "/qaBoard/alert?qa_no=${qaView.qa_no}&qa_warning=${qaView.qa_warning}";
+	}
+
+};
+
+</script>
+
 </html>

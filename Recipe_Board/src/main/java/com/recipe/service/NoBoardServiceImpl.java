@@ -44,4 +44,17 @@ public class NoBoardServiceImpl implements NoBoardService {
 		return dao.noView(no_no);
 	}
 
+	//notice 삭제
+	@Override
+	public void noDelete(int no_no) throws Exception {
+		
+		dao.noDelete(no_no);
+	}
+
+	//notice 수정
+	@Override
+	public void noModify(NoBoardVO vo) throws Exception {
+		dao.noModify(vo);
+	}
+
 }

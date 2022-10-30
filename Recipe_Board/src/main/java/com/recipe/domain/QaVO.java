@@ -22,7 +22,7 @@ public class QaVO {
 	private String qa_title;
 	private String qa_content;
 	private Date qa_date;
-	private boolean qa_warning;
+	private int qa_warning;
 	private String user_name;
 	private String qaImg;
 	
@@ -50,12 +50,6 @@ public class QaVO {
 	public void setQa_date(Date qa_date) {
 		this.qa_date = qa_date;
 	}
-	public boolean isQa_warning() {
-		return qa_warning;
-	}
-	public void setQa_warning(boolean qa_warning) {
-		this.qa_warning = qa_warning;
-	}
 	public String getUser_name() {
 		return user_name;
 	}
@@ -67,6 +61,12 @@ public class QaVO {
 	}
 	public void setQaImg(String qaImg) {
 		this.qaImg = qaImg;
+	}
+	public int getQa_warning() {
+		return qa_warning;
+	}
+	public void setQa_warning(int qa_warning) {
+		this.qa_warning = qa_warning;
 	}
 	
 }

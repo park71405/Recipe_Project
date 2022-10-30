@@ -10,8 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.png">
 
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -32,7 +31,7 @@
     
     <script type="text/javascript">
     window.onload = function(){
-    	if(${result == 'f'}){
+    	if(${msg == false}){
     		swal('로그인 실패!', "아이디와 비밀번호를 확인해 주세요", 'warning');
     	}
     }
@@ -53,7 +52,7 @@
       				<div class="row gx-lg-5 align-items-center">
         				<div class="col-lg-6 mb-5 mb-lg-0">
           					<h1 class="my-5 display-3 fw-bold ls-tight">
-            					오늘은 모먹지?
+            					CookCook
           					</h1>
           					<p style="color: hsl(217, 10%, 50.8%)">
             					오늘도 무엇을 먹어야하지는 모르겠는 자취생을 위한<br />

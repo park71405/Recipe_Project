@@ -122,7 +122,7 @@ public class qaBoardController {
 	@RequestMapping(value="/qaModify", method=RequestMethod.POST)
 	public String postQaModify(QaVO vo, MultipartFile[] files) throws Exception{
 		
-String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main\\webapp\\resources\\imgUpload\\qa";
+		String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main\\webapp\\resources\\imgUpload\\qa";
 		
 		for(MultipartFile file : files) {
 			
@@ -151,4 +151,14 @@ String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main
 		return "redirect:/qaBoard/qaList?num=1";
 	}
 	
+	
+	//리뷰 신고
+	@RequestMapping(value="/alert", method=RequestMethod.GET)
+	public String getAlert(@RequestParam("qa_no") int qa_no,
+			@RequestParam("qa_warning") int qa_warning) throws Exception{
+			
+		service.alert(qa_no, qa_warning);
+			
+		return "redirect:/qaBoard/qaList?num=1";
+	}
 }

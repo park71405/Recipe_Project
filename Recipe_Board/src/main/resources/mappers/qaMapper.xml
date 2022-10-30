@@ -12,7 +12,7 @@
 	<!-- qa 목록 -->
 	<select id="qaList" parameterType="hashMap" resultType="com.recipe.domain.QaVO">
 		select 
-			qa_no, qa_title, user_name, qa_date
+			qa_no, qa_title, user_name, qa_date, qa_warning
 		from qa
 		
 		<if test='qa_searchType.equals("qa_title")'>
@@ -43,7 +43,7 @@
 	<!-- QA 조회 -->
 	<select id="qaView" parameterType="int" resultType="com.recipe.domain.QaVO">
 		select
-			qa_no, qa_title, qa_content, user_name, qa_date, qaImg
+			qa_no, qa_title, qa_content, user_name, qa_date, qaImg, qa_warning
 		from
 			qa
 		where 
@@ -67,5 +67,14 @@
 			from qa
 		where qa_no = #{qa_no}
 	</delete>
+
+	<!-- 후기 신고 -->
+	<update id="alert" parameterType="com.recipe.domain.QaVO">
+		update qa
+			set 
+				qa_warning = #{qa_warning}
+			where qa_no = #{qa_no}
+				
+	</update>
 
 </mapper>

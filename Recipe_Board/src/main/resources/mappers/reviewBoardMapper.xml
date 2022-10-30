@@ -12,7 +12,7 @@
 	<!-- 리뷰 목록 -->
 	<select id="reviewList" parameterType="hashMap" resultType="com.recipe.domain.ReviewBoardVO">
 		select
-			rv_no, rv_title, rv_date, user_name
+			rv_no, rv_title, rv_date, user_name, rv_warning
 		from review
 		
 		<if test='reviewSearchType.equals("rv_title")'>
@@ -71,4 +71,12 @@
 		where rv_no = #{rv_no}
 	</delete>
 
+	<!-- 후기 신고 -->
+	<update id="alert" parameterType="com.recipe.domain.ReviewBoardVO">
+		update review
+			set 
+				rv_warning = #{rv_warning}
+			where rv_no = #{rv_no}
+				
+	</update>
 </mapper>

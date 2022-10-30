@@ -132,5 +132,15 @@ public class ReviewBoardController {
 		
 		return "redirect:/reviewBoard/reviewList?num=1";
 	}
+	
+	//리뷰 신고
+	@RequestMapping(value="/alert", method=RequestMethod.GET)
+	public String getAlert(@RequestParam("rv_no") int rv_no,
+			@RequestParam("rv_warning") int rv_warning) throws Exception{
+		
+		service.alert(rv_no, rv_warning);
+		
+		return "redirect:/reviewBoard/reviewList?num=1";
+	}
 
 }

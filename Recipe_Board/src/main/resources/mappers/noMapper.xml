@@ -52,5 +52,22 @@
 		where 
 			no_no = #{no_no}
 	</select>
+	
+	<!-- 공지 삭제 -->
+	<delete id="noDelete" parameterType="int">
+		delete
+			from notice
+		where no_no = #{no_no}
+	</delete>
+	
+	<!-- notice 수정 -->
+	<update id="noModify" parameterType="com.recipe.domain.NoBoardVO">
+		update notice
+			set 
+				no_title = #{no_title},
+				no_content = #{no_content},
+				no_img = #{no_img}
+			where no_no = #{no_no}
+	</update>
 
 </mapper>

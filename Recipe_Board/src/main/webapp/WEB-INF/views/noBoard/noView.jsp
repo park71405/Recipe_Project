@@ -9,8 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../resources/img/favicon.png">
 
     <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -34,11 +33,15 @@
 </head>
 <body>
 
+	<c:if test="${manager == null}">
+		<%@ include file="../include/header.jsp" %>
+		<%@ include file="../include/nav.jsp" %>
+	</c:if>
 	
-	
-	<%@ include file="../include/header.jsp" %>
-	
-	<%@ include file="../include/nav.jsp" %>
+	<c:if test="${manager != null}">
+		<%@ include file="../include/header3.jsp" %>
+		<%@ include file="../include/nav3.jsp" %>
+	</c:if>
 	
 
 	<div class="container my-1 bg-light pb-5">
@@ -54,14 +57,14 @@
 				<div class="col-lg-7 mt-5">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="h2">${noView.no_title}</h1>
+							<h1 class="h2"><c:out value="${noView.no_title}" /></h1>
 							<ul class="list-inline">
 								<li class="list-inline-item">
 									<h6>글쓴이</h6>
 								</li>
 								<li class="list-inline-item">
 									<p class="text-muted">
-										<strong>${noView.mana_name}</strong>
+										<strong><c:out value="${noView.mana_name}" /></strong>
 									</p>
 								</li>
 							</ul>
@@ -77,7 +80,7 @@
 									</p>
 								</li>
 							</ul>
-							<p>${noView.no_content}</p>
+							<p><c:out value="${noView.no_content}" /></p>
 						</div>
 					</div>
 				</div>
@@ -86,14 +89,14 @@
 				<div class="col-lg-12 mt-5">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="h2">${noView.no_title}</h1>
+							<h1 class="h2"><c:out value="${noView.no_title}"></c:out></h1>
 							<ul class="list-inline">
 								<li class="list-inline-item">
 									<h6>글쓴이</h6>
 								</li>
 								<li class="list-inline-item">
 									<p class="text-muted">
-										<strong>${noView.mana_name}</strong>
+										<strong><c:out value="${noView.mana_name}" /></strong>
 									</p>
 								</li>
 							</ul>
@@ -109,7 +112,7 @@
 									</p>
 								</li>
 							</ul>
-							<p>${noView.no_content}</p>
+							<p><c:out value="${noView.no_content}" /></p>
 						</div>
 					</div>
 				</div>
@@ -117,9 +120,12 @@
 		</div>
 			
 	</div>
-
-	<%@ include file="../include/footer.jsp" %>
 	
-
+	<c:if test="${manager != null}">
+			<%@ include file="../include/footer3.jsp" %>
+	</c:if>
+	<c:if test="${manager == null}">
+			<%@ include file="../include/footer.jsp" %>
+	</c:if>
 </body>
 </html>

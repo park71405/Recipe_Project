@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -63,14 +62,14 @@
 					<tbody>
 						<c:forEach items="${reviewList}" var="reviewList">
 							<tr>
-								<td class="text-center">${reviewList.rv_no}</td>
+								<td class="text-center"><c:out value="${reviewList.rv_no}"/></td>
 								<td class="text-center"><a
 									href="/reviewBoard/reviewView?rv_no=${reviewList.rv_no}"
-									style="text-decoration: none; color: #476268;">${reviewList.rv_title}</a>
+									style="text-decoration: none; color: #476268;"><c:out value="${reviewList.rv_title}"/></a>
 								</td>
 								<td class="text-center"><fmt:formatDate
 										value="${reviewList.rv_date}" pattern="yyyy-MM-dd" /></td>
-								<td class="text-center">${reviewList.user_name}</td>
+								<td class="text-center"><c:out value="${reviewList.user_name}"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>

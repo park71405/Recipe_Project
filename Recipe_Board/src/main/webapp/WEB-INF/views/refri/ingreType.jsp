@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -72,9 +71,9 @@
 				<tbody>
 					<c:forEach items="${refriList}" var="refriList">
 						<tr>
-							<td class="text-center">${refriList.ingre_name}</td>
-							<td class="text-center">${refriList.ingre_capacity}</td>
-							<td class="text-center">${refriList.ingre_type}</td>
+							<td class="text-center"><c:out value="${refriList.ingre_name}"/></td>
+							<td class="text-center"><c:out value="${refriList.ingre_capacity}"/></td>
+							<td class="text-center"><c:out value="${refriList.ingre_type}"/></td>
 							<td class="text-center">
 								<button type="button" class="btn btn-outline-success"
 											onclick="location.href='/refri/refriModify?ingre_no=${refriList.ingre_no}'">수정</button>

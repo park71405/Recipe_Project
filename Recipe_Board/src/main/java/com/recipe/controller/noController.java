@@ -87,7 +87,7 @@ public class noController {
 		
 	  service.noWrite(vo);
 		  
-	  return "redirect:/noBoard/noList?num=1";
+	  return "redirect:/manager/noList?num=1";
 	}
 	
 	//notice 조회
@@ -97,5 +97,46 @@ public class noController {
 		NoBoardVO vo = service.noView(no_no);
 			
 		model.addAttribute("noView", vo);
+	}
+	
+	//notice 삭제
+	@RequestMapping(value="/noDelete", method=RequestMethod.GET)
+	public String getDelete(@RequestParam("no_no") int no_no) throws Exception{
+		service.noDelete(no_no);
+		
+		return "redirect:/manager/noList?num=1";
+	}
+	
+	//notice 수정
+	@RequestMapping(value="/noModify", method=RequestMethod.GET)
+	public void getNoModify(@RequestParam("no_no") int no_no, Model model) throws Exception{
+		NoBoardVO vo = service.noView(no_no);
+		
+		model.addAttribute("noView", vo);
+	}
+	
+	//QA 수정
+	@RequestMapping(value="/noModify", method=RequestMethod.POST)
+	public String postNoModify(NoBoardVO vo, MultipartFile[] files) throws Exception{
+		
+		String uploadFolder = "C:\\cbnu2022\\220707spring_study\\Recipe_Board\\src\\main\\webapp\\resources\\imgUpload\\qa";
+			
+		for(MultipartFile file : files) {
+				
+			File saveFile = new File(uploadFolder, file.getOriginalFilename());
+				
+			try {
+				file.transferTo(saveFile);
+				vo.setNo_img(file.getOriginalFilename());
+			}catch(IllegalStateException e) {
+				e.getMessage();
+			}catch(IOException e) {
+				e.getMessage();
+			}
+		}
+		
+		service.noModify(vo);
+			
+		return "redirect:/noBoard/noView?no_no=" + vo.getNo_no();
 	}
 }

@@ -10,9 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="apple-touch-icon" href="../../resources/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
-	href="../../resources/img/favicon.ico">
+	href="../../resources/img/favicon.png">
 
 <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../resources/css/templatemo.css">
@@ -64,14 +63,14 @@
 					<tbody>
 						<c:forEach items="${qaList}" var="qaList">
 							<tr>
-								<td class="text-center">${qaList.qa_no}</td>
+								<td class="text-center"><c:out value="${qaList.qa_no}"></c:out></td>
 								<td class="text-center"><a
 									href="/qaBoard/qaView?qa_no=${qaList.qa_no}"
-									style="text-decoration: none; color: #476268;">${qaList.qa_title}</a>
+									style="text-decoration: none; color: #476268;"><c:out value="${qaList.qa_title}" /></a>
 								</td>
 								<td class="text-center"><fmt:formatDate
 										value="${qaList.qa_date}" pattern="yyyy-MM-dd" /></td>
-								<td class="text-center">${qaList.user_name}</td>
+								<td class="text-center"><c:out value="${qaList.user_name}" /></td>
 							</tr>
 						</c:forEach>
 					</tbody>
