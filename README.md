@@ -10,6 +10,10 @@
 - 파일 업로드
 - 💡 유저 냉장고를 기반으로 바로 조리 가능한 레시피 조회 💡
 
+---
+
+### 사용 기술
+<img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=Spring&logoColor=black"/>
 
 ---
 
