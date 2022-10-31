@@ -2,7 +2,7 @@
 
 ---
 
-### 개발 내용
+### :sunglasses: 개발 내용 :sunglasses:
 
 - MVC 패턴
 - 공공 데이터 포탈 API 기반 크롤링
