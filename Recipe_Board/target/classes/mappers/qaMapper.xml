@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.recipe.mappers.qaBoard">
+
+	<!-- 게시물 총 개수 -->
+	<select id="qaCount" parameterType="hashMap" resultType="int">
+		select count(qa_no) from qa
+	</select>
+
+	<!-- qa 목록 -->
+	<select id="qaList" parameterType="hashMap" resultType="com.recipe.domain.QaVO">
+		select 
+			qa_no, qa_title, user_name, qa_date, qa_warning
+		from qa
+		
+		<if test='qa_searchType.equals("qa_title")'>
+			where qa_title LIKE concat('%', #{qa_keyword}, '%')
+		</if>
+		<if test='qa_searchType.equals("qa_content")'>
+			where qa_content LIKE concat('%', #{qa_keyword}, '%')
+		</if>
+		<if test='qa_searchType.equals("qa_title_content")'>
+			where qa_title LIKE concat('%', #{qa_keyword}, '%')
+				or qa_content LIKE concat('%', #{qa_keyword}, '%')
+		</if>
+		<if test='qa_searchType.equals("user_name")'>
+			where user_name LIKE concat('%', #{qa_keyword}, '%')
+		</if>
+		
+		order by qa_no desc
+			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- QA 작성 -->
+	<insert id="qaWrite" parameterType="com.recipe.domain.QaVO">
+		insert into
+			qa(qa_title, qa_content, user_name, qaImg)
+				values(#{qa_title}, #{qa_content}, #{user_name}, #{qaImg})
+	</insert>
+	
+	<!-- QA 조회 -->
+	<select id="qaView" parameterType="int" resultType="com.recipe.domain.QaVO">
+		select
+			qa_no, qa_title, qa_content, user_name, qa_date, qaImg, qa_warning
+		from
+			qa
+		where 
+			qa_no = #{qa_no}
+	</select>
+
+	<!-- QA 수정 -->
+	<update id="qaModify" parameterType="com.recipe.domain.QaVO">
+		update qa
+			set 
+				qa_title = #{qa_title},
+				qa_content = #{qa_content},
+				user_name = #{user_name},
+				qaImg = #{qaImg}
+			where qa_no = #{qa_no}
+	</update>
+	
+	<!-- QA 삭제 -->
+	<delete id="qaDelete" parameterType="int">
+		delete
+			from qa
+		where qa_no = #{qa_no}
+	</delete>
+
+	<!-- 후기 신고 -->
+	<update id="alert" parameterType="com.recipe.domain.QaVO">
+		update qa
+			set 
+				qa_warning = #{qa_warning}
+			where qa_no = #{qa_no}
+				
+	</update>
+
+</mapper>
